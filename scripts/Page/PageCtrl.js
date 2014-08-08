@@ -12,7 +12,13 @@
         return popupWin.document.close();
       };
     }
+    
   ]);
+  angular.module('app.page.ctrls', []).controller('profileCtrl',[ '$scope',function($scope){
+    $scope.message="123";
+    $scope.edit=0;
+  }]);
+  
 
 }).call(this);
 

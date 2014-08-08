@@ -1,5 +1,5 @@
 
-<div class="page page-profile">
+<div class="page page-profile" data-ng-controller="profileCtrl">
 
     <div class="row">
         <div class="col-md-6">
@@ -78,54 +78,7 @@
         </div>
         <div class="col-md-6">
 
-            <div class="row">
-                <div class="col-sm-6">
-                    <div class="panel mini-box">
-                        <span class="box-icon bg-danger">
-                            <i class="fa fa-film"></i>
-                        </span>
-                        <div class="box-info">
-                            <p class="size-h2">39</p>
-                            <p class="text-muted">Amazing Films</p>
-                        </div>
-                    </div>                    
-                </div>
-                <div class="col-sm-6">
-                    <div class="panel mini-box">
-                        <span class="box-icon bg-warning">
-                            <i class="fa fa-camera"></i>
-                        </span>
-                        <div class="box-info">
-                            <p class="size-h2">63</p>
-                            <p class="text-muted">Wonderful Photos</p>
-                        </div>
-                    </div>                    
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-sm-6">
-                    <div class="panel mini-box">
-                        <span class="box-icon bg-success">
-                            <i class="fa fa-bookmark-o"></i>
-                        </span>
-                        <div class="box-info">
-                            <p class="size-h2">55</p>
-                            <p class="text-muted">New Collections</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-6">
-                    <div class="panel mini-box">
-                        <span class="box-icon bg-info">
-                            <i class="fa fa-check"></i>
-                        </span>
-                        <div class="box-info">
-                            <p class="size-h2">34</p>
-                            <p class="text-muted">Tasks Finised</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+
 
             <div class="panel panel-default">
                 <div class="panel-heading"><strong><span class="glyphicon glyphicon-th"></span> Profile Info</strong></div>
@@ -133,15 +86,21 @@
                     <div class="media">
                         <div class="media-body">
                             <ul class="list-unstyled list-info">
-                                <li>
-                                    <span class="icon glyphicon glyphicon-user"></span>
-                                    <label>User name</label>
-                                    {{main.name}}
+                                <li >                                
+                                    <span  class="icon glyphicon glyphicon-user" ></span>
+                                    <label >User name</label>                                                                                          
+                                    <span ng-show="edit==0" > {{main.name}}</span>
+                                    <span ng-show="edit==1" >
+                                        <input type="text" ng-model="main.name" class="form-control">                        
+                                    </span>                                                                                
                                 </li>
                                 <li>
                                     <span class="icon glyphicon glyphicon-envelope"></span>
                                     <label>Email</label>
-                                    name@example.com
+                                    <span ng-show="edit==0" > {{main.Email}}</span>
+                                    <span ng-show="edit==1" >
+                                        <input type="text" ng-model="main.Email" class="form-control">                        
+                                    </span>                                    
                                 </li>
                                 <li>
                                     <span class="icon glyphicon glyphicon-home"></span>
@@ -157,6 +116,11 @@
                                     <span class="icon glyphicon glyphicon-flag"></span>
                                     <label>Nationality</label>
                                     Australia
+                                </li>
+                                <li>
+                                    <button class="btn btn-primary" ng-show="edit==0" ng-click="edit=1">Edit</button>
+                                    <button class="btn btn-primary" ng-show="edit==1" ng-click="edit=0">Cancel</button>
+                                    <button class="btn btn-primary" ng-show="edit==1" ng-click="edit=0">Ok</button>
                                 </li>
                             </ul>
                             
