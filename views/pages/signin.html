@@ -1,4 +1,4 @@
-<div class="page-signin">
+<div class="page-signin" ng-controller="LoginCtrl">
 
     <div class="signin-header">
         <div class="container text-center">
@@ -22,7 +22,7 @@
 
                 <span class="line-thru">OR</span>
 
-                <form class="form-horizontal">
+                <form name="login_form" class="form-horizontal form-validation" novalidate ng-submit="login(user)">
                     <fieldset>
                         <div class="form-group">
                             <div class="input-group input-group-lg">
@@ -32,6 +32,8 @@
                                 <input type="email"
                                        class="form-control"
                                        placeholder="Email"
+                                       required
+                                       ng-model="user.username_or_email"
                                        >
                             </div>
                         </div>
@@ -43,13 +45,15 @@
                                 <input type="password"
                                        class="form-control"
                                        placeholder="password"
+                                       required
+                                       ng-model="user.password"
                                        >
                             </div>
                         </div>
                         <div class="form-group">
                         </div>
                         <div class="form-group">
-                            <a href="#/" class="btn btn-primary btn-lg btn-block">Log in</a>
+                            <button data-ng-disabled="login_form.$invalid" type="submit" class="btn btn-primary btn-lg btn-block">登录</button>
                         </div>
                     </fieldset>
                 </form>
