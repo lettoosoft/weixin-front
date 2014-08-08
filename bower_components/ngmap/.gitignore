@@ -1,0 +1,6 @@
+*.swp
+nohup.out
+/examples_dev
+/build/
+/node_modules/
+/tmp/
