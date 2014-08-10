@@ -53,7 +53,12 @@
                 }
             }
         ])
-
+        .controller('singUpctrl', [
+            '$scope', 'singUpService', function ($scope,singUpService){
+                $scope.signup = function (user) {
+                    singUpService.signUp(user);
+                }
+        }])
         .controller('NavCtrl', [
             '$scope', 'taskStorage', 'filterFilter', function ($scope, taskStorage, filterFilter) {
                 var tasks;
