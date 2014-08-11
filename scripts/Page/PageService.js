@@ -1,21 +1,15 @@
 angular.module('app.page.services', []).factory('UpdateUser', ['$http', function ($http) {
-    var UpdateUser = function (data) {
-        angular.extend(this, data);
-    };
-
-    UpdateUser.Update = function (user, $scope) {
-        var url = 'http://121.40.126.220/api/v1/createuser/';
-
-        return $http.post(url, user).success(function (data) {
+        var service = {
+            Update: function(user){
+                var url ='http://121.40.126.220/api/v1/';
+                return $http.post(url,user).success(function (data) {
             //IMPORTANT: You need to activate always_return_data in your ressource (see example)
-            user.id = data.id;
-            console.log(data);
-            $scope.message = '成功';
-        }).error(function (data) {
-            console.log(data);
-            $scope.message = data.error;
-        });
-    };
-
-    return 1;
+                    user.id = data.id;
+                    console.log(data);
+                    }).error(function (data) {
+                    console.log(data);
+                    });
+                },
+            };
+        return service;
 }]);

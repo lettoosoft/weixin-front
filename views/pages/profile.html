@@ -7,7 +7,7 @@
             <div class="panel panel-profile">
                 <div class="panel-heading text-center bg-info">
                     <img alt="" src="images/g1.jpg" class="img-circle img80_80">
-                    <h3>{{main.name}}</h3>
+                    <h3>{{user.username}}</h3>
                     <p>Project Manager</p>                    
                 </div>
                 <div class="list-justified-container">
@@ -79,7 +79,7 @@
         <div class="col-md-6">
 
 
-        <form name="signUp_form" class="form-horizontal" role="form"  ng-submit="signUp_form.$valid && Update(main)" novalidate>
+        <form name="signUp_form" class="form-horizontal" role="form"  ng-submit="signUp_form.$valid && Update(user)" novalidate>
             <div class="panel panel-default">
                 <div class="panel-heading"><strong><span class="glyphicon glyphicon-th"></span> Profile Info</strong></div>
                 <div class="panel-body">
@@ -89,17 +89,25 @@
                                 <li >                                
                                     <span  class="icon glyphicon glyphicon-user" ></span>
                                     <label >User name</label>                                                                                          
-                                    <span ng-show="edit==0" > {{main.name}}</span>
+                                    <span ng-show="edit==0" > {{user.username}}</span>
                                     <span ng-show="edit==1" >
-                                        <input type="text" ng-model="main.name" class="form-control" required>                        
+                                        <input type="text" ng-model="user.username" class="form-control" required>                        
                                     </span>                                                                                
                                 </li>
                                 <li>
                                     <span class="icon glyphicon glyphicon-envelope"></span>
                                     <label>Email</label>
-                                    <span ng-show="edit==0" > {{main.Email}}</span>
+                                    <span ng-show="edit==0" > {{user.Email}}</span>
                                     <span ng-show="edit==1" >
-                                        <input type="text" ng-model="main.Email" class="form-control">                        
+                                        <input type="text" ng-model="user.Email" class="form-control">                        
+                                    </span>                                    
+                                </li>
+                                <li>
+                                    <span class="icon glyphicon glyphicon-envelope"></span>
+                                    <label>Age</label>
+                                    <span ng-show="edit==0" > {{user.age}}</span>
+                                    <span ng-show="edit==1" >
+                                        <input type="text" ng-model="user.age" class="form-control">                        
                                     </span>                                    
                                 </li>
                                 <li>

@@ -74,4 +74,20 @@ angular.module('app.services', [])
                 },
             };
         return service;
-    });
+    })
+    .factory('UpdateUser', ['$http', function ($http) {
+        var service = {
+            Update: function(user){
+                var url ='http://121.40.126.220/api/v1/user/1';
+                return $http.put(url,user).success(function (data) {
+            //IMPORTANT: You need to activate always_return_data in your ressource (see example)
+                    console.log("success");
+                    console.log(data);
+                    }).error(function (data) {
+                    console.log(data);
+                    console.log("fail");
+                    });
+                },
+            };
+        return service;
+}]);
