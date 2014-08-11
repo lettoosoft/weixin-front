@@ -79,7 +79,7 @@
         <div class="col-md-6">
 
 
-
+        <form name="signUp_form" class="form-horizontal" role="form"  ng-submit="signUp_form.$valid && Update(main)" novalidate>
             <div class="panel panel-default">
                 <div class="panel-heading"><strong><span class="glyphicon glyphicon-th"></span> Profile Info</strong></div>
                 <div class="panel-body">
@@ -91,7 +91,7 @@
                                     <label >User name</label>                                                                                          
                                     <span ng-show="edit==0" > {{main.name}}</span>
                                     <span ng-show="edit==1" >
-                                        <input type="text" ng-model="main.name" class="form-control">                        
+                                        <input type="text" ng-model="main.name" class="form-control" required>                        
                                     </span>                                                                                
                                 </li>
                                 <li>
@@ -120,7 +120,7 @@
                                 <li>
                                     <button class="btn btn-primary" ng-show="edit==0" ng-click="edit=1">Edit</button>
                                     <button class="btn btn-primary" ng-show="edit==1" ng-click="edit=0">Cancel</button>
-                                    <button class="btn btn-primary" ng-show="edit==1" ng-click="edit=0">Ok</button>
+                                    <button type="submit" class="btn btn-primary" ng-show="edit==1" ng-click="edit=0">Ok</button>
                                 </li>
                             </ul>
                             
@@ -128,6 +128,7 @@
                     </div>
                 </div>
             </div>
+        </form>
         </div>
     </div>
 

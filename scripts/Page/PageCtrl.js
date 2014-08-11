@@ -14,12 +14,18 @@
     }
     
   ]);
-  angular.module('app.page.ctrls', []).controller('profileCtrl',[ '$scope',function($scope){
+  angular.module('app.page.ctrls', []).controller('profileCtrl',[ '$scope','UpdateUser',function($scope,UpdateUser){
     $scope.message="123";
     $scope.edit=0;
+    $scope.Update=function(user){
+      UpdateUser.Update(user,$scope);
+
+    }
   }]);
+
   
 
 }).call(this);
 
 //# sourceMappingURL=PageCtrl.js.map
+
