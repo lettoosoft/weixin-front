@@ -3,7 +3,7 @@
     angular.module('app.controllers', [])
         .controller('AppCtrl', [
             '$scope', '$location', '$rootScope', 'LoginService', '$cookies', function ($scope, $location, $rootScope, LoginService, $cookies) {
-                
+
 
                 $scope.isSpecificPage = function () {
                     var path;
