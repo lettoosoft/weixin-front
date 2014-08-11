@@ -33,7 +33,7 @@
             '$scope', 'singUpService', function ($scope,singUpService){
                 $scope.signup = function (user) {
                     singUpService.signUp(user);
-                }
+                };
                 $scope.passwordvalid = function(user) {
                     if(user){
                         if(user.password && user.confirmpassword){
@@ -44,7 +44,7 @@
                     }else{
                         return true;
                     }
-                }
+                };
                 $scope.confirm = function(user){
                     if (user.password != user.confirmpassword) {
                         $scope.message = "两次输入的密码不一致，请重新输入";
@@ -67,14 +67,7 @@
         ])
 
         .controller('DashboardCtrl', ['$scope', '$rootScope', '$http', '$location', function ($scope, $rootScope, $http, $location) {
-            var url = $rootScope.apiHost + '/api/v1/me/';
-            $http.post(url)
-                .success(function (data, status, headers, config) {
-                    $rootScope.user = data;
-                })
-                .error(function (data, status, headers, config) {
-                    console.log("Error occurred.  Status:" + status);
-                });
+
         }]);
 
 }).call(this);
