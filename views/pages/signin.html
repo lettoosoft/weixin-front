@@ -12,7 +12,7 @@
         <div class="container">
             <div class="form-container">
 
-                <section class="row signin-social text-center">
+                <!-- <section class="row signin-social text-center">
                     <a href="javascript:;" class="btn-icon btn-icon-sm bg-twitter"><i class="fa fa-twitter"></i></a>
                     <div class="space"></div>
                     <a href="javascript:;" class="btn-icon btn-icon-sm bg-facebook"><i class="fa fa-facebook"></i></a>
@@ -20,7 +20,7 @@
                     <a href="javascript:;" class="btn-icon btn-icon-sm bg-google-plus"><i class="fa fa-google-plus"></i></a>
                 </section>
 
-                <span class="line-thru">OR</span>
+                <span class="line-thru">OR</span> -->
 
                 <form name="login_form" class="form-horizontal form-validation" novalidate ng-submit="login(user)">
                     <fieldset>
@@ -31,7 +31,7 @@
                                 </span>
                                 <input type="email"
                                        class="form-control"
-                                       placeholder="Email"
+                                       placeholder="邮箱"
                                        required
                                        ng-model="user.username_or_email"
                                        >
@@ -44,7 +44,7 @@
                                 </span>
                                 <input type="password"
                                        class="form-control"
-                                       placeholder="password"
+                                       placeholder="密码"
                                        required
                                        ng-model="user.password"
                                        >
@@ -59,10 +59,10 @@
                 </form>
 
                 <section>
-                    <p class="text-center"><a href="#/pages/forgot">Forgot your password?</a></p>
-                    <p class="text-center text-muted text-small">Don't have an account yet? <a href="#/pages/signup">Sign up</a></p>
+                    <p class="text-center"><a href="#/pages/forgot">忘记密码？</a></p>
+                    <p class="text-center text-muted text-small">还没有账户？<a href="#/pages/signup">注册</a></p>
                 </section>
-                
+
             </div>
         </div>
     </div>
