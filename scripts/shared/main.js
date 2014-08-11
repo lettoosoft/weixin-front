@@ -2,6 +2,7 @@
     'use strict';
     angular.module('app.controllers', [])
         .controller('AppCtrl', [
+<<<<<<< HEAD
             '$scope', '$location', '$rootScope', 'LoginService', '$cookies', 
                 function ($scope, $location, $rootScope, LoginService, $cookies) {
                     $scope.isSpecificPage = function () {
@@ -18,6 +19,27 @@
                     };
                 }
             ])
+=======
+            '$scope', '$location', '$rootScope', 'LoginService', '$cookies', function ($scope, $location, $rootScope, LoginService, $cookies) {
+
+
+                $scope.isSpecificPage = function () {
+                    var path;
+                    path = $location.path();
+                    return _.contains(['/404', '/pages/500', '/pages/login', '/pages/signin', '/pages/signin1', '/pages/signin2', '/pages/signup', '/pages/signup1', '/pages/signup2', '/pages/forgot', '/pages/lock-screen'], path);
+                };
+
+                $rootScope.logout = function(){
+                    LoginService.logout();
+                };
+
+                return $scope.main = {
+                    brand: '微信平台',
+                    name: 'Name'
+                };
+            }
+        ])
+>>>>>>> 6ac92f8fe98d3485712af201cc2701087825bd35
 
         .controller('LoginCtrl', [
             '$scope', 'LoginService', function ($scope, LoginService) {

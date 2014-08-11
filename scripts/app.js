@@ -74,8 +74,8 @@
                 // }).when('/pages/500', {
                 //   templateUrl: 'views/pages/500.html'
                 // })
-                 .when('/pages/blank', {
-                   templateUrl: 'views/pages/blank.html'
+                 .when('/pages/reset', {
+                   templateUrl: 'views/pages/reset.html'
                  })
                 // .when('/pages/invoice', {
                 //   templateUrl: 'views/pages/invoice.html'
