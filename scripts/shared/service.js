@@ -71,16 +71,26 @@ angular.module('app.services', [])
             },
             redirectToAttemptedUrl: function () {
                 $location.path(redirectToUrlAfterLogin.url);
+            },
+            get_currentuser: function () {
+                var url = $rootScope.apiHost + '/api/v1/me/';
+                $http.post(url)
+                    .success(function (data, status, headers, config) {
+                        $rootScope.user = data;
+                    })
+                    .error(function (data, status, headers, config) {
+                        console.log("Error occurred.  Status:" + status);
+                    });
             }
         };
         return service;
 
     })
-    .factory('singUpService',function ($http,$rootScope,$location,authService,$cookies,redirectToUrlAfterLogin){
+    .factory('singUpService', function ($http, $rootScope, $location, authService, $cookies, redirectToUrlAfterLogin) {
         var service = {
-            signUp: function(user){
-                var url = $rootScope.apiHost+'/api/v1/createuser/';
-                return $http.post(url,user)
+            signUp: function (user) {
+                var url = $rootScope.apiHost + '/api/v1/createuser/';
+                return $http.post(url, user)
                     .success(function (data, status, headers, config) {
                         $rootScope.user = data;
                         var auth = 'ApiKey ' + data.username + ':' + data.apikey;
@@ -102,23 +112,23 @@ angular.module('app.services', [])
                     })
                     .error(function (data) {
                     });
-                },
-            };
+            }
+        };
         return service;
     })
     .factory('UpdateUser', ['$http', function ($http) {
         var service = {
             Update: function(user){
-                var url ='http://121.40.126.220/api/v1/user/1';
+                var url ='http://121.40.126.220/api/v1/user/40';
                 return $http.put(url,user).success(function (data) {
             //IMPORTANT: You need to activate always_return_data in your ressource (see example)
                     console.log("success");
                     console.log(data);
-                    }).error(function (data) {
+                }).error(function (data) {
                     console.log(data);
                     console.log("fail");
-                    });
-                },
-            };
+                });
+            }
+        };
         return service;
-}]);
+    }]);
