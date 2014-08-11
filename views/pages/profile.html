@@ -91,15 +91,23 @@
                                     <label >User name</label>                                                                                          
                                     <span ng-show="edit==0" > {{user.username}}</span>
                                     <span ng-show="edit==1" >
-                                        <input type="text" ng-model="user.username" class="form-control" required>                        
+                                        <input type="text" ng-model="user.username"  class="form-control" required>                        
                                     </span>                                                                                
                                 </li>
                                 <li>
                                     <span class="icon glyphicon glyphicon-envelope"></span>
-                                    <label>Email</label>
-                                    <span ng-show="edit==0" > {{user.Email}}</span>
+                                    <label>email</label>
+                                    <span ng-show="edit==0" > {{user.email}}</span>
                                     <span ng-show="edit==1" >
-                                        <input type="text" ng-model="user.Email" class="form-control">                        
+                                        <input type="text" ng-model="user.email" class="form-control">                        
+                                    </span>                                    
+                                </li>
+<!--                                 <li>
+                                    <span class="icon glyphicon glyphicon-envelope"></span>
+                                    <label>Age</label>
+                                    <span ng-show="edit==0" > {{user.age}}</span>
+                                    <span ng-show="edit==1" >
+                                        <input type="text" ng-model="user.age" class="form-control">                        
                                     </span>                                    
                                 </li>
                                 <li>
@@ -109,7 +117,7 @@
                                     <span ng-show="edit==1" >
                                         <input type="text" ng-model="user.age" class="form-control">                        
                                     </span>                                    
-                                </li>
+                                </li> -->
                                 <li>
                                     <span class="icon glyphicon glyphicon-home"></span>
                                     <label>Address</label>
