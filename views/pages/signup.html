@@ -1,4 +1,4 @@
-<div class="page-signup">
+<div class="page-signup" ng-controller="singUpctrl">
 
     <div class="signin-header">
         <div class="container text-center">
@@ -23,18 +23,7 @@
                 <span class="line-thru">OR</span>
 
                 <section>
-                    <form class="form-horizontal">
-                        <div class="form-group">
-                            <div class="input-group input-group-lg">
-                                <span class="input-group-addon">
-                                    <span class="glyphicon glyphicon-user"></span>
-                                </span>
-                                <input  type="text"
-                                        class="form-control"
-                                        placeholder="User name"
-                                        >
-                            </div>
-                        </div>
+                    <form name="signup_form" class="form-horizontal form-validation" novalidate ng-submit="signup(user)" >
                         <div class="form-group">
                             <div class="input-group input-group-lg">
                                 <span class="input-group-addon">
@@ -43,6 +32,8 @@
                                 <input type="email"
                                        class="form-control"
                                        placeholder="Email"
+                                       ng-model="user.email"
+                                       required
                                        >
                             </div>
                         </div>
@@ -54,6 +45,8 @@
                                 <input type="password"
                                        class="form-control"
                                        placeholder="Password"
+                                       ng-model="user.password"
+                                       required
                                        >
                             </div>
                         </div>
@@ -61,7 +54,7 @@
                         <div class="form-group">
                             <p class="text-muted text-small">By clicking on Sign up, you agree to <a href="javascript:;">terms & conditions</a> and <a href="javascript:;">privacy policy</a></p>
                             <div class="divider"></div>
-                            <a href="#/" class="btn btn-primary btn-block btn-lg">Sign up</a>
+                            <button type="submit" data-ng-disabled="signup_form.$invalid" class="btn btn-primary btn-block btn-lg">Sign up</a>
                         </div>
  
                     </form>
