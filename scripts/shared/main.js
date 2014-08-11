@@ -58,9 +58,22 @@
             '$scope','resetService',function ($scope,resetService){
                 $scope.resets = function (user){
                     resetService.ReSet(user);
-            }
+                }
         }])
-
+        .controller('ChangePassword',[
+            '$scope','resetService','LoginService',function ($scope,resetService,LoginService){
+                $scope.changePassword = function (password){
+                    resetService.change(password);
+                    LoginService.logout();
+                }
+                $scope.confirmPassword =function(password){
+                    if (password.password1 != password.password2) {
+                        $scope.message2 = "两次输入的密码不一致，请重新输入";
+                    }else{
+                        $scope.message2 = "";
+                    }
+                }
+        }])
         .controller('NavCtrl', [
             '$scope', 'taskStorage', 'filterFilter', function ($scope, taskStorage, filterFilter) {
                 var tasks;

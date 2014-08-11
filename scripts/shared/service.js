@@ -1,16 +1,23 @@
 'use strict';
 
 angular.module('app.services', [])
-    .factory('resetService',function ($rootScope,$http){
+    .factory('resetService', function ($rootScope,$http,authService){
         var service = {
-            ReSet: function(user){
+            ReSet:  function(user){
                         var url = $rootScope.apiHost + '/api/v1/user/password/reset/';
-                        $http.post(url, user).success(function (data){
+                        $http.post(url,user).success(function (data){
                             console.log(data);
                         }).error(function (data){
                             console.log(data);
-
-                })
+                        })
+                    },
+            change:function(password){
+                        var url = $rootScope.apiHost + '/api/v1/user/password/change/';
+                        $http.post(url,password).success(function (data){
+                            
+                        }).error(function (data){
+                            $rootScope.message2 = "原密码输入错误！请重新输入！";                         
+                        })
             }
         }
         return service;
@@ -44,13 +51,9 @@ angular.module('app.services', [])
                         $rootScope.message = data.error;
                     });
             },
-            logout: function (user) {
-                var url = $rootScope.apiHost + '/v1/user/logout/';
-                $http.post(url, {}, { ignoreAuthModule: true })
-                    .finally(function (data) {
+            logout: function () {
                         delete $http.defaults.headers.common.Authorization;
                         $rootScope.$broadcast('event:auth-logout-complete');
-                    });
             },
             loginCancelled: function () {
                 authService.loginCancelled();
