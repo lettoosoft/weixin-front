@@ -1,4 +1,4 @@
-angular.module('app.page.services', []).factory('UpdateUser', ['$http', function ($http,UpdateUser) {
+angular.module('app.page.services', []).factory('UpdateUser', ['$http', function ($http) {
     var UpdateUser = function (data) {
         angular.extend(this, data);
     };
