@@ -2,25 +2,22 @@
     'use strict';
     angular.module('app.controllers', [])
         .controller('AppCtrl', [
-            '$scope', '$location', '$rootScope', 'LoginService', '$cookies', function ($scope, $location, $rootScope, LoginService, $cookies) {
-                
-
-                $scope.isSpecificPage = function () {
-                    var path;
-                    path = $location.path();
-                    return _.contains(['/404', '/pages/500', '/pages/login', '/pages/signin', '/pages/signin1', '/pages/signin2', '/pages/signup', '/pages/signup1', '/pages/signup2', '/pages/forgot', '/pages/lock-screen'], path);
-                };
-
-                $rootScope.logout = function(){
-                    LoginService.logout();
-                };
-
-                return $scope.main = {
-                    brand: '微信平台',
-                    name: 'Name'
-                };
-            }
-        ])
+            '$scope', '$location', '$rootScope', 'LoginService', '$cookies', 
+                function ($scope, $location, $rootScope, LoginService, $cookies) {
+                    $scope.isSpecificPage = function () {
+                        var path;
+                        path = $location.path();
+                        return _.contains(['/404', '/pages/500', '/pages/login', '/pages/signin', '/pages/signin1', '/pages/signin2', '/pages/signup', '/pages/signup1', '/pages/signup2', '/pages/forgot', '/pages/lock-screen'], path);
+                    };
+                    $rootScope.logout = function(){
+                        LoginService.logout();
+                    };  
+                    return $scope.main = {
+                        brand: '微信平台',
+                        name: 'Name'
+                    };
+                }
+            ])
 
         .controller('LoginCtrl', [
             '$scope', 'LoginService', function ($scope, LoginService) {
@@ -29,6 +26,7 @@
                 }
             }
         ])
+
         .controller('singUpctrl', [
             '$scope', 'singUpService', function ($scope,singUpService){
                 $scope.signup = function (user) {
@@ -53,6 +51,13 @@
                     }
                 }
         }])
+        .controller('resetCtrl',[
+            '$scope','resetService',function ($scope,resetService){
+                $scope.resets = function (user){
+                    resetService.ReSet(user);
+            }
+        }])
+
         .controller('NavCtrl', [
             '$scope', 'taskStorage', 'filterFilter', function ($scope, taskStorage, filterFilter) {
                 var tasks;

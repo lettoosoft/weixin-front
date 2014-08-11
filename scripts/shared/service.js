@@ -1,6 +1,20 @@
 'use strict';
 
 angular.module('app.services', [])
+    .factory('resetService',function ($rootScope,$http){
+        var service = {
+            ReSet: function(user){
+                        var url = $rootScope.apiHost + '/api/v1/user/password/reset/';
+                        $http.post(url, user).success(function (data){
+                            console.log(data);
+                        }).error(function (data){
+                            console.log(data);
+
+                })
+            }
+        }
+        return service;
+    })
     .factory('LoginService', function ( $rootScope, $http, authService, $cookies, $location, redirectToUrlAfterLogin) {
         var service = {
             login: function (user) {
