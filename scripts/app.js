@@ -94,8 +94,8 @@
         }
     ])
     .run(
-        ['$rootScope', '$location', 'LoginService',
-            function ($rootScope, $location, LoginService) {
+        ['$rootScope', '$location', 'LoginService', '$cookies',
+            function ($rootScope, $location, LoginService, $cookies) {
                 if (!LoginService.isLoggedIn()) {
                     LoginService.saveAttemptUrl();
                     $location.path('/pages/signin');
