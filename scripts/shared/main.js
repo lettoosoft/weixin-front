@@ -41,7 +41,7 @@
 
                 return $scope.main = {
                     brand: '微信平台',
-                    name: 'Lisa Doe'
+                    name: 'Name'
                 };
             }
         ])
@@ -57,6 +57,24 @@
             '$scope', 'singUpService', function ($scope,singUpService){
                 $scope.signup = function (user) {
                     singUpService.signUp(user);
+                }
+                $scope.passwordvalid = function(user) {
+                    if(user){
+                        if(user.password && user.confirmpassword){
+                            return !(user.password == user.confirmpassword);
+                        }else{
+                            return true;
+                        }
+                    }else{
+                        return true;
+                    }
+                }
+                $scope.confirm = function(user){
+                    if (user.password != user.confirmpassword) {
+                        $scope.message = "两次输入的密码不一致，请重新输入";
+                    }else{
+                        $scope.message = "";
+                    }
                 }
         }])
         .controller('NavCtrl', [

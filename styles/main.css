@@ -14296,3 +14296,6 @@ button.toast-close-button {
 .form-validation .ng-invalid.ng-dirty {
   border-color: #e87352;
 }
+#iconstyle{
+  font-color: red;
+}

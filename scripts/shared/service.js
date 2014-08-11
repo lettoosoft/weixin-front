@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('app.services', [])
-    .factory('LoginService', function ($rootScope, $http, authService, $cookies, $location, redirectToUrlAfterLogin) {
+    .factory('LoginService', function ( $rootScope, $http, authService, $cookies, $location, redirectToUrlAfterLogin) {
         var service = {
             login: function (user) {
                 var url = $rootScope.apiHost + '/api/v1/user/login/';
@@ -59,16 +59,21 @@ angular.module('app.services', [])
             }
         };
         return service;
+
     })
-    .factory('singUpService',function ($http){
+    .factory('singUpService',function ($http,$rootScope,$location){
         var service = {
             signUp: function(user){
-                var url ='http://121.40.126.220/api/v1/';
-                return $http.post(url,user).success(function (data) {
+                var url = $rootScope.apiHost+'/api/v1/createuser/';
+                return $http.post(url,user)
+                    .success(function (data) {
             //IMPORTANT: You need to activate always_return_data in your ressource (see example)
                     user.id = data.id;
                     console.log(data);
-                    }).error(function (data) {
+                    alert("注册成功！");
+                    $location.path("/pages/signin");
+                    })
+                    .error(function (data) {
                     console.log(data);
                     });
                 },
