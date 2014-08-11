@@ -100,10 +100,35 @@
                     LoginService.saveAttemptUrl();
                     $location.path('/pages/signin');
                 }
+                $rootScope.apiHost = 'http://121.40.126.220';
+                $rootScope.user = null;
+
+                $rootScope.$on('event:auth-loginRequired', function (e, rejection) {
+                    /*delete $cookies.is_login;
+                     delete $cookies.authorization;
+                     AuthenticationService.saveAttemptUrl();
+                     $location.path('/access/signin');
+                     //$state.go('access.signin', {}, {reload: true, inherit: false});*/
+                    console.log('login required');
+                    $location.path('/pages/signin');
+                });
+
+                $rootScope.$on('event:auth-loginConfirmed', function () {
+                    console.log("loginConfirmed");
+                    $location.path('/dashboard');
+                    //AuthenticationService.redirectToAttemptedUrl();
+                    //$state.go('app.dashboard', {}, {reload: true, inherit: false});
+                });
+
+                $rootScope.$on('event:auth-logout-complete', function () {
+                    delete $cookies.is_login;
+                    delete $cookies.authorization;
+                    $location.path('/pages/signin');
+                });
             }
+
         ])
         .value('redirectToUrlAfterLogin', { url: '/' });
-
 }).call(this);
 
 //# sourceMappingURL=app.js.map

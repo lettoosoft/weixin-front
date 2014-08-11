@@ -3,31 +3,7 @@
     angular.module('app.controllers', [])
         .controller('AppCtrl', [
             '$scope', '$location', '$rootScope', 'LoginService', '$cookies', function ($scope, $location, $rootScope, LoginService, $cookies) {
-                $rootScope.apiHost = 'http://121.40.126.220';
-                $rootScope.user = null;
-
-                $rootScope.$on('event:auth-loginRequired', function (e, rejection) {
-                    /*delete $cookies.is_login;
-                     delete $cookies.authorization;
-                     AuthenticationService.saveAttemptUrl();
-                     $location.path('/access/signin');
-                     //$state.go('access.signin', {}, {reload: true, inherit: false});*/
-                    console.log('login required');
-                    $location.path('/pages/signin');
-                });
-
-                $rootScope.$on('event:auth-loginConfirmed', function () {
-                    console.log("loginConfirmed");
-                    $location.path('/dashboard');
-                    //AuthenticationService.redirectToAttemptedUrl();
-                    //$state.go('app.dashboard', {}, {reload: true, inherit: false});
-                });
-
-                $rootScope.$on('event:auth-logout-complete', function () {
-                    delete $cookies.is_login;
-                    delete $cookies.authorization;
-                    $location.path('/pages/signin');
-                });
+                
 
                 $scope.isSpecificPage = function () {
                     var path;
@@ -41,7 +17,7 @@
 
                 return $scope.main = {
                     brand: '微信平台',
-                    name: 'Lisa Doe'
+                    name: 'Name'
                 };
             }
         ])
@@ -57,6 +33,24 @@
             '$scope', 'singUpService', function ($scope,singUpService){
                 $scope.signup = function (user) {
                     singUpService.signUp(user);
+                }
+                $scope.passwordvalid = function(user) {
+                    if(user){
+                        if(user.password && user.confirmpassword){
+                            return !(user.password == user.confirmpassword);
+                        }else{
+                            return true;
+                        }
+                    }else{
+                        return true;
+                    }
+                }
+                $scope.confirm = function(user){
+                    if (user.password != user.confirmpassword) {
+                        $scope.message = "两次输入的密码不一致，请重新输入";
+                    }else{
+                        $scope.message = "";
+                    }
                 }
         }])
         .controller('NavCtrl', [
