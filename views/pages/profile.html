@@ -28,7 +28,7 @@
                 </div>
             </div>
 
-            <div class="row">
+<!--             <div class="row">
                 <div class="col-sm-6">
                     <section class="panel panel-box">
                         <div class="panel-top bg-facebook">
@@ -71,7 +71,7 @@
                         </div>
                     </section>                        
                 </div>
-            </div>
+            </div> -->
 
 
           
@@ -79,73 +79,107 @@
         <div class="col-md-6">
 
 
-        <form name="signUp_form" class="form-horizontal" role="form"  ng-submit="signUp_form.$valid && Update(user)" novalidate>
+        <form name="signUp_form" class="form-horizontal form-inline" role="form"  ng-submit="signUp_form.$valid && Update(user.profile)" novalidate>
             <div class="panel panel-default">
-                <div class="panel-heading"><strong><span class="glyphicon glyphicon-th"></span> Profile Info</strong></div>
-                <div class="panel-body">
-                    <div class="media">
-                        <div class="media-body">
-                            <ul class="list-unstyled list-info">
+                <div class="panel-heading"><strong><span class="glyphicon glyphicon-th"></span> 个人信息</strong></div>
+                <div class="panel-body ">
+                    <div class="media ">
+                        <div class="media-body ">
+                            <ul class="list-unstyled list-info ">
                                 <li >                                
                                     <span  class="icon glyphicon glyphicon-user" ></span>
-                                    <label >User name</label>                                                                                          
+                                    <label >用户名</label>                                                                                          
                                     <span ng-show="edit==0" > {{user.username}}</span>
-                                    <span ng-show="edit==1" >
+                                    <span ng-show="edit==1"  >
                                         <input type="text" ng-model="user.username"  class="form-control" required>                        
                                     </span>                                                                                
                                 </li>
                                 <li>
                                     <span class="icon glyphicon glyphicon-envelope"></span>
-                                    <label>email</label>
+                                    <label>电子邮件</label>
                                     <span ng-show="edit==0" > {{user.email}}</span>
                                     <span ng-show="edit==1" >
-                                        <input type="text" ng-model="user.email" class="form-control">                        
-                                    </span>                                    
-                                </li>
-<!--                                 <li>
-                                    <span class="icon glyphicon glyphicon-envelope"></span>
-                                    <label>Age</label>
-                                    <span ng-show="edit==0" > {{user.age}}</span>
-                                    <span ng-show="edit==1" >
-                                        <input type="text" ng-model="user.age" class="form-control">                        
-                                    </span>                                    
-                                </li>
-                                <li>
-                                    <span class="icon glyphicon glyphicon-envelope"></span>
-                                    <label>Age</label>
-                                    <span ng-show="edit==0" > {{user.age}}</span>
-                                    <span ng-show="edit==1" >
-                                        <input type="text" ng-model="user.age" class="form-control">                        
-                                    </span>                                    
-                                </li> -->
-                                <li>
-                                    <span class="icon glyphicon glyphicon-home"></span>
-                                    <label>Address</label>
-                                    Street 123, Avenue 45, Country
+                                        <input type="email" ng-model="user.email" class="form-control" required>                        
+                                   </span>                                    
                                 </li>
                                 <li>
                                     <span class="icon glyphicon glyphicon-earphone"></span>
-                                    <label>Contact</label>
-                                    (+012) 345 6789
+                                    <label>联系方式</label>
+                                    <span ng-show="edit==0" > {{user.profile.tel}}</span>
+                                    <span ng-show="edit==1" >
+                                        <input type="text" ng-model="user.profile.tel" class="form-control">                        
+                                    </span>                                     
                                 </li>
+
                                 <li>
                                     <span class="icon glyphicon glyphicon-flag"></span>
-                                    <label>Nationality</label>
-                                    Australia
+                                    <label>QQ</label>
+                                    <span ng-show="edit==0" > {{user.profile.qq}}</span>
+                                    <span ng-show="edit==1" >
+                                        <input type="text" ng-model="user.profile.qq" class="form-control">                        
+                                    </span>  
                                 </li>
-                                <li>
-                                    <button type="button" class="btn btn-primary" ng-show="edit==0" ng-click="edit=1">Edit</button>
-                                    <button type="button" class="btn btn-primary" ng-show="edit==1" ng-click="edit=0">Cancel</button>
-                                    <button type="submit" class="btn btn-primary" ng-show="edit==1" ng-click="edit=0">Ok</button>
+                                <li class="text-right">
+                                    <button type="button" class="btn btn-primary" ng-show="edit==0" ng-click="edit=1">编辑</button>
+                                    <button type="button" class="btn btn-primary" ng-show="edit==1" ng-click="edit=0">取消</button>
+                                    <button type="submit" class="btn btn-primary" ng-show="edit==1" ng-click="edit=0">确定</button>
                                 </li>
-                            </ul>
-                            
+                            </ul>                            
                         </div>
                     </div>
                 </div>
             </div>
         </form>
         </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+
+
+        <form name="signUp_form" class="form-horizontal form-inline" role="form"  ng-submit="signUp_form.$valid && Update(user.profile)" novalidate>
+            <div class="panel panel-default">
+                <div class="panel-heading"><strong><span class="glyphicon glyphicon-th"></span> 微信列表</strong></div>
+                <div class="panel-body ">
+                    <div class="media ">
+                        <div class="media-body ">
+                            <ul class="list-unstyled list-info ">
+                                <li >                                
+                                    <span  class="icon glyphicon glyphicon-user" ></span>
+                                    <label >微信号</label>                                                                                          
+                                    <span ng-show="edit==0" >乐土软件（lettoosoft）</span>
+                                    <span ng-show="edit==1"  >
+                                        <input type="text" ng-model="user.username"  class="form-control" required>                        
+                                    </span>                                                                                
+                                </li>
+                                <li>
+                                    <span class="icon glyphicon glyphicon-envelope"></span>
+                                    <label>URL</label>
+                                    <span ng-show="edit==0" > www.weixin.com/index/</span>
+                                    <span ng-show="edit==1" >
+                                        <input type="email" ng-model="user.email" class="form-control" required>                        
+                                   </span>                                    
+                                </li>
+                                <li>
+                                    <span class="icon glyphicon glyphicon-earphone"></span>
+                                    <label>TOKEN</label>
+                                    <span ng-show="edit==0" > letto</span>
+                                    <span ng-show="edit==1" >
+                                        <input type="text" ng-model="user.profile.tel" class="form-control">                        
+                                    </span>                                     
+                                </li>
+
+                                <li class="text-right">
+                                    <button type="button" class="btn btn-primary" ng-show="edit==0" ng-click="edit=1">编辑</button>
+                                    <button type="button" class="btn btn-primary" ng-show="edit==1" ng-click="edit=0">取消</button>
+                                    <button type="submit" class="btn btn-primary" ng-show="edit==1" ng-click="edit=0">确定</button>
+                                </li>
+                            </ul>                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+        </div>        
     </div>
 
     <div class="panel panel-default">

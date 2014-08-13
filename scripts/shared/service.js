@@ -121,11 +121,12 @@ angular.module('app.services', [])
     })
     .factory('UpdateUser', ['$http','$rootScope',function ($http,$rootScope) {
         var service = {
-            Update: function(user){
-                var url ='http://121.40.126.220/api/v1/user/'+user.id+'/';
-                return $http.put(url,user).success(function (data) {
+            Update: function(profile){
+                var url ='http://121.40.126.220/api/v1/user/'+$rootScope.user.id+'/';
+                return $http.put(url,profile).success(function (data) {
             //IMPORTANT: You need to activate always_return_data in your ressource (see example)
                     $rootScope.user=data;
+
                     console.log("success");
                     console.log(data);
                 }).error(function (data) {
