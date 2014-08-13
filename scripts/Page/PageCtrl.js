@@ -14,11 +14,11 @@
     }
     
   ]);
-  angular.module('app.page.ctrls', []).controller('profileCtrl',[ '$scope','UpdateUser',function($scope,UpdateUser){
+  angular.module('app.page.ctrls', []).controller('profileCtrl',[ '$scope','UpdateUser','$rootScope',function($scope,UpdateUser,$rootScope){
     $scope.message="123";
     $scope.edit=0;
-    $scope.Update=function(user){
-      UpdateUser.Update(user,$scope);
+    $scope.Update=function(profile){
+      UpdateUser.Update(profile,$scope);
 
     }
   }]);
