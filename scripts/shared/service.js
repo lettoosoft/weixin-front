@@ -24,9 +24,9 @@ angular.module('app.services', [])
     })
     .factory('LoginService', function ( $rootScope, $http, authService, $cookies, $location, redirectToUrlAfterLogin) {
         var service = {
-            login: function (user) {
+            login: function (signin) {
                 var url = $rootScope.apiHost + '/api/v1/user/login/';
-                $http.post(url, user, { ignoreAuthModule: true })
+                $http.post(url, signin, { ignoreAuthModule: true })
                     .success(function (data, status, headers, config) {
                         $rootScope.user = data;
                         var auth = 'ApiKey ' + data.username + ':' + data.apikey;
@@ -43,6 +43,7 @@ angular.module('app.services', [])
                         // authorization token placed in the header
                         authService.loginConfirmed(data, function (config) {  // Step 2 & 3
                             config.headers.Authorization = auth;
+                            $rootScope.message = "";
                             return config;
                         });
                     })
@@ -91,9 +92,9 @@ angular.module('app.services', [])
     })
     .factory('singUpService', function ($http, $rootScope, $location, authService, $cookies, redirectToUrlAfterLogin) {
         var service = {
-            signUp: function (user) {
+            signUp: function (signup) {
                 var url = $rootScope.apiHost + '/api/v1/createuser/';
-                return $http.post(url, user)
+                return $http.post(url, signup)
                     .success(function (data, status, headers, config) {
                         $rootScope.user = data;
                         var auth = 'ApiKey ' + data.username + ':' + data.apikey;
@@ -114,6 +115,7 @@ angular.module('app.services', [])
                         });
                     })
                     .error(function (data) {
+                        console.log(data);
                     });
             }
         };

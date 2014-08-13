@@ -22,7 +22,7 @@
 
                 <span class="line-thru">OR</span> -->
 
-                <form name="login_form" class="form-horizontal form-validation" novalidate ng-submit="login(user)">
+                <form name="login_form" class="form-horizontal form-validation" novalidate ng-submit="login(signin)">
                     <fieldset>
                         <div class="form-group">
                             <div class="input-group input-group-lg">
@@ -33,7 +33,7 @@
                                        class="form-control"
                                        placeholder="邮箱"
                                        required
-                                       ng-model="user.username_or_email"
+                                       ng-model="signin.username_or_email"
                                        >
                             </div>
                         </div>
@@ -46,7 +46,7 @@
                                        class="form-control"
                                        placeholder="密码"
                                        required
-                                       ng-model="user.password"
+                                       ng-model="signin.password"
                                        >
                             </div>
                         </div>

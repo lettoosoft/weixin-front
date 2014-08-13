@@ -24,21 +24,21 @@
 
         .controller('LoginCtrl', [
             '$scope', 'LoginService', function ($scope, LoginService) {
-                $scope.login = function (user) {
-                    LoginService.login(user);
+                $scope.login = function (signin) {
+                    LoginService.login(signin);
                 }
             }
         ])
 
         .controller('singUpctrl', [
             '$scope', 'singUpService', function ($scope,singUpService){
-                $scope.signup = function (user) {
-                    singUpService.signUp(user);
+                $scope.signup = function (signup) {
+                    singUpService.signUp(signup);
                 }
-                $scope.passwordvalid = function(user) {
-                    if(user){
-                        if(user.password && user.confirmpassword){
-                            return !(user.password == user.confirmpassword);
+                $scope.passwordvalid = function(signup) {
+                    if(signup){
+                        if(signup.password && signup.confirmpassword){
+                            return !(signup.password == signup.confirmpassword);
                         }else{
                             return true;
                         }
@@ -48,17 +48,19 @@
                 }
                 $scope.confirm = function(user){
                     if (user.password != user.confirmpassword) {
-                        $scope.message = "两次输入的密码不一致，请重新输入";
+                        $scope.message2 = true;
                     }else{
-                        $scope.message = "";
+                        $scope.message2 = false;
                     }
                 }
         }])
         .controller('resetCtrl',[
             '$scope','resetService',function ($scope,resetService){
                 $scope.resets = function (user){
+                    $scope.tips = "邮件已经发送，请按邮件中提示内容找回密码！";
                     resetService.ReSet(user);
-                }
+                    $scope.band = true;
+                }                
         }])
         .controller('ChangePassword',[
             '$scope','resetService','LoginService',function ($scope,resetService,LoginService){
