@@ -1,4 +1,17 @@
+<style>
+    .switch i:before{
+        height:20px;
+        width: 20px;
+        border-radius: 20px;
+    }
+    .list-info li div{
+        padding-left:0px;
+    }
 
+    .url-disable{
+        background: #eee;
+    }    
+</style>
 <div class="page page-profile" data-ng-controller="profileCtrl">
 
     <div class="row">
@@ -28,50 +41,6 @@
                 </div>
             </div>
 
-<!--             <div class="row">
-                <div class="col-sm-6">
-                    <section class="panel panel-box">
-                        <div class="panel-top bg-facebook">
-                            <div class="divider divider"></div>
-                            <i class="fa fa-facebook size-h1"></i>
-                            <div class="divider divider"></div>
-                        </div>
-                        <div class="list-justified-container">
-                            <ul class="list-justified text-center">
-                                <li>
-                                    <p class="size-h3">575</p>
-                                    <p class="text-muted">Followers</p>
-                                </li>
-                                <li>
-                                    <p class="size-h3">23</p>
-                                    <p class="text-muted">Following</p>
-                                </li>
-                            </ul>
-                        </div>
-                    </section>
-                </div>
-                <div class="col-sm-6">
-                    <section class="panel panel-box">
-                        <div class="panel-top bg-twitter">
-                            <div class="divider divider"></div>
-                            <i class="fa fa-twitter size-h1"></i>
-                            <div class="divider divider"></div>
-                        </div>
-                        <div class="list-justified-container">
-                            <ul class="list-justified text-center">
-                                <li>
-                                    <p class="size-h3">575</p>
-                                    <p class="text-muted">Followers</p>
-                                </li>
-                                <li>
-                                    <p class="size-h3">23</p>
-                                    <p class="text-muted">Following</p>
-                                </li>
-                            </ul>
-                        </div>
-                    </section>                        
-                </div>
-            </div> -->
 
 
           
@@ -133,12 +102,32 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-md-12">
-
+        <div class="col-md-3">
+            <section class="panel panel-default mail-categories">
+                <div class="panel-heading"><strong><span class="glyphicon glyphicon-th"></span> 微信列表</strong></div>   
+                <ul class="list-group">
+       
+                    <li class="list-group-item" ng-class="{active:tab==1}" ng-click="tab=1"><a href="javascript:;">
+                        <i class="fa fa-comment-o"></i>乐土软件（lettosoft）
+                    </a></li>
+                    <li class="list-group-item" ng-class="{active:tab==2}" ng-click="tab=2"><a href="javascript:;">
+                        <i class="fa fa-comment-o"></i>开发者联盟（hfutlod）
+                    </a></li>
+                    <li class="list-group-item" ng-class="{active:tab==32}" ng-click="tab=3"><a href="javascript:;">
+                        <i class="fa fa-comment-o"></i>吃货口袋（mileechkd）
+                        <span class="badge badge-success pull-right">9</span>
+                    </a></li> 
+                    <li class="list-group-item" ng-class="{active:tab==1}" ng-click=""><a href="javascript:;">
+                        <span class="glyphicon glyphicon-plus"></span> &nbsp;&nbsp;添加
+                    </a></li>                                                                                                  
+                </ul>
+            </section>        
+        </div>
+        <div class="col-md-9" ng-show="tab==1">
 
         <form name="signUp_form" class="form-horizontal form-inline" role="form"  ng-submit="signUp_form.$valid && Update(user.profile)" novalidate>
             <div class="panel panel-default">
-                <div class="panel-heading"><strong><span class="glyphicon glyphicon-th"></span> 微信列表</strong></div>
+                <div class="panel-heading"><strong><span class="glyphicon glyphicon-th"></span> APP列表</strong></div>
                 <div class="panel-body ">
                     <div class="media ">
                         <div class="media-body ">
@@ -180,11 +169,117 @@
             </div>
         </form>
         </div>        
-    </div>
 
+    <div class="col-md-9" ng-show="tab==2">
+    
+        <form name="signUp_form" class="form-horizontal form-inline" role="form"  ng-submit="signUp_form.$valid && Update(user.profile)" novalidate>
+            <div class="panel panel-default">
+                <div class="panel-heading"><strong><span class="glyphicon glyphicon-th"></span> 基本信息</strong></div>
+                <div class="panel-body ">
+                    <div class="media ">
+                        <div class="media-body ">
+                            <ul class="list-unstyled list-info ">
+                                <li >                                
+                                    <span  class="icon glyphicon glyphicon-user" ></span>
+                                    <label >微信号</label>                                                                                          
+                                    <span ng-show="edit==0" >开发者联盟（hfutlod）</span>
+                                    <span ng-show="edit==1"  >
+                                        <input type="text" ng-model="user.username"  class="form-control" required>                        
+                                    </span>                                                                                
+                                </li>
+                                <li style="height:48px;" ng-class="{'url-disable':url%2==1}" >                                    
+                                    <div class="col-md-5" >
+                                    <span class="icon glyphicon glyphicon-link"></span>
+                                    <label>URL</label>
+                                    <span  ng-show="edit==0"  style=" vertical-align: center;"> www.weixin.com/index/
+
+                                    </span>
+                                    <span ng-show="edit==1" >
+                                        <input type="email" ng-model="user.email" class="form-control" required>                        
+                                   </span>                                     
+                                    </div>
+                                    <div class="col-md-4" ng-show="edit==0">
+                                        <label class="switch switch-success"><input type="checkbox" ng-click="url=url+1" checked><i></i>
+                                    </div>
+                                    </span>
+                                </li>
+                                <li style="height:48px;"  >                                    
+                                    <div class="col-md-5" >
+                                    <span class="icon glyphicon glyphicon-pushpin"></span>
+                                    <label>TOKEN</label>
+                                    <span  ng-show="edit==0"  style=" vertical-align: center;"> lettoo
+
+                                    </span>
+                                    <span ng-show="edit==1" >
+                                        <input type="email" ng-model="user.email" class="form-control" required>                        
+                                   </span>                                     
+                                    </div>
+                                    <div class="col-md-4" ng-show="edit==0">
+                                       <span class="icon glyphicon glyphicon-question-sign"></span><a href="#nogo">什么是Token?</a>
+                                    </div>
+                                    </span>
+                                </li>                                
+
+
+                                <li class="text-right">
+                                    <button type="button" class="btn btn-primary" ng-show="edit==0" ng-click="edit=1">编辑</button>
+                                    <button type="button" class="btn btn-primary" ng-show="edit==1" ng-click="edit=0">取消</button>
+                                    <button type="submit" class="btn btn-primary" ng-show="edit==1" ng-click="edit=0">确定</button>
+                                </li>
+                            </ul>                            
+                        </div>
+                    </div>
+                </div>
+        <div class="panel-heading"><strong><span class="glyphicon glyphicon-th"></span> APP列表</strong></div>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>序号</th>
+                    <th>APP</th>
+                    <th>状态</th>
+                    <th>到期时间</th>
+                    <th>开关</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td><span class="color-success"></span> 失物招领</td>
+                    <td><span class="label label-info">正常</span></td>
+                    <td>2015年 10月1日</td>
+                    <td><label class="switch switch-success"><input type="checkbox" checked><i></i></label></td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td><span class="color-success"></span> 二手市场</td>
+                    <td><span class="label label-info">正常</span></td>
+                    <td>2015年 10月1日</td>
+                    <td><label class="switch switch-success"><input type="checkbox" checked><i></i></label></td>
+                </tr>
+                <tr >
+                    <td>3</td>
+                    <td><span class="color-success"></span> 外卖</td>
+                    <td><span class="label label-danger">过期</span></td>
+                    <td>2014年 8月1日</td>
+                    <td><label class="switch switch-success"><input type="checkbox" checked><i></i></label></td>
+                </tr>                                
+
+
+            </tbody>
+        </table>
+
+            </div>
+
+
+        </form>
+
+
+        </div>        
+    </div>
+    </div>
     <div class="panel panel-default">
         <div class="panel-heading">
-            <h3 class="panel-title">Line Chart</h3>
+            <h3 class="panel-title">用户分析</h3>
         </div>
         <div class="panel-body" data-ng-controller="flotChartCtrl">
             <div data-flot-chart

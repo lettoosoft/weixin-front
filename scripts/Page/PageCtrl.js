@@ -17,6 +17,7 @@
   angular.module('app.page.ctrls', []).controller('profileCtrl',[ '$scope','UpdateUser','$rootScope',function($scope,UpdateUser,$rootScope){
     $scope.message="123";
     $scope.edit=0;
+    $scope.tab=0;
     $scope.Update=function(profile){
       UpdateUser.Update(profile,$scope);
 
