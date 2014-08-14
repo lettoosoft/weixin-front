@@ -47,7 +47,6 @@
         </div>
         <div class="col-md-6">
 
-
         <form name="signUp_form" class="form-horizontal form-inline" role="form"  ng-submit="signUp_form.$valid && Update(user.profile)" novalidate>
             <div class="panel panel-default">
                 <div class="panel-heading"><strong><span class="glyphicon glyphicon-th"></span> 个人信息</strong></div>
@@ -105,22 +104,17 @@
         <div class="col-md-3">
             <section class="panel panel-default mail-categories">
                 <div class="panel-heading"><strong><span class="glyphicon glyphicon-th"></span> 微信列表</strong></div>   
-                <ul class="list-group">
-       
-                    <li class="list-group-item" ng-class="{active:tab==1}" ng-click="tab=1"><a href="javascript:;">
-                        <i class="fa fa-comment-o"></i>乐土软件（lettosoft）
-                    </a></li>
-                    <li class="list-group-item" ng-class="{active:tab==2}" ng-click="tab=2"><a href="javascript:;">
-                        <i class="fa fa-comment-o"></i>开发者联盟（hfutlod）
-                    </a></li>
-                    <li class="list-group-item" ng-class="{active:tab==32}" ng-click="tab=3"><a href="javascript:;">
-                        <i class="fa fa-comment-o"></i>吃货口袋（mileechkd）
-                        <span class="badge badge-success pull-right">9</span>
-                    </a></li> 
+                <ul class="list-group" ng-repeat="w in weixin">      
+                    <li class="list-group-item" ng-class="{active:tab=={{w.id}}}" ng-click="cTab(w.id)"><a href="javascript:;">
+                        <i class="fa fa-comment-o"></i>{{w.name}}（{{w.wid}}）
+                    </a></li>                                                                                              
+                </ul>
+                <ul class="list-group" >
                     <li class="list-group-item" ng-class="{active:tab==1}" ng-click=""><a href="javascript:;">
                         <span class="glyphicon glyphicon-plus"></span> &nbsp;&nbsp;添加
-                    </a></li>                                                                                                  
-                </ul>
+                    </a></li>    
+                </ul> 
+
             </section>        
         </div>
         <div class="col-md-9" ng-show="tab==1">
