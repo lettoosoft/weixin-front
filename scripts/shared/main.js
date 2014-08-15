@@ -29,11 +29,47 @@
                 }
             }
         ])
+        .controller('ChangePassword',[
+            '$scope','RegEpxService','resetService','LoginService',function ($scope,RegEpxService,resetService,LoginService){
+                $scope.changePassword = function (check){
+                    $scope.disabled = true;
+                    resetService.change(check);
+                    LoginService.logout();
+                }
+                $scope.explain = function(){
+                    RegEpxService.explain($scope);
+                }
+                $scope.explainDisappear = function(){
+                    RegEpxService.explainDisappear($scope);
+                }
+                $scope.confirmPassword =function(check){
 
+                    if(check){
+                        if(check.password && check.password2){
+                            if (check.password == check.password2) {
+                                return false;
+                            }else{
+                                $scope.danger2 = true;
+                                return true;
+                            }
+                        }else{
+                            return true;
+                        }
+                    }else{
+                        return true;
+                    }
+                }
+        }])
         .controller('singUpctrl', [
-            '$scope', 'singUpService', function ($scope,singUpService){
+            '$scope','signUpService','RegEpxService',function ($scope,signUpService,RegEpxService){
                 $scope.signup = function (signup) {
-                    singUpService.signUp(signup);
+                    signUpService.signUp(signup);
+                }
+                $scope.explain = function(){
+                    RegEpxService.explain($scope);
+                }
+                $scope.explainDisappear = function(){
+                    RegEpxService.explainDisappear($scope);
                 }
                 $scope.passwordvalid = function(signup) {
                     if(signup){
@@ -46,36 +82,23 @@
                         return true;
                     }
                 }
-                $scope.confirm = function(user){
-                    if (user.password != user.confirmpassword) {
-                        $scope.message2 = true;
+                $scope.confirm = function(signup){
+                    if (signup.password != signup.confirmpassword) {
+                        $scope.danger2 = true;
                     }else{
-                        $scope.message2 = false;
+                        $scope.danger2 = false;
                     }
                 }
         }])
         .controller('resetCtrl',[
             '$scope','resetService',function ($scope,resetService){
                 $scope.resets = function (user){
-                    $scope.tips = "邮件已经发送，请按邮件中提示内容找回密码！";
-                    resetService.ReSet(user);
+                    $scope.disabled = true;
+                    resetService.ReSet(user,$scope);
                     $scope.band = true;
                 }                
         }])
-        .controller('ChangePassword',[
-            '$scope','resetService','LoginService',function ($scope,resetService,LoginService){
-                $scope.changePassword = function (password){
-                    resetService.change(password);
-                    LoginService.logout();
-                }
-                $scope.confirmPassword =function(password){
-                    if (password.password1 != password.password2) {
-                        $scope.message2 = "两次输入的密码不一致，请重新输入";
-                    }else{
-                        $scope.message2 = "";
-                    }
-                }
-        }])
+
         .controller('NavCtrl', [
             '$scope', 'taskStorage', 'filterFilter', function ($scope, taskStorage, filterFilter) {
                 var tasks;

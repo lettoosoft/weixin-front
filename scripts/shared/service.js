@@ -3,18 +3,20 @@
 angular.module('app.services', [])
     .factory('resetService', function ($rootScope,$http,authService){
         var service = {
-            ReSet:  function(user){
+            ReSet:  function(check,$scope){
                         var url = $rootScope.apiHost + '/api/v1/user/password/reset/';
-                        $http.post(url,user).success(function (data){
-                            console.log(data);
+                        $http.post(url,check).success(function (data){
+                            $scope.send = true;
+                            $scope.sendError = false;
                         }).error(function (data){
+                            $scope.sendError = true;
                             console.log(data);
                         })
                     },
-            change:function(password){
+            change:function(check){
                         var url = $rootScope.apiHost + '/api/v1/user/password/change/';
-                        $http.post(url,password).success(function (data){
-                            
+                        $http.post(url,check).success(function (data){
+                            //修改密码成功之后
                         }).error(function (data){
                             $rootScope.message2 = "原密码输入错误！请重新输入！";                         
                         })
@@ -43,9 +45,10 @@ angular.module('app.services', [])
                         // authorization token placed in the header
                         authService.loginConfirmed(data, function (config) {  // Step 2 & 3
                             config.headers.Authorization = auth;
-                            $rootScope.message = "";
+                            
                             return config;
                         });
+                        $rootScope.message = "";
                     })
                     .error(function (data, status, headers, config) {
                         $rootScope.$broadcast('event:auth-login-failed', status);
@@ -90,7 +93,7 @@ angular.module('app.services', [])
         return service;
 
     })
-    .factory('singUpService', function ($http, $rootScope, $location, authService, $cookies, redirectToUrlAfterLogin) {
+    .factory('signUpService', function ($http, $rootScope, $location, authService, $cookies, redirectToUrlAfterLogin) {
         var service = {
             signUp: function (signup) {
                 var url = $rootScope.apiHost + '/api/v1/createuser/';
@@ -121,6 +124,27 @@ angular.module('app.services', [])
         };
         return service;
     })
+    .factory('RegEpxService', [ function () {
+        var service = {
+            explain: function($scope){
+                $scope.info = true;
+            },
+            explainDisappear:function($scope){
+                var re = /[a-zA-Z0-9_]+/g;
+                    if (re.test($scope.check.password)) {
+                        $scope.danger1 = false;
+                        $scope.disabled = false;
+
+                    }else{
+                        $scope.danger1 = true;
+                        $scope.disabled = true;
+                    }
+                    $scope.info = false;
+
+            }
+        }
+        return service;
+    }])
     .factory('UpdateUser', ['$http','$rootScope',function ($http,$rootScope) {
         var service = {
             Update: function(profile){

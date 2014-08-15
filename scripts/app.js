@@ -6,6 +6,8 @@
                 redirectTo: '/dashboard'
             }).when('/dashboard', {
                 templateUrl: 'views/dashboard.html'
+            }).when('/needVerify',{
+                templateUrl:'views/dashboard.html'
             })
                 // .when('/ui/typography', {
                 //   templateUrl: 'views/ui/typography.html'
@@ -117,7 +119,11 @@
 
                 $rootScope.$on('event:auth-loginConfirmed', function () {
                     console.log("loginConfirmed");
-                    $location.path('/dashboard');
+                    if ($rootScope.user.email_verified) {
+                        $location.path('/dashboard');
+                    }else{
+                        $location.path('/needVerify');
+                    }
                     //AuthenticationService.redirectToAttemptedUrl();
                     //$state.go('app.dashboard', {}, {reload: true, inherit: false});
                 });
