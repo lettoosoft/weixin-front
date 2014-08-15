@@ -162,4 +162,20 @@ angular.module('app.services', [])
             }
         };
         return service;
+    }])
+    .factory('weixin', ['$http','$rootScope',function ($http,$rootScope) {
+        var service = {
+            select:function(){
+                var data=[
+                    {'id':1,'name':'乐土软件','wid':'common'},
+                    {'id':2,'name':'开发者联盟','wid':'hfutlod'},
+                    {'id':3,'name':'吃货口袋','wid':'mileechkd'}
+                ];
+                return data;
+            },
+            add:function(weixin){
+
+            }
+        };
+        return service;
     }]);

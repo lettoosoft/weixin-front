@@ -14,13 +14,16 @@
     }
     
   ]);
-  angular.module('app.page.ctrls', []).controller('profileCtrl',[ '$scope','UpdateUser','$rootScope',function($scope,UpdateUser,$rootScope){
+  angular.module('app.page.ctrls', []).controller('profileCtrl',[ '$scope','UpdateUser','weixin','$rootScope',function($scope,UpdateUser,weixin,$rootScope){
     $scope.message="123";
     $scope.edit=0;
     $scope.tab=0;
+    $scope.weixin=weixin.select();
     $scope.Update=function(profile){
       UpdateUser.Update(profile,$scope);
-
+    }
+    $scope.cTab=function(n){
+      $scope.tab=n;
     }
   }]);
 
