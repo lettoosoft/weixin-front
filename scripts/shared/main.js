@@ -47,6 +47,8 @@
                     if(check){
                         if(check.password && check.password2){
                             if (check.password == check.password2) {
+                                $scope.danger2 = false;
+
                                 return false;
                             }else{
                                 $scope.danger2 = true;
