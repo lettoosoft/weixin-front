@@ -16,7 +16,7 @@
                 };
 
                 return $scope.main = {
-                    brand: '微信平台',
+                    brand: 'Lettoo微信平台',
                     name: 'Name'
                 };
             }
@@ -30,10 +30,14 @@
             }
         ])
         .controller('ChangePassword',[
-            '$scope','RegEpxService','resetService','LoginService',function ($scope,RegEpxService,resetService,LoginService){
+            '$scope','$rootScope','RegEpxService','resetService','LoginService',function ($scope,$rootScope,RegEpxService,resetService,LoginService){
                 $scope.changePassword = function (check){
                     $scope.disabled = true;
-                    resetService.change(check);
+                    resetService.change(check,$scope);
+
+                }
+
+                $scope.logout =function(){
                     LoginService.logout();
                 }
                 $scope.explain = function(){
@@ -45,8 +49,8 @@
                 $scope.confirmPassword =function(check){
 
                     if(check){
-                        if(check.password && check.password2){
-                            if (check.password == check.password2) {
+                        if(check.password1 && check.password2){
+                            if (check.password1 == check.password2) {
                                 $scope.danger2 = false;
 
                                 return false;

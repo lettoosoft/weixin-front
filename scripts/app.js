@@ -104,7 +104,6 @@
                 }
                 $rootScope.apiHost = 'http://121.40.126.220';
                 $rootScope.user = null;
-
                 LoginService.get_currentuser();
 
                 $rootScope.$on('event:auth-loginRequired', function (e, rejection) {

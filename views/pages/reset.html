@@ -9,7 +9,7 @@
     <div class="signin-header">
         <div class="container text-center">
             <section class="logo">
-                <a href="#/">修改密码</a>
+                修改密码
             </section>
         </div>
     </div>
@@ -42,6 +42,13 @@
                                        >
                             </div>
                         </div>
+                        <div class="alert alert-danger alert-dismissible" role="alert" ng-show="error">
+                            <button type="button" class="close" data-dismiss="alert">
+                                <span aria-hidden="true">&times;</span>
+                                <span class="sr-only">Close</span>
+                            </button>
+                            <strong><span class="glyphicon glyphicon-warning-sign">&nbsp;</span></strong>原密码输入错误！请重新输入！
+                        </div>
                         <div class="form-group">
                             <div class="input-group input-group-lg">
                                 <span class="input-group-addon">
@@ -49,7 +56,7 @@
                                 </span>
                                 <input  type="password"
                                         class="form-control"
-                                        ng-model="check.password"
+                                        ng-model="check.password1"
                                         required
                                         ng-focus="explain()"
                                         ng-change="explainDisappear()"

@@ -9,19 +9,27 @@ angular.module('app.services', [])
                             $scope.send = true;
                             $scope.sendError = false;
                         }).error(function (data){
+                            $scope.disabled = false;
                             $scope.sendError = true;
                             console.log(data);
                         })
                     },
-            change:function(check){
+            change: function(check,$scope){
                         var url = $rootScope.apiHost + '/api/v1/user/password/change/';
-                        $http.post(url,check).success(function (data){
+                        $http.post(url,check)
+                        .success(function (data){
+                            $scope.disabled = true;
                             //修改密码成功之后
-                        }).error(function (data){
-                            $rootScope.message2 = "原密码输入错误！请重新输入！";                         
+                            //调用controller里面的logout方法
+                            $scope.logout();
+                        })
+                        .error(function (data){
+                            $scope.disabled = false;
+                            $scope.error = "原密码输入错误！请重新输入！";               
                         })
             }
         }
+        console.log(service);
         return service;
     })
     .factory('LoginService', function ( $rootScope, $http, authService, $cookies, $location, redirectToUrlAfterLogin) {
