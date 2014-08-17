@@ -150,7 +150,7 @@ angular.module('app.services', [])
                     $scope.info = false;
 
             }
-        }
+        };
         return service;
     }])
     .factory('UpdateUser', ['$http','$rootScope',function ($http,$rootScope) {
@@ -173,13 +173,17 @@ angular.module('app.services', [])
     }])
     .factory('weixin', ['$http','$rootScope',function ($http,$rootScope) {
         var service = {
-            select:function(){
-                var data=[
-                    {'id':1,'name':'乐土软件','wid':'common'},
-                    {'id':2,'name':'开发者联盟','wid':'hfutlod'},
-                    {'id':3,'name':'吃货口袋','wid':'mileechkd'}
-                ];
-                return data;
+            select:function(scope){
+                /*var data=[
+                    {'id':1,'title':'乐土软件','weixin_id':'common'},
+                    {'id':2,'title':'开发者联盟','weixin_id':'hfutlod'},
+                    {'id':3,'title':'吃货口袋','weixin_id':'mileechkd'}
+                ];*/
+                var url = $rootScope.apiHost +  '/api/v1/publicaccount/';
+                $http.get(url).success(function(data){
+                    scope.weixin = data.objects;
+                });
+                //return data;
             },
             add:function(weixin){
 

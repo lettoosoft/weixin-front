@@ -11,7 +11,7 @@
                     return _.contains(['/404', '/pages/500', '/pages/login', '/pages/signin', '/pages/signin1', '/pages/signin2', '/pages/signup', '/pages/signup1', '/pages/signup2', '/pages/forgot', '/pages/lock-screen'], path);
                 };
 
-                $rootScope.logout = function(){
+                $rootScope.logout = function () {
                     LoginService.logout();
                 };
 
@@ -29,81 +29,81 @@
                 }
             }
         ])
-        .controller('ChangePassword',[
-            '$scope','$rootScope','RegEpxService','resetService','LoginService',function ($scope,$rootScope,RegEpxService,resetService,LoginService){
-                $scope.changePassword = function (check){
+        .controller('ChangePassword', [
+            '$scope', '$rootScope', 'RegEpxService', 'resetService', 'LoginService', function ($scope, $rootScope, RegEpxService, resetService, LoginService) {
+                $scope.changePassword = function (check) {
                     $scope.disabled = true;
-                    resetService.change(check,$scope);
+                    resetService.change(check, $scope);
 
-                }
+                };
 
-                $scope.logout =function(){
+                $scope.logout = function () {
                     LoginService.logout();
-                }
-                $scope.explain = function(){
+                };
+                $scope.explain = function () {
                     RegEpxService.explain($scope);
-                }
-                $scope.explainDisappear = function(){
+                };
+                $scope.explainDisappear = function () {
                     RegEpxService.explainDisappear($scope);
-                }
-                $scope.confirmPassword =function(check){
+                };
+                $scope.confirmPassword = function (check) {
 
-                    if(check){
-                        if(check.password1 && check.password2){
+                    if (check) {
+                        if (check.password1 && check.password2) {
                             if (check.password1 == check.password2) {
                                 $scope.danger2 = false;
 
                                 return false;
-                            }else{
+                            } else {
                                 $scope.danger2 = true;
                                 return true;
                             }
-                        }else{
+                        } else {
                             return true;
                         }
-                    }else{
+                    } else {
                         return true;
                     }
                 }
-        }])
+            }])
         .controller('singUpctrl', [
-            '$scope','signUpService','RegEpxService',function ($scope,signUpService,RegEpxService){
+            '$scope', 'signUpService', 'RegEpxService', function ($scope, signUpService, RegEpxService) {
                 $scope.signup = function (signup) {
                     signUpService.signUp(signup);
-                }
-                $scope.explain = function(){
+                };
+                $scope.explain = function () {
                     RegEpxService.explain($scope);
-                }
-                $scope.explainDisappear = function(){
+                };
+                $scope.explainDisappear = function () {
                     RegEpxService.explainDisappear($scope);
-                }
-                $scope.passwordvalid = function(signup) {
-                    if(signup){
-                        if(signup.password && signup.confirmpassword){
+                };
+                $scope.passwordvalid = function (signup) {
+                    if (signup) {
+                        if (signup.password && signup.confirmpassword) {
                             return !(signup.password == signup.confirmpassword);
-                        }else{
+                        } else {
                             return true;
                         }
-                    }else{
+                    } else {
                         return true;
                     }
-                }
-                $scope.confirm = function(signup){
+                };
+                $scope.confirm = function (signup) {
                     if (signup.password != signup.confirmpassword) {
                         $scope.danger2 = true;
-                    }else{
+                    } else {
                         $scope.danger2 = false;
                     }
                 }
-        }])
-        .controller('resetCtrl',[
-            '$scope','resetService',function ($scope,resetService){
-                $scope.resets = function (user){
+            }])
+        .controller('resetCtrl', [
+            '$scope', 'resetService', function ($scope, resetService) {
+                $scope.resets = function (user) {
                     $scope.disabled = true;
-                    resetService.ReSet(user,$scope);
+                    resetService.ReSet(user, $scope);
                     $scope.band = true;
-                }                
-        }])
+                }
+            }])
 
         .controller('NavCtrl', [
             '$scope', 'taskStorage', 'filterFilter', function ($scope, taskStorage, filterFilter) {

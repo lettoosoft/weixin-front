@@ -103,6 +103,7 @@
                     $location.path('/pages/signin');
                 }
                 $rootScope.apiHost = 'http://121.40.126.220';
+                //$rootScope.apiHost = 'http://localhost:8000';
                 $rootScope.user = null;
                 LoginService.get_currentuser();
 
