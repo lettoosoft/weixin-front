@@ -9,7 +9,7 @@
     <div class="signin-header">
         <div class="container text-center">
             <section class="logo">
-                <a href="#/">修改密码</a>
+                修改密码
             </section>
         </div>
     </div>
@@ -28,7 +28,7 @@
 
                 <span class="line-thru">OR</span> -->
 
-                <form name="reset_form" class="form-horizontal novalidate form-validation" novalidate ng-submit="changePassword(password)">
+                <form name="reset_form" class="form-horizontal novalidate form-validation" novalidate ng-submit="changePassword(check)">
                     <fieldset>
                         <div class="form-group">
                             <div class="input-group input-group-lg">
@@ -37,10 +37,17 @@
                                 </span>
                                 <input type="password"
                                        class="form-control"
-                                       ng-model="password.oldpassword"
+                                       ng-model="check.oldpassword"
                                        required
                                        >
                             </div>
+                        </div>
+                        <div class="alert alert-danger alert-dismissible" role="alert" ng-show="error">
+                            <button type="button" class="close" data-dismiss="alert">
+                                <span aria-hidden="true">&times;</span>
+                                <span class="sr-only">Close</span>
+                            </button>
+                            <strong><span class="glyphicon glyphicon-warning-sign">&nbsp;</span></strong>原密码输入错误！请重新输入！
                         </div>
                         <div class="form-group">
                             <div class="input-group input-group-lg">
@@ -49,12 +56,28 @@
                                 </span>
                                 <input  type="password"
                                         class="form-control"
-                                        ng-model="password.password1"
+                                        ng-model="check.password1"
                                         required
+                                        ng-focus="explain()"
+                                        ng-change="explainDisappear()"
                                         ng-minlength=6
                                         ng-maxlength=18                                       
                                        >
                             </div>
+                        </div>
+                        <div class="alert alert-info alert-dismissible" role="alert" ng-show="info">
+                            <button type="button" class="close" data-dismiss="alert">
+                                <span aria-hidden="true">&times;</span>
+                                <span class="sr-only">Close</span>
+                            </button>
+                            <strong><span class="glyphicon glyphicon-warning-sign">&nbsp;</span></strong>密码长度为6-18位，要包含数字、字母或下划线!
+                        </div>
+                        <div class="alert alert-danger alert-dismissible" role="alert" ng-show="danger1">
+                            <button type="button" class="close" data-dismiss="alert">
+                                <span aria-hidden="true">&times;</span>
+                                <span class="sr-only">Close</span>
+                            </button>
+                            <strong><span class="glyphicon glyphicon-warning-sign">&nbsp;</span></strong>密码格式错误，密码长度仅为6-18位，要包含数字、字母或下划线!
                         </div>
                         <div class="form-group">
                             <div class="input-group input-group-lg">
@@ -63,19 +86,25 @@
                                 </span>
                                 <input  type="password"
                                         class="form-control"
-                                        ng-model="password.password2"
+                                        ng-model="check.password2"
                                         required
                                         ng-minlength=6
                                         ng-maxlength=18
-                                        ng-change="confirmPassword(password)"
+                                        ng-change="confirmPassword(check)"
                                        >
                             </div>
                         </div>
-                        <div class="form-group">
-                        <span style="font-size:10px;color:red;"><i>{{message2}}</i></span>
+                        <div class="alert alert-danger alert-dismissible" role="alert" ng-show="danger2">
+                            <button type="button" class="close" data-dismiss="alert">
+                                <span aria-hidden="true">&times;</span>
+                                <span class="sr-only">Close</span>
+                            </button>
+                            <strong><span class="glyphicon glyphicon-warning-sign">&nbsp;</span></strong>两次输入的密码不一致！请重新输入！
                         </div>
                         <div class="form-group">
-                            <button data-ng-disabled="login_form.$invalid" type="submit" class="btn btn-primary btn-lg btn-block">提交</button>
+                        </div>
+                        <div class="form-group">
+                            <button data-ng-disabled="disabled || confirmPassword(check) || reset_form.$invalid" type="submit" class="btn btn-primary btn-lg btn-block">提交</button>
                         </div>
                     </fieldset>
                 </form>

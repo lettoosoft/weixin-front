@@ -104,7 +104,9 @@
                 <div class="panel-heading"><strong><span class="glyphicon glyphicon-th"></span> 微信列表</strong></div>   
                 <ul class="list-group" ng-repeat="w in weixin">      
                     <li class="list-group-item" ng-class="{active:tab=={{w.id}}}" ng-click="cTab(w.id)"><a href="javascript:;">
-                        <i class="fa fa-wechat fa-5x" style="font-size:23px;padding-right:30px" ></i>&nbsp;&nbsp;{{w.name}}（{{w.wid}}）
+
+                        <i class="fa fa-wechat fa-5x" style="font-size:23px;padding-right:30px" ></i>{{w.title}}（{{w.weixin_id}}）
+
                     </a></li>                                                                                              
                 </ul>
                 <ul class="list-group" >

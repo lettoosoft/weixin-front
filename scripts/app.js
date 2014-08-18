@@ -6,6 +6,8 @@
                 redirectTo: '/dashboard'
             }).when('/dashboard', {
                 templateUrl: 'views/dashboard.html'
+            }).when('/needVerify',{
+                templateUrl:'views/dashboard.html'
             })
                 // .when('/ui/typography', {
                 //   templateUrl: 'views/ui/typography.html'
@@ -101,8 +103,8 @@
                     $location.path('/pages/signin');
                 }
                 $rootScope.apiHost = 'http://121.40.126.220';
+                //$rootScope.apiHost = 'http://localhost:8000';
                 $rootScope.user = null;
-
                 LoginService.get_currentuser();
 
                 $rootScope.$on('event:auth-loginRequired', function (e, rejection) {
@@ -117,7 +119,11 @@
 
                 $rootScope.$on('event:auth-loginConfirmed', function () {
                     console.log("loginConfirmed");
-                    $location.path('/dashboard');
+                    if ($rootScope.user.email_verified) {
+                        $location.path('/dashboard');
+                    }else{
+                        $location.path('/needVerify');
+                    }
                     //AuthenticationService.redirectToAttemptedUrl();
                     //$state.go('app.dashboard', {}, {reload: true, inherit: false});
                 });

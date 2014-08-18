@@ -3,7 +3,7 @@
     <div class="signin-header">
         <div class="container text-center">
             <section class="logo">
-                <a href="#/">{{main.brand}}</a>
+                {{main.brand}}
             </section>
         </div>
     </div>
@@ -23,7 +23,7 @@
                 <span class="line-thru">OR</span> -->
 
                 <section>
-                    <form name="signup_form" class="form-horizontal form-validation" novalidate ng-submit="signup(user)" >
+                    <form name="signup_form" class="form-horizontal form-validation" novalidate ng-submit="signup(check)" >
                         <div class="form-group">
                             <div class="input-group input-group-lg">
                                 <span class="input-group-addon">
@@ -32,7 +32,7 @@
                                 <input type="email"
                                        class="form-control"
                                        placeholder="邮箱"
-                                       ng-model="user.email"
+                                       ng-model="check.email"
                                        required
                                        >
                             </div>
@@ -48,12 +48,28 @@
                                 <input type="password"
                                         class="form-control"
                                         placeholder="密码"
-                                        ng-model="user.password"
+                                        ng-model="check.password"
+                                        ng-focus="explain()"
+                                        ng-change="explainDisappear(check)"
                                         ng-minlength=6
                                         ng-maxlength=18
                                         required
                                        >
                             </div>
+                        </div>
+                        <div class="alert alert-info alert-dismissible" role="alert" ng-show="info">
+                            <button type="button" class="close" data-dismiss="alert">
+                                <span aria-hidden="true">&times;</span>
+                                <span class="sr-only">Close</span>
+                            </button>
+                            <strong><span class="glyphicon glyphicon-warning-sign">&nbsp;</span></strong>密码长度为6-18位，要包含数字、字母或下划线!
+                        </div>
+                        <div class="alert alert-danger alert-dismissible" role="alert" ng-show="danger1">
+                            <button type="button" class="close" data-dismiss="alert">
+                                <span aria-hidden="true">&times;</span>
+                                <span class="sr-only">Close</span>
+                            </button>
+                            <strong><span class="glyphicon glyphicon-warning-sign">&nbsp;</span></strong>密码格式错误，密码长度仅为6-18位，要包含数字、字母或下划线!
                         </div>
 
                         <div class="form-group">
@@ -64,15 +80,15 @@
                                 <input  type="password"
                                         class="form-control"
                                         placeholder="确认密码"
-                                        ng-model="user.confirmpassword"
-                                        ng-change="confirm(user)"
+                                        ng-model="check.confirmpassword"
+                                        ng-change="confirm(check)"
                                         ng-minlength=6
                                         ng-maxlength=18
                                         required
                                        >
                             </div>
                         </div>                        
-                        <div class="alert alert-warning alert-dismissible" role="alert" ng-show="message2">
+                        <div class="alert alert-danger alert-dismissible" role="alert" ng-show="danger2">
                             <button type="button" class="close" data-dismiss="alert">
                                 <span aria-hidden="true">&times;</span>
                                 <span class="sr-only">Close</span>
@@ -83,8 +99,9 @@
                         <div class="form-group">
                             <p class="text-muted text-small">通过点击注册，您同意<a href="javascript:;">服务条款</a> 和 <a href="javascript:;">隐私政策</a></p>
                             <div class="divider"></div>
-                            <button type="submit" data-ng-disabled="passwordvalid(user) || signup_form.$invalid" class="btn btn-primary btn-block btn-lg">注册</button>
+                            <button type="submit" data-ng-disabled="disabled || passwordvalid(check) || signup_form.$invalid" class="btn btn-primary btn-block btn-lg">注册</button>
                         </div>
+                        {{messages}}
 
                     </form>
                 </section>
@@ -92,7 +109,6 @@
                 <section>
                     <p class="text-center text-muted">已经有账户？<a href="#/pages/signin" >马上登陆</a></p>
                 </section>
-
             </div>
         </div>
     </div>
