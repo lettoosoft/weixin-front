@@ -29,7 +29,6 @@ angular.module('app.services', [])
                         })
             }
         }
-        console.log(service);
         return service;
     })
     .factory('LoginService', function ( $rootScope, $http, authService, $cookies, $location, redirectToUrlAfterLogin) {

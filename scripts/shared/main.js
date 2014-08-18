@@ -79,8 +79,8 @@
                 };
                 $scope.passwordvalid = function (signup) {
                     if (signup) {
-                        if (signup.password && signup.confirmpassword) {
-                            return !(signup.password == signup.confirmpassword);
+                        if (signup.password && $scope.confirmpassword) {
+                            return !(signup.password == $scope.confirmpassword);
                         } else {
                             return true;
                         }
@@ -89,7 +89,7 @@
                     }
                 };
                 $scope.confirm = function (signup) {
-                    if (signup.password != signup.confirmpassword) {
+                    if (signup.password != $scope.confirmpassword) {
                         $scope.danger2 = true;
                     } else {
                         $scope.danger2 = false;
