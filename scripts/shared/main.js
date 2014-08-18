@@ -69,6 +69,7 @@
         .controller('singUpctrl', [
             '$scope', 'signUpService', 'RegEpxService', function ( $scope, signUpService, RegEpxService) {
                 $scope.signup = function (signup) {
+                    $scope.disabled = true;
                     signUpService.signUp(signup,$scope);
                 };
                 $scope.signUpSuccess = function (){

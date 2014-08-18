@@ -108,7 +108,7 @@ angular.module('app.services', [])
                     .success(function (data, status, headers, config) {
                         //调用controller里面的方法
                         $scope.signUpSuccess();
-                        
+
                         $rootScope.user = data;
                         var auth = 'ApiKey ' + data.username + ':' + data.apikey;
                         $http.defaults.headers.common.Authorization = auth;  // Step 1
@@ -124,7 +124,7 @@ angular.module('app.services', [])
                         // authorization token placed in the header
                     })
                     .error(function (data) {
-                        console.log(data);
+                        $scope.disabled = false;
                     });
             }
         };
