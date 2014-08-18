@@ -113,12 +113,11 @@
                      AuthenticationService.saveAttemptUrl();
                      $location.path('/access/signin');
                      //$state.go('access.signin', {}, {reload: true, inherit: false});*/
-                    console.log('login required');
+
                     $location.path('/pages/signin');
                 });
 
                 $rootScope.$on('event:auth-loginConfirmed', function () {
-                    console.log("loginConfirmed");
                     if ($rootScope.user.email_verified) {
                         $location.path('/dashboard');
                     }else{

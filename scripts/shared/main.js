@@ -67,10 +67,13 @@
                 }
             }])
         .controller('singUpctrl', [
-            '$scope', 'signUpService', 'RegEpxService', function ($scope, signUpService, RegEpxService) {
+            '$scope', 'signUpService', 'RegEpxService', function ( $scope, signUpService, RegEpxService) {
                 $scope.signup = function (signup) {
-                    signUpService.signUp(signup);
+                    signUpService.signUp(signup,$scope);
                 };
+                $scope.signUpSuccess = function (){
+                    $scope.success = true;
+                }
                 $scope.explain = function () {
                     RegEpxService.explain($scope);
                 };
