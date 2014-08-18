@@ -18,7 +18,11 @@
     $scope.message="123";
     $scope.edit=0;
     $scope.tab=0;
+    $scope.way=1;
     $scope.weixin=weixin.select();
+    $scope.add=function(addItem){
+      $scope.weixin=weixin.add($scope.weixin,addItem);
+    }
     $scope.Update=function(profile){
       UpdateUser.Update(profile,$scope);
     }

@@ -57,10 +57,8 @@
                                 <li >                                
                                     <span  class="icon glyphicon glyphicon-user" ></span>
                                     <label >用户名</label>                                                                                          
-                                    <span ng-show="edit==0" > {{user.username}}</span>
-                                    <span ng-show="edit==1"  >
-                                        <input type="text" ng-model="user.username"  class="form-control" required>                        
-                                    </span>                                                                                
+                                    {{user.username}}
+                                                                              
                                 </li>
                                 <li>
                                     <span class="icon glyphicon glyphicon-envelope"></span>
@@ -80,7 +78,7 @@
                                 </li>
 
                                 <li>
-                                    <span class="icon glyphicon glyphicon-flag"></span>
+                                    <span class="icon fa fa-qq"></span>
                                     <label>QQ</label>
                                     <span ng-show="edit==0" > {{user.profile.qq}}</span>
                                     <span ng-show="edit==1" >
@@ -106,11 +104,11 @@
                 <div class="panel-heading"><strong><span class="glyphicon glyphicon-th"></span> 微信列表</strong></div>   
                 <ul class="list-group" ng-repeat="w in weixin">      
                     <li class="list-group-item" ng-class="{active:tab=={{w.id}}}" ng-click="cTab(w.id)"><a href="javascript:;">
-                        <i class="fa fa-comment-o"></i>{{w.name}}（{{w.wid}}）
+                        <i class="fa fa-wechat fa-5x" style="font-size:23px;padding-right:30px" ></i>&nbsp;&nbsp;{{w.name}}（{{w.wid}}）
                     </a></li>                                                                                              
                 </ul>
                 <ul class="list-group" >
-                    <li class="list-group-item" ng-class="{active:tab==1}" ng-click=""><a href="javascript:;">
+                    <li class="list-group-item" ng-class="{active:tab==100}" ng-click="tab=100"><a href="javascript:;">
                         <span class="glyphicon glyphicon-plus"></span> &nbsp;&nbsp;添加
                     </a></li>    
                 </ul> 
@@ -145,7 +143,7 @@
                                 <li>
                                     <span class="icon glyphicon glyphicon-earphone"></span>
                                     <label>TOKEN</label>
-                                    <span ng-show="edit==0" > letto</span>
+                                    <span ng-show="edit==0" > lettoo</span>
                                     <span ng-show="edit==1" >
                                         <input type="text" ng-model="user.profile.tel" class="form-control">                        
                                     </span>                                     
@@ -168,7 +166,7 @@
     
         <form name="signUp_form" class="form-horizontal form-inline" role="form"  ng-submit="signUp_form.$valid && Update(user.profile)" novalidate>
             <div class="panel panel-default">
-                <div class="panel-heading"><strong><span class="glyphicon glyphicon-th"></span> 基本信息</strong></div>
+                <div class="panel-heading"><strong><span class="glyphicon glyphicon-th"></span> 基本信息{{check}}</strong></div>
                 <div class="panel-body ">
                     <div class="media ">
                         <div class="media-body ">
@@ -181,7 +179,7 @@
                                         <input type="text" ng-model="user.username"  class="form-control" required>                        
                                     </span>                                                                                
                                 </li>
-                                <li style="height:48px;" ng-class="{'url-disable':url%2==1}" >                                    
+                                <li style="height:48px;" ng-class="{'url-disable':!check}" >                                    
                                     <div class="col-md-5" >
                                     <span class="icon glyphicon glyphicon-link"></span>
                                     <label>URL</label>
@@ -193,7 +191,7 @@
                                    </span>                                     
                                     </div>
                                     <div class="col-md-4" ng-show="edit==0">
-                                        <label class="switch switch-success"><input type="checkbox" ng-click="url=url+1" checked><i></i>
+                                        <label class="switch switch-success"><input type="checkbox" ng-model="check"  checked><i></i>
                                     </div>
                                     </span>
                                 </li>
@@ -261,6 +259,113 @@
 
             </tbody>
         </table>
+
+            </div>
+
+
+        </form>
+
+
+        </div>        
+    <!-- 添加微信 -->
+    <div class="col-md-9" ng-show="tab==100">
+    
+        <form name="signUp_form" class="form-horizontal form-inline" role="form"  ng-submit="signUp_form.$valid && Update(user.profile)" novalidate>
+            <div class="panel panel-default">
+                <div class="panel-heading"><strong><span class="glyphicon glyphicon-th"></span> 添加微信{{way}}</strong></div>
+                <div class="panel-body " >
+                    <ol class="breadcrumb-alt">
+                        <li ><a href="javascript:;" ng-click="way=1" ng-class="{active:way==1}" style="font-size:16px;">
+                        <span class='glyphicon glyphicon-pushpin'></span>
+                        &nbsp;&nbsp;第一种方式&nbsp;&nbsp;&nbsp;&nbsp;输入登录邮箱密码，系统自动完成绑定</a>
+                        </li>
+                        <li  ng-click="way=2" ><a href="javascript:;" ng-class="{active:way==2}" style="font-size:16px;">
+                        <span class='glyphicon glyphicon-pushpin'></span>
+                        &nbsp;&nbsp;第二种方式&nbsp;&nbsp;&nbsp;&nbsp;手动输入绑定</a>
+                        </li>                        
+
+                    </ol>
+                    <!-- 第一种方式 -->
+                    <div class="media " ng-show="way==1">
+                        <div class="media-body ">
+                            <ul class="list-unstyled list-info ">
+                                <li style="height:55px;"  >                                    
+                                    <div class="col-md-5" >
+                                    <span class="icon glyphicon glyphicon-user"></span>
+                                    <label>登录邮箱</label>
+
+                                        <input type="email"  class="form-control" required>                        
+                                        
+                                    </div>
+                                    <div class="col-md-4" style="top:5px;" ng-show="edit==0">
+                                       <span class="icon glyphicon glyphicon-info-sign"></span>请输入登录微信公众平台的邮箱和密码
+                                    </div>
+                                    </span>
+                                </li> 
+                                <li style="height:55px;" ng-class="{'url-disable':url%2==1}" >                                    
+                                    <div class="col-md-8" >
+                                    <span class="icon glyphicon glyphicon-lock"></span>
+                                    <label>登录密码</label>
+                                        <input type="password"  class="form-control" required>                                                      
+                                    </div>
+
+                                    </span>
+                                </li>  
+                                                             
+
+                                <li class="text-right">
+                                    <button type="button" class="btn btn-primary" ng-show="edit==0" ng-click="edit=1">添加</button>
+
+                                </li>
+                            </ul>                            
+                        </div>
+                    </div>
+                    <!-- 第二种方式 -->
+                    <div class="media " ng-show="way==2">
+                        <div class="media-body ">
+                            <ul class="list-unstyled list-info ">
+                                <li style="height:55px;"  >                                    
+                                    <div class="col-md-5" >
+                                    <span class="icon glyphicon glyphicon-user"></span>
+                                    <label>微信号</label>
+
+                                        <input type="text" ng-model="addItem.wid"  class="form-control" required>                        
+                                        
+                                    </div>
+                                    <div class="col-md-4" style="top:5px;" ng-show="edit==0">
+                                       <span class="icon glyphicon glyphicon-info-sign"></span>请输入微信号和微信名称
+                                    </div>
+                                    </span>
+                                </li> 
+                                <li style="height:55px;" ng-class="{'url-disable':url%2==1}" >                                    
+                                    <div class="col-md-8" >
+                                    <span class="icon glyphicon glyphicon-lock"></span>
+                                    <label>微信名称</label>
+                                        <input type="text" ng-model="addItem.name"  class="form-control" required>                                                      
+                                    </div>
+
+                                    </span>
+                                </li>  
+                                <li style="height:55px;" ng-class="{'url-disable':url%2==1}" >                                    
+                                    <div class="col-md-8" >
+                                    <span class="icon glyphicon glyphicon-lock"></span>
+                                    <label>TOKEN</label>
+                                        <input type="text"  class="form-control" required>                                                      
+                                    </div>
+
+                                    </span>
+                                </li>                                  
+                                                             
+
+                                <li class="text-right">
+                                    <button type="button" class="btn btn-primary" ng-show="edit==0" ng-click="add(addItem)">添加</button>
+
+                                </li>
+                            </ul>                            
+                        </div>
+                    </div>                    
+                </div>
+
 
             </div>
 
