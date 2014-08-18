@@ -184,8 +184,10 @@ angular.module('app.services', [])
                 });
                 //return data;
             },
-            add:function(weixin){
-
+            add:function(json,addItem){
+                var arr  = {'id':3,'name':'吃货口袋','wid':'mileechkd'};
+                json.push(addItem);
+                return json;
             }
         };
         return service;
