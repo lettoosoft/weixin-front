@@ -57,6 +57,7 @@
                                        >
                             </div>
                         </div>
+
                         <div class="alert alert-info alert-dismissible" role="alert" ng-show="info">
                             <button type="button" class="close" data-dismiss="alert">
                                 <span aria-hidden="true">&times;</span>
@@ -80,7 +81,7 @@
                                 <input  type="password"
                                         class="form-control"
                                         placeholder="确认密码"
-                                        ng-model="check.confirmpassword"
+                                        ng-model="confirmpassword"
                                         ng-change="confirm(check)"
                                         ng-minlength=6
                                         ng-maxlength=18
@@ -99,10 +100,15 @@
                         <div class="form-group">
                             <p class="text-muted text-small">通过点击注册，您同意<a href="javascript:;">服务条款</a> 和 <a href="javascript:;">隐私政策</a></p>
                             <div class="divider"></div>
+                            <div class="alert alert-success alert-dismissible" role="alert" ng-show="success">
+                            <button type="button" class="close" data-dismiss="alert">
+                                <span aria-hidden="true">&times;</span>
+                                <span class="sr-only">Close</span>
+                            </button>
+                            <strong><span class="glyphicon glyphicon-warning-sign">&nbsp;</span></strong>您已经注册成功，激活邮件已经发送到您的邮箱，请通过电子邮件中的链接来激活您的账户！
+                        </div>
                             <button type="submit" data-ng-disabled="disabled || passwordvalid(check) || signup_form.$invalid" class="btn btn-primary btn-block btn-lg">注册</button>
                         </div>
-                        {{messages}}
-
                     </form>
                 </section>
 

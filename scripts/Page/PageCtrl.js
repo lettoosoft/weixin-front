@@ -36,9 +36,6 @@
       $scope.tab=n;
     }
   }]);
-
-
-
 }).call(this);
 
 //# sourceMappingURL=PageCtrl.js.map

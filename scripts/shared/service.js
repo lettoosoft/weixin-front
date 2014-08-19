@@ -29,7 +29,6 @@ angular.module('app.services', [])
                         })
             }
         }
-        console.log(service);
         return service;
     })
     .factory('LoginService', function ( $rootScope, $http, authService, $cookies, $location, redirectToUrlAfterLogin) {
@@ -103,10 +102,13 @@ angular.module('app.services', [])
     })
     .factory('signUpService', function ($http, $rootScope, $location, authService, $cookies, redirectToUrlAfterLogin) {
         var service = {
-            signUp: function (signup) {
+            signUp: function (signup,$scope) {
                 var url = $rootScope.apiHost + '/api/v1/createuser/';
                 return $http.post(url, signup)
                     .success(function (data, status, headers, config) {
+                        //调用controller里面的方法
+                        $scope.signUpSuccess();
+
                         $rootScope.user = data;
                         var auth = 'ApiKey ' + data.username + ':' + data.apikey;
                         $http.defaults.headers.common.Authorization = auth;  // Step 1
@@ -120,13 +122,9 @@ angular.module('app.services', [])
                         // will configure the request headers with the authorization token so
                         // previously failed requests(aka with status == 401) will be resent with the
                         // authorization token placed in the header
-                        authService.loginConfirmed(data, function (config) {  // Step 2 & 3
-                            config.headers.Authorization = auth;
-                            return config;
-                        });
                     })
                     .error(function (data) {
-                        console.log(data);
+                        $scope.disabled = false;
                     });
             }
         };

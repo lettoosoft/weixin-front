@@ -67,10 +67,14 @@
                 }
             }])
         .controller('singUpctrl', [
-            '$scope', 'signUpService', 'RegEpxService', function ($scope, signUpService, RegEpxService) {
+            '$scope', 'signUpService', 'RegEpxService', function ( $scope, signUpService, RegEpxService) {
                 $scope.signup = function (signup) {
-                    signUpService.signUp(signup);
+                    $scope.disabled = true;
+                    signUpService.signUp(signup,$scope);
                 };
+                $scope.signUpSuccess = function (){
+                    $scope.success = true;
+                }
                 $scope.explain = function () {
                     RegEpxService.explain($scope);
                 };
@@ -79,8 +83,8 @@
                 };
                 $scope.passwordvalid = function (signup) {
                     if (signup) {
-                        if (signup.password && signup.confirmpassword) {
-                            return !(signup.password == signup.confirmpassword);
+                        if (signup.password && $scope.confirmpassword) {
+                            return !(signup.password == $scope.confirmpassword);
                         } else {
                             return true;
                         }
@@ -89,7 +93,7 @@
                     }
                 };
                 $scope.confirm = function (signup) {
-                    if (signup.password != signup.confirmpassword) {
+                    if (signup.password != $scope.confirmpassword) {
                         $scope.danger2 = true;
                     } else {
                         $scope.danger2 = false;
