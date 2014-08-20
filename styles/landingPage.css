@@ -1,0 +1,45 @@
+/* body{
+	margin:10px;
+} */
+body{
+	left: -220px;
+}
+.lettoologo{
+	float: left;
+	margin-left: 80px;
+	width: 200px;
+	height: 80px;
+	margin-top: 3px;
+
+}
+.navbar{
+	height: 88px;
+}
+.lettoospan{
+	float: right;
+	height: 80px;
+	width: 200px;
+}
+.lettoospan span{
+	font-size: 10px;
+	line-height: 50px;
+}
+.lettooSlide{
+	margin-top: 90px;
+	position: relative;
+}
+.onslide{
+	height: 500px;
+	margin-top: 5px;
+	border: 1px solid black;
+}
+.lettooMenu{
+	float: left;
+	padding-top: 25px;
+	padding-left:70px; 
+}
+.btn-primary{
+	border-radius: 5px !important;
+	margin-left: 20px;
+}
+

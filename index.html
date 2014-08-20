@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
-        <title>Web Application</title>
+        <title>Lettoo微信平台</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
         <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
@@ -25,15 +25,15 @@
             <div data-ng-hide="isSpecificPage()"
                  data-ng-cloak
                  class="no-print">
-                <section data-ng-include=" 'views/header.html' "
-                     id="header" class="top-header"></section>
+                <section data-ng-include=" 'viewser.html' "
+                     id="header" class="top-header"></head/section>
 
                 <aside data-ng-include=" 'views/nav.html' "
                      id="nav-container"></aside>
             </div>
 
             <div class="view-container">
-                <section data-ng-view id="content" class="animate-fade-up"></section>
+                <section data-ng-view id="content" ng-class="{cover:isSpecificPage()}" class="animate-fade-up"></section>
             </div>
         </div>
 

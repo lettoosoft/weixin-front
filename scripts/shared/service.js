@@ -136,7 +136,7 @@ angular.module('app.services', [])
                 $scope.info = true;
             },
             explainDisappear:function($scope){
-                var re = /[a-zA-Z0-9_]+/g;
+                var re = /^[a-zA-Z0-9_]+/g;
                     if (re.test($scope.check.password)) {
                         $scope.danger1 = false;
                         $scope.disabled = false;
