@@ -1,3 +1,4 @@
+
 (function() {
   'use strict';
   angular.module('app.page.ctrls', []).controller('invoiceCtrl', [
@@ -19,8 +20,13 @@
     $scope.edit=0;
     $scope.tab=0;
     $scope.way=1;
-    $scope.weixin=weixin.select();
+    weixin.select($scope);
     $scope.add=function(addItem){
+      if($scope.weixin_num>=3){
+         alert("普通用户最多只能添加三个微信号！");
+         return;
+      }
+         
       $scope.weixin=weixin.add($scope.weixin,addItem);
     }
     $scope.Update=function(profile){

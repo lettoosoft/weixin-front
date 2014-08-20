@@ -7,38 +7,70 @@
     .list-info li div{
         padding-left:0px;
     }
-
     .url-disable{
         background: #eee;
-    }    
+    }   
+    .sel-img{
+      position:absolute; 
+      top:45px;
+      left: 20px;
+      width: 80px;
+      height:40px;     
+      border-bottom-left-radius: 1000px;
+      border-bottom-right-radius: 1000px;
+      overflow: hidden;
+
+    }
+    .test{
+      margin-top:15px; 
+      color:#eee;
+      font-size: 10px;
+      background: #555; 
+      width: 80px;
+      height:40px;
+      padding:5px; 
+      opacity: 0.8;
+      border-bottom-left-radius: 1000px;
+      border-bottom-right-radius: 1000px;
+    }     
 </style>
 <div class="page page-profile" data-ng-controller="profileCtrl">
-
     <div class="row">
         <div class="col-md-6">
 
             <div class="panel panel-profile">
-                <div class="panel-heading text-center bg-info">
-                    <img alt="" src="images/g1.jpg" class="img-circle img80_80">
+                <div class="panel-heading bg-primary clearfix">
+                    <div class="col-md-2" ng-mouseover="sel_img=1" ng-mouseout="sel_img=0">
+                    <a href="" class="pull-left profile " style="">
+                        <img alt=""  src="images/g1.jpg" class="img-circle img80_80"  >
+                        <div ng-show="sel_img" class="sel-img text-center"><div class="test">选择图片</div></div>
+                    </a>
+   
+                    </div>
+                    <div class="col-md-10">
                     <h3>{{user.username}}</h3>
-                    <p>Project Manager</p>                    
+                    <p>{{user.email}}</p>                        
+                    </div>
+
                 </div>
-                <div class="list-justified-container">
-                    <ul class="list-justified text-center">
-                        <li>
-                            <p class="size-h3">679</p>
-                            <p class="text-muted">Tweets</p>
-                        </li>
-                        <li>
-                            <p class="size-h3">575</p>
-                            <p class="text-muted">Followers</p>
-                        </li>
-                        <li>
-                            <p class="size-h3">23</p>
-                            <p class="text-muted">Following</p>
-                        </li>
-                    </ul>
-                </div>
+                <ul class="list-group">
+                    <li class="list-group-item">
+                        <span class="badge">14</span>
+                        <i class="fa fa-envelope-o"></i>
+                        新通知
+                    </li>
+                    <li class="list-group-item">
+                        <span class="badge badge-warning">2</span>
+                        <i class="fa fa-comments-o"></i>
+                        新消息
+                    </li>
+                    <li class="list-group-item">
+                        <span class="badge badge-info">1</span>
+                        <i class="fa fa-heart-o"></i>
+                        新任务
+                    </li>
+
+                </ul>
             </div>
 
 
@@ -47,27 +79,22 @@
         </div>
         <div class="col-md-6">
 
-        <form name="signUp_form" class="form-horizontal form-inline" role="form"  ng-submit="signUp_form.$valid && Update(user.profile)" novalidate>
+        <form name="update_form" class="form-horizontal form-inline" role="form"  ng-submit="update_form.$valid && Update(user.profile)" novalidate>
             <div class="panel panel-default">
                 <div class="panel-heading"><strong><span class="glyphicon glyphicon-th"></span> 个人信息</strong></div>
                 <div class="panel-body ">
                     <div class="media ">
                         <div class="media-body ">
                             <ul class="list-unstyled list-info ">
-                                <li >                                
-                                    <span  class="icon glyphicon glyphicon-user" ></span>
-                                    <label >用户名</label>                                                                                          
-                                    {{user.username}}
-                                                                              
-                                </li>
                                 <li>
-                                    <span class="icon glyphicon glyphicon-envelope"></span>
-                                    <label>电子邮件</label>
-                                    <span ng-show="edit==0" > {{user.email}}</span>
+                                    <span class="icon glyphicon glyphicon-home"></span>
+                                    <label>地址</label>
+                                    <span ng-show="edit==0" >{{user.profile.address}} </span>
                                     <span ng-show="edit==1" >
-                                        <input type="email" ng-model="user.email" class="form-control" required>                        
-                                   </span>                                    
+                                        <input type="text" ng-model="user.profile.address" class="form-control">                          
+                                    </span>                                     
                                 </li>
+
                                 <li>
                                     <span class="icon glyphicon glyphicon-earphone"></span>
                                     <label>联系方式</label>
@@ -88,7 +115,7 @@
                                 <li class="text-right">
                                     <button type="button" class="btn btn-primary" ng-show="edit==0" ng-click="edit=1">编辑</button>
                                     <button type="button" class="btn btn-primary" ng-show="edit==1" ng-click="edit=0">取消</button>
-                                    <button type="submit" class="btn btn-primary" ng-show="edit==1" ng-click="edit=0">确定</button>
+                                    <button type="submit" ng-disabled="!update_form.$valid" class="btn btn-primary" ng-show="edit==1" ng-click="edit=0">确定</button>
                                 </li>
                             </ul>                            
                         </div>
@@ -101,9 +128,9 @@
     <div class="row">
         <div class="col-md-3">
             <section class="panel panel-default mail-categories">
-                <div class="panel-heading"><strong><span class="glyphicon glyphicon-th"></span> 微信列表</strong></div>   
+                <div class="panel-heading"><strong><span class="glyphicon glyphicon-th"></span> 微信列表({{weixin_num}})</strong></div>   
                 <ul class="list-group" ng-repeat="w in weixin">      
-                    <li class="list-group-item" ng-class="{active:tab=={{w.id}}}" ng-click="cTab(w.id)"><a href="javascript:;">
+                    <li class="list-group-item" ng-class="{active:tab=={{w.weixin_id}}}" ng-click="cTab(w.weixin_id)"><a href="javascript:;">
 
                         <i class="fa fa-wechat fa-5x" style="font-size:23px;padding-right:30px" ></i>{{w.title}}（{{w.weixin_id}}）
 
@@ -117,58 +144,13 @@
 
             </section>        
         </div>
-        <div class="col-md-9" ng-show="tab==1">
-
-        <form name="signUp_form" class="form-horizontal form-inline" role="form"  ng-submit="signUp_form.$valid && Update(user.profile)" novalidate>
-            <div class="panel panel-default">
-                <div class="panel-heading"><strong><span class="glyphicon glyphicon-th"></span> APP列表</strong></div>
-                <div class="panel-body ">
-                    <div class="media ">
-                        <div class="media-body ">
-                            <ul class="list-unstyled list-info ">
-                                <li >                                
-                                    <span  class="icon glyphicon glyphicon-user" ></span>
-                                    <label >微信号</label>                                                                                          
-                                    <span ng-show="edit==0" >乐土软件（lettoosoft）</span>
-                                    <span ng-show="edit==1"  >
-                                        <input type="text" ng-model="user.username"  class="form-control" required>                        
-                                    </span>                                                                                
-                                </li>
-                                <li>
-                                    <span class="icon glyphicon glyphicon-envelope"></span>
-                                    <label>URL</label>
-                                    <span ng-show="edit==0" > www.weixin.com/index/</span>
-                                    <span ng-show="edit==1" >
-                                        <input type="email" ng-model="user.email" class="form-control" required>                        
-                                   </span>                                    
-                                </li>
-                                <li>
-                                    <span class="icon glyphicon glyphicon-earphone"></span>
-                                    <label>TOKEN</label>
-                                    <span ng-show="edit==0" > lettoo</span>
-                                    <span ng-show="edit==1" >
-                                        <input type="text" ng-model="user.profile.tel" class="form-control">                        
-                                    </span>                                     
-                                </li>
-
-                                <li class="text-right">
-                                    <button type="button" class="btn btn-primary" ng-show="edit==0" ng-click="edit=1">编辑</button>
-                                    <button type="button" class="btn btn-primary" ng-show="edit==1" ng-click="edit=0">取消</button>
-                                    <button type="submit" class="btn btn-primary" ng-show="edit==1" ng-click="edit=0">确定</button>
-                                </li>
-                            </ul>                            
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </form>
-        </div>        
-
-    <div class="col-md-9" ng-show="tab==2">
+        
+    <div ng-repeat="w in weixin">
+        <div class="col-md-9" ng-show="tab==w.weixin_id">
     
         <form name="signUp_form" class="form-horizontal form-inline" role="form"  ng-submit="signUp_form.$valid && Update(user.profile)" novalidate>
             <div class="panel panel-default">
-                <div class="panel-heading"><strong><span class="glyphicon glyphicon-th"></span> 基本信息{{check}}</strong></div>
+                <div class="panel-heading"><strong><span class="glyphicon glyphicon-th"></span> 基本信息</strong></div>
                 <div class="panel-body ">
                     <div class="media ">
                         <div class="media-body ">
@@ -176,39 +158,38 @@
                                 <li >                                
                                     <span  class="icon glyphicon glyphicon-user" ></span>
                                     <label >微信号</label>                                                                                          
-                                    <span ng-show="edit==0" >开发者联盟（hfutlod）</span>
+                                    <span ng-show="edit==0" >{{w.title}}({{w.weixin_id}})</span>
                                     <span ng-show="edit==1"  >
                                         <input type="text" ng-model="user.username"  class="form-control" required>                        
                                     </span>                                                                                
                                 </li>
-                                <li style="height:48px;" ng-class="{'url-disable':!check}" >                                    
-                                    <div class="col-md-5" >
+                                <li style="height:48px;" ng-class="{'url-disable':!w.connect_status}" >                                    
+                                    <div class="col-md-9" >
                                     <span class="icon glyphicon glyphicon-link"></span>
                                     <label>URL</label>
-                                    <span  ng-show="edit==0"  style=" vertical-align: center;"> www.weixin.com/index/
+                                    <span  ng-show="edit==0"  style=" vertical-align: center;"> {{w.callback_url}}
 
                                     </span>
                                     <span ng-show="edit==1" >
                                         <input type="email" ng-model="user.email" class="form-control" required>                        
                                    </span>                                     
                                     </div>
-                                    <div class="col-md-4" ng-show="edit==0">
+                                    <div class="col-md-3" ng-show="edit==0">
                                         <label class="switch switch-success"><input type="checkbox" ng-model="check"  checked><i></i>
                                     </div>
                                     </span>
                                 </li>
                                 <li style="height:48px;"  >                                    
-                                    <div class="col-md-5" >
+                                    <div class="col-md-9" >
                                     <span class="icon glyphicon glyphicon-pushpin"></span>
                                     <label>TOKEN</label>
-                                    <span  ng-show="edit==0"  style=" vertical-align: center;"> lettoo
-
+                                    <span  ng-show="edit==0"  style=" vertical-align: center;">{{w.token}} 
                                     </span>
                                     <span ng-show="edit==1" >
                                         <input type="email" ng-model="user.email" class="form-control" required>                        
                                    </span>                                     
                                     </div>
-                                    <div class="col-md-4" ng-show="edit==0">
+                                    <div class="col-md-3" ng-show="edit==0">
                                        <span class="icon glyphicon glyphicon-question-sign"></span><a href="#nogo">什么是Token?</a>
                                     </div>
                                     </span>
@@ -269,6 +250,7 @@
 
 
         </div>        
+    </div>
     <!-- 添加微信 -->
     <div class="col-md-9" ng-show="tab==100">
     
@@ -331,7 +313,7 @@
                                     <span class="icon glyphicon glyphicon-user"></span>
                                     <label>微信号</label>
 
-                                        <input type="text" ng-model="addItem.wid"  class="form-control" required>                        
+                                        <input type="text" ng-model="addItem.weixin_id"  class="form-control" required>                        
                                         
                                     </div>
                                     <div class="col-md-4" style="top:5px;" ng-show="edit==0">
@@ -343,16 +325,7 @@
                                     <div class="col-md-8" >
                                     <span class="icon glyphicon glyphicon-lock"></span>
                                     <label>微信名称</label>
-                                        <input type="text" ng-model="addItem.name"  class="form-control" required>                                                      
-                                    </div>
-
-                                    </span>
-                                </li>  
-                                <li style="height:55px;" ng-class="{'url-disable':url%2==1}" >                                    
-                                    <div class="col-md-8" >
-                                    <span class="icon glyphicon glyphicon-lock"></span>
-                                    <label>TOKEN</label>
-                                        <input type="text"  class="form-control" required>                                                      
+                                        <input type="text" ng-model="addItem.title"  class="form-control" required>                                                      
                                     </div>
 
                                     </span>
@@ -360,7 +333,7 @@
                                                              
 
                                 <li class="text-right">
-                                    <button type="button" class="btn btn-primary" ng-show="edit==0" ng-click="add(addItem)">添加</button>
+                                    <button type="button" class="btn btn-primary"  ng-click="add(addItem)">添加</button>
 
                                 </li>
                             </ul>                            

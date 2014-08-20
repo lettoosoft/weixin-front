@@ -180,11 +180,16 @@ angular.module('app.services', [])
                 var url = $rootScope.apiHost +  '/api/v1/publicaccount/';
                 $http.get(url).success(function(data){
                     scope.weixin = data.objects;
+                    scope.weixin_num = data.objects.length;
                 });
                 //return data;
             },
             add:function(json,addItem){
-                var arr  = {'id':3,'name':'吃货口袋','wid':'mileechkd'};
+                //var arr  = {'id':3,'name':'吃货口袋','wid':'mileechkd'};
+                var url = $rootScope.apiHost + '/api/v1/publicaccount/';
+                $http.post(url,addItem).success(function(data){
+                   console.log(data);
+                });
                 json.push(addItem);
                 return json;
             }
