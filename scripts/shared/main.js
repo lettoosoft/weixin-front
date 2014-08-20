@@ -25,6 +25,25 @@
                 };
             }
         ])
+        .controller('appsList',['$scope',
+            function($scope){
+                $scope.apps = [
+                {
+                    name:"微信商城",
+                    icon:"images/weixinshangcheng.png",
+                    description:"小微信也有大商城，电商轻松走入微信",
+                    ratestar:"4",
+                    score:"9"
+                },
+                {
+                    name:"微信",
+                    icon:"images/weixinshangcheng.png",
+                    description:"小微信也有大商城，",
+                    ratestar:"4",
+                    score:"2"
+                }
+                ];
+            }])
         .controller('landingPage',[
             function ($scope){
                 $scope.isSleected = function (){

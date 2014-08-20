@@ -14304,3 +14304,49 @@ button.toast-close-button {
   left:0px !important;
   top: 0px !important;
 }
+.app_img{
+  width: 100px;
+  height: 86px;
+  margin-left:10px; 
+  float: left;
+}
+.app_name{
+  width: 300px;
+  height: 86px;
+  float: left;
+}
+.app_rateStar{
+  margin:10px; 
+}
+.app_grade{
+  width:110px;
+  height: 35px;
+  margin-left:20px;
+  float: left;
+
+}
+.app_score{
+  height: 100%;
+  width: 50%;
+  float: left;
+  text-align: center;
+  line-height: 35px;
+  font-size: 19px;
+}
+.app_vote{
+  float: left;
+  width: 50%;
+}
+.app_install{
+  width: 160px;
+  height: 86px;
+  float: left;
+  
+}
+.app_in_install{
+  width: 160px;
+  height: 66px;
+  margin-top: 10px;
+  margin-left: 5px;
+  border-left: 1px solid #C0C0C0;
+}
