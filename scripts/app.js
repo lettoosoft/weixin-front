@@ -70,6 +70,8 @@
                     templateUrl: 'views/pages/forgot-password.html'
                 }).when('/pages/lock-screen', {
                     templateUrl: 'views/pages/lock-screen.html'
+                }).when('/pages/apps', {
+                    templateUrl: 'views/pages/apps.html'
                 }).when('/pages/profile', {
                     templateUrl: 'views/pages/profile.html'
                 })
@@ -79,9 +81,6 @@
                 //   templateUrl: 'views/pages/500.html'
                 // })
                  .when('/pages/reset', {
-                   templateUrl: 'views/pages/reset.html'
-                 })
-                  .when('/pages/reset', {
                    templateUrl: 'views/pages/reset.html'
                  })
                 // .when('/pages/invoice', {

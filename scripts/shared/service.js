@@ -184,10 +184,19 @@ angular.module('app.services', [])
                 });
                 //return data;
             },
+            autoAdd:function(newUser,$scope){
+                var url = $rootScope.apiHost +  '/api/v1/publicaccount/auto/';
+                $http.post(url,newUser).success(function (data){
+                    console.log(data);
+                }).error(function(){
+                    
+                })
+
+            },
             add:function(json,addItem){
                 //var arr  = {'id':3,'name':'吃货口袋','wid':'mileechkd'};
                 var url = $rootScope.apiHost + '/api/v1/publicaccount/';
-                $http.post(url,addItem).success(function(data){
+                $http.post(url,addItem).success(function (data){
                    console.log(data);
                 });
                 json.push(addItem);

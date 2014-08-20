@@ -1,6 +1,6 @@
 (function () {
     'use strict';
-    angular.module('app.controllers', [])
+    angular.module('app.controllers', [])   
         .controller('AppCtrl', [
             '$scope', '$location', '$rootScope', 'LoginService', '$cookies', function ($scope, $location, $rootScope, LoginService, $cookies) {
 
@@ -25,6 +25,15 @@
                 };
             }
         ])
+        .controller('landingPage',[
+            function ($scope){
+                $scope.isSleected = function (){
+
+                }
+                $scope.setClass = function (){
+                    console.log(123);
+                }
+            }])
 
         .controller('LoginCtrl', [
             '$scope', 'LoginService', function ($scope, LoginService) {

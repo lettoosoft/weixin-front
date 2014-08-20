@@ -4361,6 +4361,7 @@ select[multiple].input-lg,
   color: white;
   background-color: #31c0be;
   border-color: #2cacaa;
+  margin-left: 0px;
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/jeffrey\/Downloads\/square-v1\.4\/square\/client\/styles\/bootstrap-sass\/bootstrap\/mixins\/_buttons\.scss}line{font-family:\0000315}}
 .btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active, .open > .btn-primary.dropdown-toggle {

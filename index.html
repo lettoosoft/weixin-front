@@ -11,6 +11,8 @@
         <!-- needs images, font... therefore can not be part of ui.css -->
         <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.min.css">
         <link rel="stylesheet" href="bower_components/weather-icons/css/weather-icons.min.css">
+        <!-- landingPage.css -->
+        <link rel="stylesheet" type="text/css" href="styles/landingPage.css">
         <!-- end needs images -->
 
             <link rel="stylesheet" href="styles/main.css">
@@ -25,8 +27,8 @@
             <div data-ng-hide="isSpecificPage()"
                  data-ng-cloak
                  class="no-print">
-                <section data-ng-include=" 'viewser.html' "
-                     id="header" class="top-header"></head/section>
+                <section data-ng-include=" 'views/header.html' "
+                     id="header" class="top-header"></section>
 
                 <aside data-ng-include=" 'views/nav.html' "
                      id="nav-container"></aside>

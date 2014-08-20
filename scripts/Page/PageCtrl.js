@@ -14,13 +14,18 @@
       };
     }
     
-  ]);
-  angular.module('app.page.ctrls', []).controller('profileCtrl',[ '$scope','UpdateUser','weixin','$rootScope',function($scope,UpdateUser,weixin,$rootScope){
+  ]).controller('profileCtrl',[ '$scope','UpdateUser','weixin','$rootScope',
+        function ($scope,UpdateUser,weixin,$rootScope){
     $scope.message="123";
     $scope.edit=0;
     $scope.tab=0;
     $scope.way=1;
     weixin.select($scope);
+    $scope.addNewUser = function (newUser){
+      console.log(newUser);
+      weixin.autoAdd(newUser,$scope);
+
+    }
     $scope.add=function(addItem){
       if($scope.weixin_num>=3){
          alert("普通用户最多只能添加三个微信号！");

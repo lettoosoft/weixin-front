@@ -273,24 +273,23 @@
                     <div class="media " ng-show="way==1">
                         <div class="media-body ">
                             <ul class="list-unstyled list-info ">
-                                <li style="height:55px;"  >                                    
-                                    <div class="col-md-5" >
-                                    <span class="icon glyphicon glyphicon-user"></span>
-                                    <label>登录邮箱</label>
-
-                                        <input type="email"  class="form-control" required>                        
-                                        
+                                <li style="height:55px;"  >                                       
+                                    <div class="container">
+                                        <div class="col-md-4" >
+                                            <span class="icon glyphicon glyphicon-user"></span>
+                                            <label>登录邮箱</label>
+                                            <input type="text"  class="form-control" ng-model="newUser.username" required>                    
+                                        </div>
+                                        <div class="col-md-4" style="top:5px;" ng-show="edit==0">
+                                            <span class="icon glyphicon glyphicon-info-sign"></span>请输入登录微信公众平台的邮箱和密码
+                                        </div>
                                     </div>
-                                    <div class="col-md-4" style="top:5px;" ng-show="edit==0">
-                                       <span class="icon glyphicon glyphicon-info-sign"></span>请输入登录微信公众平台的邮箱和密码
-                                    </div>
-                                    </span>
                                 </li> 
                                 <li style="height:55px;" ng-class="{'url-disable':url%2==1}" >                                    
                                     <div class="col-md-8" >
                                     <span class="icon glyphicon glyphicon-lock"></span>
                                     <label>登录密码</label>
-                                        <input type="password"  class="form-control" required>                                                      
+                                        <input type="password" ng-model="newUser.password" class="form-control" required>                                        
                                     </div>
 
                                     </span>
@@ -298,7 +297,7 @@
                                                              
 
                                 <li class="text-right">
-                                    <button type="button" class="btn btn-primary" ng-show="edit==0" ng-click="edit=1">添加</button>
+                                    <button type="button" class="btn btn-primary" ng-show="edit==0" ng-click="addNewUser(newUser)">添加</button>
 
                                 </li>
                             </ul>                            
@@ -308,18 +307,19 @@
                     <div class="media " ng-show="way==2">
                         <div class="media-body ">
                             <ul class="list-unstyled list-info ">
-                                <li style="height:55px;"  >                                    
-                                    <div class="col-md-5" >
-                                    <span class="icon glyphicon glyphicon-user"></span>
-                                    <label>微信号</label>
+                                <li style="height:55px;"  > 
+                                    <div class="container">                                  
+                                        <div class="col-md-4" >
+                                        <span class="icon glyphicon glyphicon-user"></span>
+                                        <label>微信号</label>
 
-                                        <input type="text" ng-model="addItem.weixin_id"  class="form-control" required>                        
-                                        
+                                            <input type="text" ng-model="addItem.weixin_id"  class="form-control" required>                        
+                                            
+                                        </div>
+                                        <div class="col-md-4" style="top:5px;" ng-show="edit==0">
+                                           <span class="icon glyphicon glyphicon-info-sign"></span>请输入微信号和微信名称
+                                        </div>
                                     </div>
-                                    <div class="col-md-4" style="top:5px;" ng-show="edit==0">
-                                       <span class="icon glyphicon glyphicon-info-sign"></span>请输入微信号和微信名称
-                                    </div>
-                                    </span>
                                 </li> 
                                 <li style="height:55px;" ng-class="{'url-disable':url%2==1}" >                                    
                                     <div class="col-md-8" >
