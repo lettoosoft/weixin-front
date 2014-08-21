@@ -83,6 +83,9 @@
                  .when('/pages/reset', {
                    templateUrl: 'views/pages/reset.html'
                  })
+                 .when('/pages/detail/:appId', {
+                   templateUrl: 'views/pages/detail.html'
+                 })
                 // .when('/pages/invoice', {
                 //   templateUrl: 'views/pages/invoice.html'
                 // }).when('/pages/services', {

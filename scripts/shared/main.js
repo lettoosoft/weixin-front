@@ -26,7 +26,8 @@
             }
         ])
         .controller('appsList',['$scope',
-            function($scope){
+            function ($scope){
+
                 $scope.apps = [
                 {
                     name:"微信商城",
@@ -34,7 +35,8 @@
                     description:"小微信也有大商城，电商轻松走入微信",
                     ratestar:"4",
                     score:"9",
-                    times:"1000"
+                    times:"1000",
+                    id:1
                 },
                 {
                     name:"微信",
@@ -42,11 +44,17 @@
                     description:"小微信也有大商城，",
                     ratestar:"4",
                     score:"2",
-                    times:"1546"
-
+                    times:2,
+                    id:2
                 }
                 ];
             }])
+        .controller('AppDetailController',['$scope','$routeParams',
+            function ($scope,$routeParams){
+                $scope.appId = $routeParams.appId;
+                
+
+        }])
         .controller('landingPage',[
             function ($scope){
                 $scope.isSleected = function (){

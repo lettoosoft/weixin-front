@@ -6251,7 +6251,7 @@ a.badge:hover, a.badge:focus {
   padding: 30px;
   margin-bottom: 30px;
   color: inherit;
-  background-color: #eeeeee;
+  background-color: #C0C0C0;
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/jeffrey\/Downloads\/square-v1\.4\/square\/client\/styles\/bootstrap-sass\/bootstrap\/_jumbotron\.scss}line{font-family:\0000313}}
 .jumbotron h1,
@@ -14358,4 +14358,45 @@ button.toast-close-button {
   font-size:10px; 
   margin-top: 42px;
   margin-left: -10px;
+}
+.detail{
+  width: 80%;
+  height: 1000px;
+  border: 2px solid #DCDCDC;
+  margin:30px 70px 10px 115px;
+  border-radius: 10px;
+}
+.detail_img{
+    width: 120px;
+    height:120px;
+    margin-top: 25px;
+    margin-left: 20px;
+
+}
+.detail_name{
+  float: left;
+  margin-left: 20px;
+}
+.detail_line{
+  width: 1px; 
+  height: 130px;
+  float: left;
+  margin-top:40px; 
+  margin-left: 50px;
+  border: 1px solid #C0C0C0;
+}
+.detail_rate{
+  margin-top:30px; 
+}
+.detail_grade{
+  font-size: 24px;
+}
+.detail_radio_box{
+}
+.detail_score{
+  margin-left: 150px;
+  margin-top: 73  px;
+}
+.detail_description{
+  line-height: 18px;
 }
