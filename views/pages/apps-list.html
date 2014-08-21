@@ -1,0 +1,42 @@
+<div class="container" ng-controller="appsList" >
+    <div class="row" ng-repeat="item in apps" style="border-bottom:1px solid #C0C0C0;margin-top:10px;padding-bottom:10px;" >
+        <div class="col-md-7 ">
+            <div class="app_img">
+                <img ng-src="{{item.icon}}">
+            </div>  
+            <div class="app_name">
+                <span><h4><b>{{item.name}}</b></h4></span>
+                <span>{{item.description}}</span>
+            </div>     
+        </div>
+        <div class="col-md-5">
+            <div style="float:left;margin-left:20px;">
+                <div ng-init="x1 = 4" class="app_rateStar">
+                    <rating class="ui-rating size-h4 ui-rating-success"
+                        ng-model="x1"
+                        max="6"
+                        readonly="true"
+                        state-on="'fa fa-star'"
+                        state-off="'fa fa-star-o'">
+                    </rating>
+                </div>
+                <div class="app_grade">
+                    <div class="app_score">
+                        <span>{{item.score}} 分</span>
+                    </div>
+                    <div class="app_vote">
+                        <button type="button" id="loading-example-btn"  class="btn btn-primary">评分</button>
+                    </div>
+                </div>
+            </div>
+            <div class="app_install">
+                <div class="app_in_install">
+                    <button type="button" id="loading-example-btn" style="width:100px;margin-top:15px;margin-left:30px" class="btn btn-primary"><b>安装</b></button>
+                </div>
+            </div>
+            <div class="app_install_times"> 
+                    <span>已安装:{{item.times}}次</span>
+            </div>
+        </div>
+    </div>
+</div>

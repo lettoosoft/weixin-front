@@ -186,7 +186,15 @@
         }
       };
     }
-  ]).directive('slimScroll', [
+  ]).directive('appsList',
+    function(){
+      return{
+          restrict:'E',
+          templateUrl:'views/pages/apps-list.html'
+      };
+    }
+  )
+  .directive('slimScroll', [
     function() {
       return {
         restrict: 'A',

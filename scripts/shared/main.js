@@ -33,14 +33,17 @@
                     icon:"images/weixinshangcheng.png",
                     description:"小微信也有大商城，电商轻松走入微信",
                     ratestar:"4",
-                    score:"9"
+                    score:"9",
+                    times:"1000"
                 },
                 {
                     name:"微信",
                     icon:"images/weixinshangcheng.png",
                     description:"小微信也有大商城，",
                     ratestar:"4",
-                    score:"2"
+                    score:"2",
+                    times:"1546"
+
                 }
                 ];
             }])
