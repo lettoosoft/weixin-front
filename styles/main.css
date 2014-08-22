@@ -14400,3 +14400,21 @@ button.toast-close-button {
 .detail_description{
   line-height: 18px;
 }
+.need_paid{
+  height: 630px;
+  margin-left: 80px;
+  padding-top: 30px;
+  padding-bottom:30px; 
+  border-top: 4px solid #C0C0C0;
+  border-bottom: 4px solid #C0C0C0;
+}
+.padi_alert{
+    margin-left: 80px;
+}
+.jumbotron{
+    border-radius: 10px !important;
+}
+.paid_footer{
+  margin-top: 15px;
+
+}
