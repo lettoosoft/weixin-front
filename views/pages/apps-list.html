@@ -2,10 +2,10 @@
     <div class="row" ng-repeat="app in apps" style="border-bottom:1px solid #C0C0C0;margin-top:10px;padding-bottom:10px;" >
         <div class="col-md-7 ">
             <div class="app_img">
-                <a href="#/pages/detail/{{app.id}}"><img ng-src="{{app.icon}}" title="点击查看详细应用介绍"></a>
+                <a href="#/pages/detail/{{app.id}}"><img ng-src="{{app.thumbnail_url}}" title="点击查看详细应用介绍"></a>
             </div>  
             <div class="app_name">
-                <span><h4><b>{{app.name}}</b></h4></span>
+                <span><h4><b>{{app.title}}</b></h4></span>
                 <span>{{app.description}}</span>
             </div>     
         </div>
@@ -14,7 +14,7 @@
                 <div ng-init="x1 = 4" class="app_rateStar">
                     <rating class="ui-rating size-h4 ui-rating-success"
                         ng-model="x1"
-                        max="6"
+                        max="5"
                         readonly="true"
                         state-on="'fa fa-star'"
                         state-off="'fa fa-star-o'">
@@ -22,7 +22,7 @@
                 </div>
                 <div class="app_grade">
                     <div class="app_score">
-                        <span>{{app.score}} 分</span>
+                        <span>{{app.rate}} 分</span>
                     </div>
                     <div class="app_vote">
                         <button type="button" id="loading-example-btn"  class="btn btn-primary">评分</button>
@@ -35,7 +35,7 @@
                 </div>
             </div>
             <div class="app_install_times"> 
-                <span>已安装:{{app.times}}次</span>
+                <span>已安装:{{app.install_count}}次</span>
             </div>
         </div>
     </div>

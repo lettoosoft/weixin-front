@@ -27,24 +27,22 @@
         ])
         .controller('appsList',['$scope',
             function ($scope){
-
+                
                 $scope.apps = [
                 {
-                    name:"微信商城",
-                    icon:"images/weixinshangcheng.png",
+                    title:"微信商城",
+                    thumbnail_url:"images/weixinshangcheng.png",
                     description:"小微信也有大商城，电商轻松走入微信",
-                    ratestar:"4",
-                    score:"9",
-                    times:"1000",
+                    rate:"9",
+                    install_count:"1000",
                     id:1
                 },
                 {
-                    name:"微信",
-                    icon:"images/weixinshangcheng.png",
+                    title:"微信",
+                    thumbnail_url:"images/weixinshangcheng.png",
                     description:"小微信也有大商城，",
-                    ratestar:"4",
-                    score:"2",
-                    times:2,
+                    rate:"2",
+                    install_count:2,
                     id:2
                 }
                 ];
@@ -52,7 +50,17 @@
         .controller('AppDetailController',['$scope','$routeParams',
             function ($scope,$routeParams){
                 $scope.appId = $routeParams.appId;
-                
+                $scope.myInterval = 5000;
+                var slides = $scope.slides = [];
+                $scope.addSlide = function() {
+                    var newWidth = 700 + slides.length;
+                    slides.push({
+                        image: 'http://placekitten.com/' + newWidth + '/300',
+                    });
+                };
+                for (var i=0; i<4; i++) {
+                    $scope.addSlide();
+                }
 
         }])
         .controller('landingPage',[
@@ -63,8 +71,7 @@
                 $scope.setClass = function (){
                     console.log(123);
                 }
-            }])
-
+        }])
         .controller('LoginCtrl', [
             '$scope', 'LoginService', function ($scope, LoginService) {
                 $scope.login = function (signin) {
