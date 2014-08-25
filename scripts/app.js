@@ -1,78 +1,80 @@
 (function () {
     'use strict';
-    angular.module('app', ['ngRoute', 'ngAnimate', 'http-auth-interceptor','ngCookies','ui.bootstrap', 'easypiechart', 'mgo-angular-wizard', 'textAngular', 'ui.tree', 'ngMap', 'ngTagsInput', 'app.ui.ctrls', 'app.ui.directives', 'app.ui.services', 'app.controllers', 'app.services','app.directives', 'app.form.validation', 'app.ui.form.ctrls', 'app.ui.form.directives', 'app.tables', 'app.map', 'app.task', 'app.localization', 'app.chart.ctrls', 'app.chart.directives', 'app.page.ctrls']).config([
+    angular.module('app', ['ngRoute', 'ngAnimate', 'http-auth-interceptor', 'ngCookies', 'ui.bootstrap', 'easypiechart', 'mgo-angular-wizard', 'textAngular', 'ui.tree', 'ngMap', 'ngTagsInput', 'app.ui.ctrls', 'app.ui.directives', 'app.ui.services', 'app.controllers', 'app.services', 'app.directives', 'app.form.validation', 'app.ui.form.ctrls', 'app.ui.form.directives', 'app.tables', 'app.map', 'app.task', 'app.localization', 'app.chart.ctrls', 'app.chart.directives', 'app.page.ctrls']).config([
         '$routeProvider', function ($routeProvider) {
-                return $routeProvider.when('/', {
-                    templateUrl: 'landingPage.html'
-                }).when('/dashboard', {
-                    templateUrl: 'views/dashboard.html'
-                }).when('/needVerify',{
-                    templateUrl:'views/dashboard.html'
-                }).when('/landingPage',{
-                    templateUrl:'landingPage.html'
-                }).when('/pages/signin', {
-                    templateUrl: 'views/pages/signin.html'
-                }).when('/pages/signup', {
-                    templateUrl: 'views/pages/signup.html'
-                }).when('/pages/forgot', {
-                    templateUrl: 'views/pages/forgot-password.html'
-                }).when('/pages/lock-screen', {
-                    templateUrl: 'views/pages/lock-screen.html'
-                }).when('/pages/apps', {
-                    templateUrl: 'views/pages/apps.html'
-                }).when('/pages/profile', {
-                    templateUrl: 'views/pages/profile.html'
-                }).when('/pages/paid',{
-                    templateUrl: 'views/pages/paid.html'
-                }).when('/pages/reset', {
-                   templateUrl: 'views/pages/reset.html'
-                }).when('/pages/detail/:appId', {
-                   templateUrl: 'views/pages/detail.html'
-                }).otherwise({
-                    redirectTo: '/404'
-                });
+            return $routeProvider.when('/', {
+                templateUrl: 'landingPage.html'
+            }).when('/dashboard', {
+                templateUrl: 'views/dashboard.html'
+            }).when('/needVerify', {
+                templateUrl: 'views/dashboard.html'
+            }).when('/landingPage', {
+                templateUrl: 'landingPage.html'
+            }).when('/pages/signin', {
+                templateUrl: 'views/pages/signin.html'
+            }).when('/pages/signup', {
+                templateUrl: 'views/pages/signup.html'
+            }).when('/pages/forgot', {
+                templateUrl: 'views/pages/forgot-password.html'
+            }).when('/pages/lock-screen', {
+                templateUrl: 'views/pages/lock-screen.html'
+            }).when('/pages/apps', {
+                templateUrl: 'views/pages/apps.html'
+            }).when('/pages/profile', {
+                templateUrl: 'views/pages/profile.html'
+            }).when('/pages/paid', {
+                templateUrl: 'views/pages/paid.html'
+            }).when('/pages/reset', {
+                templateUrl: 'views/pages/reset.html'
+            }).when('/pages/detail/:appId', {
+                templateUrl: 'views/pages/detail.html'
+            }).otherwise({
+                redirectTo: '/404'
+            });
         }
     ])
-    .run(
+        .run(
         ['$rootScope', '$location', 'LoginService', '$cookies',
             function ($rootScope, $location, LoginService, $cookies) {
+
+                //$rootScope.apiHost = 'http://121.40.126.220';
+                $rootScope.apiHost = 'http://localhost:8000';
+                $rootScope.user = null;
+
                 var url = $.trim($location.path());
-                if ($location.path()!='' && $location.path != 'landingPage' && url != '/') {
-                    console.log($location.path());
+                if ($location.path() != '' && $location.path != 'landingPage' && url != '/') {
+                    LoginService.get_currentuser();
                     if (!LoginService.isLoggedIn()) {
                         LoginService.saveAttemptUrl();
                         $location.path('/pages/signin');
                     }
-                    $rootScope.apiHost = 'http://121.40.126.220';
-                    //$rootScope.apiHost = 'http://localhost:8000';
-                    $rootScope.user = null;
-                    LoginService.get_currentuser();
-                    $rootScope.$on('event:auth-loginRequired', function (e, rejection) {
-                        /*delete $cookies.is_login;
-                         delete $cookies.authorization;
-                         AuthenticationService.saveAttemptUrl();
-                         $location.path('/access/signin');
-                         //$state.go('access.signin', {}, {reload: true, inherit: false});*/
-
-                                    $location.path('/pages/signin');
-                                });
-
-                    $rootScope.$on('event:auth-loginConfirmed', function () {
-                        if ($rootScope.user.email_verified) {
-                            $location.path('/dashboard');
-                        }else{
-                            $location.path('/needVerify');
-                        }
-                        //AuthenticationService.redirectToAttemptedUrl();
-                        //$state.go('app.dashboard', {}, {reload: true, inherit: false});
-                    });
-
-                    $rootScope.$on('event:auth-logout-complete', function () {
-                        delete $cookies.is_login;
-                        delete $cookies.authorization;
-                        $location.path('/pages/signin');
-                    });
                 }
+
+                $rootScope.$on('event:auth-loginRequired', function (e, rejection) {
+                    /*delete $cookies.is_login;
+                     delete $cookies.authorization;
+                     AuthenticationService.saveAttemptUrl();
+                     $location.path('/access/signin');
+                     //$state.go('access.signin', {}, {reload: true, inherit: false});*/
+
+                    $location.path('/pages/signin');
+                });
+
+                $rootScope.$on('event:auth-loginConfirmed', function () {
+                    if ($rootScope.user.email_verified) {
+                        $location.path('/dashboard');
+                    } else {
+                        $location.path('/needVerify');
+                    }
+                    //AuthenticationService.redirectToAttemptedUrl();
+                    //$state.go('app.dashboard', {}, {reload: true, inherit: false});
+                });
+
+                $rootScope.$on('event:auth-logout-complete', function () {
+                    delete $cookies.is_login;
+                    delete $cookies.authorization;
+                    $location.path('/pages/signin');
+                });
             }
 
         ])
