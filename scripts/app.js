@@ -28,6 +28,8 @@
                    templateUrl: 'views/pages/reset.html'
                 }).when('/pages/detail/:appId', {
                    templateUrl: 'views/pages/detail.html'
+                }).when('/pages/payMent',{
+                   templateUrl:'views/pages/payMent.html'
                 }).otherwise({
                     redirectTo: '/404'
                 });

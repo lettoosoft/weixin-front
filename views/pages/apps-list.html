@@ -1,8 +1,9 @@
+
 <div class="container" ng-controller="appsList" >
     <div class="row" ng-repeat="app in apps" style="border-bottom:1px solid #C0C0C0;margin-top:10px;padding-bottom:10px;" >
         <div class="col-md-7 ">
             <div class="app_img">
-                <a href="#/pages/paid"><img ng-src="{{app.thumbnail_url}}" title="点击查看详细应用介绍"></a>
+                <a href="#/pages/detail/{{app.id}}"><img ng-src="{{app.thumbnail_url}}" title="点击查看详细应用介绍"></a>
             </div>  
             <div class="app_name">
                 <span><h4><b>{{app.title}}</b></h4></span>
@@ -11,14 +12,14 @@
         </div>
         <div class="col-md-5">
             <div style="float:left;margin-left:20px;">
-                <div ng-init="x1 = 4" class="app_rateStar">
-                    <rating class="ui-rating size-h4 ui-rating-success"
-                        ng-model="x1"
-                        max="5"
-                        readonly="true"
-                        state-on="'fa fa-star'"
-                        state-off="'fa fa-star-o'">
-                    </rating>
+                <div class="block app_rateStar">
+                    <ul class='star-rating'>
+                        <li><a href='#' title='一星' class='one-star'>1</a></li>
+                        <li><a href='#' title='二星' class='two-stars'>2</a></li>
+                        <li><a href='#' title='三星' class='three-stars'>3</a></li>
+                        <li><a href='#' title='四星' class='four-stars'>4</a></li>
+                        <li><a href='#' title='五星' class='five-stars'>5</a></li>
+                    </ul>
                 </div>
                 <div class="app_grade">
                     <div class="app_score">

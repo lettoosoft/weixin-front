@@ -27,7 +27,6 @@
         ])
         .controller('appsList',['$scope',
             function ($scope){
-                
                 $scope.apps = [
                 {
                     title:"微信商城",
