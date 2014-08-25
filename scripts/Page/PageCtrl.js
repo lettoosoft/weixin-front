@@ -16,22 +16,22 @@
     
   ]).controller('profileCtrl',[ '$scope','UpdateUser','weixin','$rootScope',
         function ($scope,UpdateUser,weixin,$rootScope){
-    $scope.message="123";
-    $scope.edit=0;
-    $scope.tab=0;
-    $scope.way=1;
-    weixin.select($scope);
-    $scope.addNewUser = function (newUser){
-      console.log(newUser);
-      weixin.autoAdd(newUser,$scope);
-
+          $scope.message="123";
+          $scope.edit=0;
+          $scope.tab=0;
+          $scope.way=1;
+          $scope.addedApp=$rootScope.addedApp;
+          weixin.select($scope);
+          $scope.addNewUser = function (newUser){
+            console.log(newUser);
+            weixin.autoAdd(newUser,$scope);
     }
+    // 添加微信公众号
     $scope.add=function(addItem){
       if($scope.weixin_num>=3){
          alert("普通用户最多只能添加三个微信号！");
          return;
-      }
-         
+      }       
       $scope.weixin=weixin.add($scope.weixin,addItem);
     }
     $scope.Update=function(profile){

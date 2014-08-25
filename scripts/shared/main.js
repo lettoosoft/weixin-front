@@ -25,8 +25,7 @@
                 };
             }
         ])
-        .controller('appsList',['$scope',
-            function ($scope){
+        .controller('appsList',['$scope','appService',function ($scope,appService){
 
                 $scope.apps = [
                 {
@@ -47,7 +46,13 @@
                     times:2,
                     id:2
                 }
+
                 ];
+                $scope.addedApp=[];
+                $scope.addApp=function(item){
+                    appService.addApp($scope.addedApp,item);
+                    $scope.$emit('to-parent', 'parent');
+                }
             }])
         .controller('AppDetailController',['$scope','$routeParams',
             function ($scope,$routeParams){

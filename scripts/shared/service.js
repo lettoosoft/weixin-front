@@ -171,18 +171,19 @@ angular.module('app.services', [])
     }])
     .factory('weixin', ['$http','$rootScope',function ($http,$rootScope) {
         var service = {
+            // 获取微信列表
             select:function(scope){
-                /*var data=[
-                    {'id':1,'title':'乐土软件','weixin_id':'common'},
-                    {'id':2,'title':'开发者联盟','weixin_id':'hfutlod'},
-                    {'id':3,'title':'吃货口袋','weixin_id':'mileechkd'}
-                ];*/
                 var url = $rootScope.apiHost +  '/api/v1/publicaccount/';
                 $http.get(url).success(function(data){
                     scope.weixin = data.objects;
                     scope.weixin_num = data.objects.length;
+                    var apps=[
+                        {"id":1,"title":"失物招领","status":0,"dateline":"2015年9月1日","switch":true},
+                        {"id":2,"title":"吃货口袋","status":1,"dateline":"2015年9月1日","switch":false},
+                        {"id":3,"title":"表白墙","status":0,"dateline":"2015年9月1日","switch":true}
+                    ]
+                    scope.apps=apps;
                 });
-                //return data;
             },
             autoAdd:function(newUser,$scope){
                 var url = $rootScope.apiHost +  '/api/v1/publicaccount/auto/';
@@ -204,4 +205,28 @@ angular.module('app.services', [])
             }
         };
         return service;
+    }])
+    .factory('appService', ['$http','$rootScope',function ($http,$rootScope) {
+        var service = {
+            // 获取微信列表
+            select:function(scope){
+                var url = $rootScope.apiHost +  '/api/v1/publicaccount/';
+                $http.get(url).success(function(data){
+                    scope.weixin = data.objects;
+                    scope.weixin_num = data.objects.length;
+                    var apps=[
+                        {"id":1,"title":"失物招领","status":0,"dateline":"2015年9月1日","switch":true},
+                        {"id":2,"title":"吃货口袋","status":1,"dateline":"2015年9月1日","switch":false},
+                        {"id":3,"title":"表白墙","status":0,"dateline":"2015年9月1日","switch":true}
+                    ]
+                    scope.apps=apps;
+                });
+            },
+            addApp:function(addedApp,app){                                
+                addedApp.push(app);
+                console.log(addedApp);
+            }
+        };
+        return service;
     }]);
+
