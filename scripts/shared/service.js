@@ -199,8 +199,8 @@ angular.module('app.services', [])
                 var url = $rootScope.apiHost + '/api/v1/publicaccount/';
                 $http.post(url,addItem).success(function (data){
                    console.log(data);
+                   json.push(data);
                 });
-                json.push(addItem);
                 return json;
             }
         };
