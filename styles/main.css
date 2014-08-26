@@ -14316,12 +14316,14 @@ button.toast-close-button {
   float: left;
 }
 .app_rateStar{
+  float: left;
+  margin-top: 10px;
   margin:10px; 
 }
 .app_grade{
   width:110px;
   height: 35px;
-  margin-left:20px;
+  margin-top: 13px;
   float: left;
 
 }
@@ -14356,7 +14358,7 @@ button.toast-close-button {
   float: left;
   height: 100%;
   font-size:10px; 
-  margin-top: 42px;
+  margin-top: 37px;
   margin-left: -10px;
 }
 .detail{

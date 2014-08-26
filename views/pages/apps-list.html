@@ -1,7 +1,7 @@
 
 <div class="container" ng-controller="appsList" >
     <div class="row" ng-repeat="app in apps" style="border-bottom:1px solid #C0C0C0;margin-top:10px;padding-bottom:10px;" >
-        <div class="col-md-7 ">
+        <div class="col-md-6 ">
             <div class="app_img">
                 <a href="#/pages/detail/{{app.id}}"><img ng-src="{{app.thumbnail_url}}" title="点击查看详细应用介绍"></a>
             </div>  
@@ -10,8 +10,8 @@
                 <span>{{app.description}}</span>
             </div>     
         </div>
-        <div class="col-md-5">
-            <div style="float:left;margin-left:20px;">
+        <div class="col-md-6">
+            <div style="float:left;margin-top:10px;">
                 <div class="block app_rateStar">
                     <ul class='star-rating'>
                         <li><a href='#' title='一星' class='one-star'>1</a></li>
@@ -25,14 +25,11 @@
                     <div class="app_score">
                         <span>{{app.rate}} 分</span>
                     </div>
-                    <div class="app_vote">
-                        <button type="button" id="loading-example-btn"  class="btn btn-primary">评分</button>
-                    </div>
                 </div>
             </div>
             <div class="app_install">
                 <div class="app_in_install">
-                    <button type="button" ng-click="addApp(app)" id="loading-example-btn" style="width:100px;margin-top:15px;margin-left:30px" class="btn btn-primary"><b>安装</b></button>
+                    <button type="button" ng-click="addApp(app)" id="loading-example-btn" style="width:100px;margin-top:5px;margin-left:30px" class="btn btn-primary"><b>安装</b></button>
                 </div>
             </div>
             <div class="app_install_times"> 
