@@ -23,8 +23,8 @@
                 <span class="line-thru">OR</span> -->
 
                 <section>
-                    <form name="signup_form" class="form-horizontal form-validation" novalidate ng-submit="signup(check)" >
-                        <div class="form-group">
+                    <form name="signup_form" class="form-horizontal form-validation" novalidate ng-submit="signup(check)">
+                        <div class="form-group" ng-hide="success">
                             <div class="input-group input-group-lg">
                                 <span class="input-group-addon">
                                     <span class="glyphicon glyphicon-envelope"></span>
@@ -40,7 +40,7 @@
 
                         
 
-                        <div class="form-group">
+                        <div class="form-group" ng-hide="success">
                             <div class="input-group input-group-lg">
                                 <span class="input-group-addon">
                                     <span class="glyphicon glyphicon-lock"></span>
@@ -65,7 +65,7 @@
                             </button>
                             <strong><span class="glyphicon glyphicon-warning-sign">&nbsp;</span></strong>密码长度为6-18位，要包含数字、字母或下划线!
                         </div>
-                        <div class="alert alert-danger alert-dismissible" role="alert" ng-show="danger1">
+                        <div class="alert alert-danger alert-dismissible" role="alert" ng-show="danger1" >
                             <button type="button" class="close" data-dismiss="alert">
                                 <span aria-hidden="true">&times;</span>
                                 <span class="sr-only">Close</span>
@@ -73,7 +73,7 @@
                             <strong><span class="glyphicon glyphicon-warning-sign">&nbsp;</span></strong>密码格式错误，密码长度仅为6-18位，要包含数字、字母或下划线!
                         </div>
 
-                        <div class="form-group">
+                        <div class="form-group" ng-hide="success" ng-hide="success">
                             <div class="input-group input-group-lg">
                                 <span class="input-group-addon">
                                     <span class="glyphicon glyphicon-lock"></span>
@@ -97,16 +97,21 @@
                             <strong><span class="glyphicon glyphicon-warning-sign">&nbsp;</span></strong>两次输入的密码不一致！请重新输入！
                         </div>
 
-                        <div class="form-group">
-                            <p class="text-muted text-small">通过点击注册，您同意<a href="javascript:;">服务条款</a> 和 <a href="javascript:;">隐私政策</a></p>
-                            <div class="divider"></div>
-                            <div class="alert alert-success alert-dismissible" role="alert" ng-show="success">
-                            <button type="button" class="close" data-dismiss="alert">
-                                <span aria-hidden="true">&times;</span>
-                                <span class="sr-only">Close</span>
-                            </button>
-                            <strong><span class="glyphicon glyphicon-warning-sign">&nbsp;</span></strong>您已经注册成功，激活邮件已经发送到您的邮箱，请通过电子邮件中的链接来激活您的账户！
+                        <div class="form-group" ng-hide="success">
+                            <p class="text-muted text-small">通过点击注册，您同意
+                            <a href="javascript:;">服务条款</a> 和 
+                            <a href="javascript:;">隐私政策</a></p>
                         </div>
+                        <div class="form-group">
+                            <div class="alert alert-success alert-dismissible" role="alert" ng-show="success">
+                                <button type="button" class="close" data-dismiss="alert">
+                                    <span aria-hidden="true">&times;</span>
+                                    <span class="sr-only">Close</span>
+                                </button>
+                                <strong><span class="glyphicon glyphicon-warning-sign">&nbsp;</span></strong>您已经注册成功，激活邮件已经发送到您的邮箱，请通过电子邮件中的链接来激活您的账户！
+                            </div>
+                        </div>
+                        <div class="form-group"  ng-hide="success">
                             <button type="submit" data-ng-disabled="disabled || passwordvalid(check) || signup_form.$invalid" class="btn btn-primary btn-block btn-lg">注册</button>
                         </div>
                     </form>
