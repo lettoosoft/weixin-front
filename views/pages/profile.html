@@ -124,6 +124,13 @@
             </div>
         </form>
         </div>
+        <ul class="list-group"> 
+            <expander class='expander'  ng-repeat="w in weixin" expander-title='w'>
+                {{text}}
+            </expander>
+        </ul>
+   
+<div app-list=""></app-list>
     </div>
     <div class="row">
         <div class="col-md-3">
@@ -214,7 +221,7 @@
                     <th>开关</th>
                 </tr>
             </thead>
-            <tbody ng-repeat="a in apps">
+            <tbody ng-repeat="a in w.apps">
                 <tr ng-class="{'url-disable':!a.switch}">
                     <td>{{a.id}}</td>
                     <td><span class="color-success"></span> {{a.title}}</td>
@@ -331,7 +338,7 @@
 
         </form>
 
-
+    
         </div>        
     </div>
     </div>

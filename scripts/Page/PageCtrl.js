@@ -33,6 +33,7 @@
          return;
       }       
       $scope.weixin=weixin.add($scope.weixin,addItem);
+      $scope.addItem="";
     }
     $scope.Update=function(profile){
       UpdateUser.Update(profile,$scope);
