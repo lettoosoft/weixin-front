@@ -25,6 +25,11 @@
                 };
             }
         ])
+        .controller('appNeedPaid' ,['$scope', function ($scope){
+            $scope.modalDisabled = function (){
+                $(".modal-backdrop").hide();
+            }
+        }])
         .controller('appsList',['$scope','appService',function ($scope,appService){
                 $scope.apps = [
                 {

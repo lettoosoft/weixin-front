@@ -11668,7 +11668,7 @@ img.img80_80 {
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/jeffrey\/Downloads\/square-v1\.4\/square\/client\/styles\/ui\/components\/_map\.scss}line{font-family:\000031}}
 .ui-map {
   display: block;
-  height: 400px;
+  height: 330px;
 }
 
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/jeffrey\/Downloads\/square-v1\.4\/square\/client\/styles\/ui\/components\/_pagination\.scss}line{font-family:\000033}}
@@ -14403,14 +14403,12 @@ button.toast-close-button {
 }
 .need_paid{
   height: 630px;
-  margin-left: 80px;
   padding-top: 30px;
   padding-bottom:30px; 
-  border-top: 4px solid #C0C0C0;
-  border-bottom: 4px solid #C0C0C0;
+
 }
 .padi_alert{
-    margin-left: 80px;
+    margin-left:48px;
 }
 .jumbotron{
     border-radius: 10px !important;
@@ -14530,7 +14528,40 @@ button.toast-close-button {
     font-weight: bold;
     font-family: "微软雅黑";
 }
-#payMent_span{
+#payMent_span1{
     margin-top:15px;
-    color:#3BAB27;
+    color:#7abd54;
+}
+#payMent_span2{
+    position: relative;
+    margin-left:27px;
+}
+.payMent_erweima{
+    width: 77px;
+    height: 77px;
+    float: left;
+}
+.payMent_div_position{
+    margin-left: 100px;
+}
+#payMent_information{
+  margin-top: 8px;
+  padding: 5px;
+  background-color: #E6E6FA;
+  border-radius:10px;
+}
+.zhiFuBao{
+  width: 95px;
+  height: 31px;
+}
+.zhiFuBao_div{
+  padding: 10px;
+  margin-top: 10px;
+  height: 400px;
+  border:3px solid #E6E6FA;
+  border-radius:10px;
+}
+.zhiFuBao_logo{
+  padding: 10px;
+  border-bottom: 3px solid #E6E6FA;
 }

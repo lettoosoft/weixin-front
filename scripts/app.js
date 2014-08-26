@@ -28,6 +28,8 @@
                 templateUrl: 'views/pages/reset.html'
             }).when('/pages/detail/:appId', {
                 templateUrl: 'views/pages/detail.html'
+            }).when('/pages/payMent',{
+                templateUrl:'views/pages/payMent.html'
             }).otherwise({
                 redirectTo: '/404'
             });
@@ -37,8 +39,8 @@
         ['$rootScope', '$location', 'LoginService', '$cookies',
             function ($rootScope, $location, LoginService, $cookies) {
 
-                //$rootScope.apiHost = 'http://121.40.126.220';
-                $rootScope.apiHost = 'http://localhost:8000';
+                $rootScope.apiHost = 'http://121.40.126.220';
+                //$rootScope.apiHost = 'http://localhost:8000';
                 $rootScope.user = null;
 
                 var url = $.trim($location.path());
@@ -47,7 +49,7 @@
                     if (!LoginService.isLoggedIn()) {
                         LoginService.saveAttemptUrl();
                         $location.path('/pages/signin');
-                    }
+                        }
                 }
 
                 $rootScope.$on('event:auth-loginRequired', function (e, rejection) {
