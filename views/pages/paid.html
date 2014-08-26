@@ -1,103 +1,97 @@
-<div class="container needPaid"  ng-controller="appNeedPaid">
+<div class="container"  ng-controller="appNeedPaid">
 	<div class="row" style="margin-top:30px;">
-		<div class="col-md-10 padi_alert">
+		<div class="col-md-10 col-md-offset-1 padi_alert">
 			<div class="jumbotron">
-  				<h2><b>抱歉，您现在不能安装此应用！</b></h2>
-  				<p>点击按钮购买，即可永久使用</p>
-  				<p><a class="btn btn-primary btn-lg" data-toggle="modal"  data-target="#myModal" role="button">购买此应用</a></p>
-  				<p><b>更多优惠购买方式，请阅读以下购买方式！</b></p>
+	  			<h2><b>应用需要付费购买后才可以使用！</b></h2>
+	  			<p>点击按钮购买，即可购买！</p>
+	  			<p><a class="btn btn-primary btn-lg" data-toggle="modal"  data-target="#myModal" role="button">购买应用</a></p>
+	  			<p><b>更多优惠，请阅读以下购买方式！</b></p>
 			</div>
 		</div>
 	</div>
-	<div class="row" style="margin-top:10px;">
-		<div class=" col-md-10 need_paid">
-			<div class="col-md-6">
-				<div class="col-md-10 col-md-offset-1">
-		           	<section class="pricing-table pricing-table-success">
-		                <header>所有应用包年购买</header>
-		                <div class="pricing-body">
-		                    <div class="pricing-price">
-		                        <em>￥ </em>
-		                        99999<sup>.99</sup>
-		                        <sub>/年</sub>
-		                    </div>
-		                    <ul>
-		                        <li><strong>一年内可使用所有付费应用</strong></li>
-		                        <li><strong>无应用个数限制</strong></li>
-		                        <li><strong>无次数限制</strong></li>
-		                        <li><strong>24小时在线答疑</strong></li>
-		                    </ul>                            
-		                </div>
-		                <footer>
-		                	<a href="javascript:;">
-		                    	<i class="fa fa-angle-double-right"></i> 
-		                    	<button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">现在购买
-								</button>
-		               	 	</a>
-		                </footer>
-		            </section>
-	            </div>
-			</div>			
-			<div class="col-md-6">
-				<div class="col-md-10 col-md-offset-1">
-		           	<section class="pricing-table pricing-table-danger">
-		                <header>所有应用按月购买</header>
-		                <div class="pricing-body">
-		                    <div class="pricing-price">
-		                        <em>￥ </em>
-		                        11111<sup>.11</sup>
-		                        <sub>/月</sub>
-		                    </div>
-		                    <ul>
-		                        <li><strong>30天内可使用所有付费应用</strong></li>
-		                        <li><strong>无应用限制</strong></li>
-		                        <li><strong>无次数限制</strong></li>
-		                        <li><strong>24小时在线答疑</strong></li>
-		                    </ul>                            
-		                </div>
-		                <footer>
-		                	<a href="javascript:;">
-		                    	<i class="fa fa-angle-double-right"></i> 
-		                    	<button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">现在购买
-								</button>
-		               	 	</a>
-		                </footer>
-		            </section>
-	            </div>
-			</div>
+	<div class="col-md-10 col-offset-1" style="margin-left:45px;">
+		<div class="col-md-4">
+			<section class="panel panel-box">
+                <div class="panel-top bg-info">
+                    <i class="fa fa-jpy text-large">9 000</i>
+                </div>
+                <div class="panel-bottom bg-reverse">
+                    <p class="size-h1"></p>
+                    <p class="text-muted"><h3><b>包年使用所有应用！</b></h3></p>
+                    <p>一次性购买，所有应用全年不限时免费使用！</p>
+                    <button type="button" style="margin-top:15px;" data-toggle="modal"  data-target="#myModal"  class="btn btn-primary">确认购买</button>
+                </div>
+            </section>
+		</div>
+		<div class="col-md-4">
+			<section class="panel panel-box">
+                <div class="panel-top bg-danger">
+                    <i class="fa fa-jpy text-large">800</i>
+                </div>
+                <div class="panel-bottom bg-reverse">
+                    <p class="size-h1"></p>
+                    <p class="text-muted"><h3><b>包月使用所有应用！</b></h3></p>
+                    <p>按月付费，30天内所有应用不限时免费使用！</p>
+                    <button type="button" style="margin-top:15px;" data-toggle="modal"  data-target="#myModal" class="btn btn-primary">确认购买</button>
+                </div>
+            </section>
+		</div>
+		<div class="col-md-4">
+			<section class="panel panel-box">
+                <div class="panel-top bg-success">
+                    <i class="fa fa-jpy text-large">0.00</i>
+                </div>
+                <div class="panel-bottom bg-reverse">
+                    <p class="size-h1"></p>
+                    <p class="text-muted"><h3><b>私人定制！</b></h3></p>
+                    <p>根据您的需要，我们为您独家定制收费标准！</p>
+                    <button type="button" style="margin-top:15px;" data-toggle="modal"  data-target="#myModal2" class="btn btn-primary">联系我们</button>
+                </div>
+            </section>
 		</div>
 	</div>
-	<div class="row">
-		<div class="col-md-12 paid_footer page page-contact">
-			<div class="contact-info-container clearfix">
-        		<ul class="contact-info">
-            		<li><i class="fa fa-map-marker"></i><span>1234 Durfee Ave, Newark NJ</span></li>
-           	 		<li><i class="fa fa-phone"></i><span>123 4567</span></li>
-            		<li><i class="fa fa-envelope-o"></i><span><a href="mailto:contact@mail.com">contact@mail.com</a></span></li>
-        		</ul>
-    		</div>
-		</div>
-	</div>
-<!-- Modal -->
 	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  		<div class="modal-dialog">
-	   		<div class="modal-content">
-		      	<div class="modal-header">
-		        	<button type="button" class="close" data-dismiss="modal">
-		        		<span aria-hidden="true">&times;</span>
-		        		<span class="sr-only">Close</span>
-		        	</button>
-		        <h4 class="modal-title" id="myModalLabel">确认信息</h4>
-		      	</div>
-		      	<div class="modal-body">
-		        	<span><b><h4>您确认购买此应用吗？点击确认跳转到付费页面</h4></b></span>
-		        	<span><p><h5>包年购买，享受更多优惠！</h5></p></span>
-		      	</div>
-		      	<div class="modal-footer">
-		        	<button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-		        	<button type="button" class="btn btn-primary">确认</button>
-		      	</div>
-		    </div>
-	  	</div>
+		<div class="modal-dialog">
+		   	<div class="modal-content">
+			    <div class="modal-header">
+			        <button type="button" class="close" data-dismiss="modal">
+			        	<span aria-hidden="true">&times;</span>
+			        	<span class="sr-only">Close</span>
+			        </button>
+			        <h4 class="modal-title" id="myModalLabel">Letto微信平台</h4>
+			    </div>
+			    <div class="modal-body">
+			      	<h3><span><b>确认信息！</b></span></h3>
+			        <span><b><h4>您确认要购买这个应用吗？</h4></b></span>
+			        <span><p><h5>包年购买，享受更多优惠！</h5></p></span>
+			    </div>
+			    <div class="modal-footer">
+			        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+			         <a href="#/pages/payMent"><button ng-click="modalDisabled()" type="button"  class="btn btn-primary">确认</button></a>
+			        
+			    </div>
+		  	</div>
+		</div>
+	</div>
+	<div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel2" aria-hidden="true">
+		<div class="modal-dialog">
+		   	<div class="modal-content">
+			    <div class="modal-header">
+			        <button type="button" class="close" data-dismiss="modal">
+			        	<span aria-hidden="true">&times;</span>
+			        	<span class="sr-only">Close</span>
+			        </button>
+			        <h4 class="modal-title" id="myModalLabel2">Letto微信平台</h4>
+			    </div>
+			    <div class="modal-body">
+			      	<h3><span><b>联系方式：</b></span></h3>
+			        <span><b><h4>热线电话：800 820 8820</h4></b></span>
+			        <span><p><h4>电子邮件：zhiwehu@gmail.com</h5></p></span>
+			    </div>
+			    <div class="modal-footer">
+			        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+			    </div>
+		  	</div>
+		</div>
 	</div>
 </div>

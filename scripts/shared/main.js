@@ -25,8 +25,12 @@
                 };
             }
         ])
-
-        .controller('appsList',['$scope','appService',function ($scope,appService){               
+        .controller('appNeedPaid' ,['$scope', function ($scope){
+            $scope.modalDisabled = function (){
+                $(".modal-backdrop").hide();
+            }
+        }])
+        .controller('appsList',['$scope','appService',function ($scope,appService){
                 $scope.apps = [
                 {
                     title:"微信商城",
