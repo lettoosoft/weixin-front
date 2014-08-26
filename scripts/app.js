@@ -28,8 +28,8 @@
                 templateUrl: 'views/pages/reset.html'
             }).when('/pages/detail/:appId', {
                 templateUrl: 'views/pages/detail.html'
-            }).when('/pages/payMent',{
-                templateUrl:'views/pages/payMent.html'
+            }).when('/pages/payMent', {
+                templateUrl: 'views/pages/payMent.html'
             }).otherwise({
                 redirectTo: '/404'
             });
@@ -45,11 +45,13 @@
 
                 var url = $.trim($location.path());
                 if ($location.path() != '' && $location.path != 'landingPage' && url != '/') {
-                    LoginService.get_currentuser();
+                    // LoginService.isLoggedIn() 应该先执行，以便从cookie里取回auth_key放到http header里
+                    // 然后再执行LoginService.get_currentuser()去判断是否登录。
                     if (!LoginService.isLoggedIn()) {
                         LoginService.saveAttemptUrl();
                         $location.path('/pages/signin');
-                        }
+                    }
+                    LoginService.get_currentuser();
                 }
 
                 $rootScope.$on('event:auth-loginRequired', function (e, rejection) {
