@@ -1,50 +1,55 @@
-<nav class="navbar navbar-default" style="height:53px;margin-bottom:15px;" role="navigation">
-    <div class="container-fluid">
-        <div class="navbar-header" style="float:left">
-            <a class="navbar-brand" href=""><b>应用商店<b></a>
+<div>
+    <nav class="navbar navbar-default" style="height:53px;margin-bottom:15px;" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header" style="float:left">
+                <a class="navbar-brand" href=""><b>应用商店<b></a>
+            </div>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" style="float:right">
+                <form class="navbar-form navbar-left"role="search">
+                    <button onclick="window.location='#/pages/paid'" type="submit" class="btn btn-primary">购买应用</button>
+                </form> 
+                <ul class="nav navbar-nav">
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown"><b>应用分类</b> 
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a href="#">教育</a></li>
+                            <li><a href="#">商业</a></li>
+                            <li><a href="#">软件</a></li>
+                            <li class="divider"></li>
+                            <li><a href="#">政务</a></li>
+                            <li class="divider"></li>
+                            <li><a href="#">汽车</a></li>
+                        </ul>
+                    </li>
+                </ul>
+               
+                <form class="navbar-form navbar-left"role="search">
+                    <div class="input-group">
+                        <input type="text" style="border-radius:5px;" class="form-control" placeholder="查找应用">
+                    </div>
+                    <button type="submit" class="btn btn-primary">查找</button>
+                </form>
+            </div>
         </div>
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" style="float:right">
-            <ul class="nav navbar-nav">
-                <li class="dropdown">
-                    <a href="" class="dropdown-toggle" data-toggle="dropdown"><b>应用分类</b> 
-                        <span class="caret"></span>
-                    </a>
-                    <ul class="dropdown-menu" role="menu">
-                        <li><a href="#">教育</a></li>
-                        <li><a href="#">商业</a></li>
-                        <li><a href="#">软件</a></li>
-                        <li class="divider"></li>
-                        <li><a href="#">政务</a></li>
-                        <li class="divider"></li>
-                        <li><a href="#">汽车</a></li>
-                    </ul>
-                </li>
-            </ul>
-            <form class="navbar-form navbar-left"role="search">
-                <div class="input-group">
-                    <input type="text" style="border-radius:5px;" class="form-control" placeholder="查找应用">
-                </div>
-                <button type="submit" class="btn btn-primary">查找</button>
-            </form>
-        </div>
-    </div>
-</nav>
-<apps-list>
-</apps-list>
-<div class="container">
-    <div class="row">
-        <div class="col-md-6 col-md-offset-3" style="text-align: center">
-            <ul class="pagination">
-                <li><a href="#">&laquo;</a></li>
-                <li><a href="#">1</a></li>
-                <li><a href="#">2</a></li>
-                <li><a href="#">3</a></li>
-                <li><a href="#">4</a></li>
-                <li><a href="#">5</a></li>
-                <li><a href="#">&raquo;</a></li>
-            </ul>
+    </nav>
+    <apps-list>
+    </apps-list>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-md-offset-3" style="text-align: center">
+                <ul class="pagination">
+                    <li><a href="#">&laquo;</a></li>
+                    <li><a href="#">1</a></li>
+                    <li><a href="#">2</a></li>
+                    <li><a href="#">3</a></li>
+                    <li><a href="#">4</a></li>
+                    <li><a href="#">5</a></li>
+                    <li><a href="#">&raquo;</a></li>
+                </ul>
+            </div>
         </div>
     </div>
 </div>
-
 
