@@ -31,26 +31,8 @@
             }
         }])
         .controller('appsList',['$scope','appService',function ($scope,appService){
-                $scope.apps = [
-                {
-                    title:"微信商城",
-                    thumbnail_url:"images/weixinshangcheng.png",
-                    description:"小微信也有大商城，电商轻松走入微信",
-                    rate:"9",
-                    install_count:"1000",
-                    id:1
-                },
-                {
-                    title:"微信",
-                    thumbnail_url:"images/weixinshangcheng.png",
-                    description:"小微信也有大商城，",
-                    rate:"2",
-                    install_count:2,
-                    id:2
-                }
 
-                ];
-                $scope.addedApp=[];
+                appService.select($scope);
                 $scope.addApp=function(item){
                     appService.addApp($scope.addedApp,item);
                     $scope.$emit('to-parent', 'parent');

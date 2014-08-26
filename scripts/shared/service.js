@@ -210,16 +210,9 @@ angular.module('app.services', [])
         var service = {
             // 获取微信列表
             select:function(scope){
-                var url = $rootScope.apiHost +  '/api/v1/publicaccount/';
+                var url = $rootScope.apiHost +  '/api/v1/weixinapp/';
                 $http.get(url).success(function(data){
-                    scope.weixin = data.objects;
-                    scope.weixin_num = data.objects.length;
-                    var apps=[
-                        {"id":1,"title":"失物招领","status":0,"dateline":"2015年9月1日","switch":true},
-                        {"id":2,"title":"吃货口袋","status":1,"dateline":"2015年9月1日","switch":false},
-                        {"id":3,"title":"表白墙","status":0,"dateline":"2015年9月1日","switch":true}
-                    ]
-                    scope.apps=apps;
+                    scope.apps=data.objects;
                 });
             },
             addApp:function(addedApp,app){                                
