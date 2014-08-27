@@ -103,7 +103,7 @@
                 };
                 $scope.signUpSuccess = function (){
                     $scope.success = true;
-                }
+                };fcu
                 $scope.explain = function () {
                     RegEpxService.explain($scope);
                 };
