@@ -91,6 +91,7 @@ angular.module('app.services', [])
                 $http.post(url)
                     .success(function (data, status, headers, config) {
                         $rootScope.user = data;
+                        $rootScope.$broadcast('event:get_currentuser_successed');
                     })
                     .error(function (data, status, headers, config) {
                         console.log("Error occurred.  Status:" + status);

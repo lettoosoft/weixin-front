@@ -58,13 +58,15 @@
                     LoginService.get_currentuser();
                 }
 
-                $rootScope.$on('event:auth-loginRequired', function (e, rejection) {
-                    /*delete $cookies.is_login;
-                     delete $cookies.authorization;
-                     AuthenticationService.saveAttemptUrl();
-                     $location.path('/access/signin');
-                     //$state.go('access.signin', {}, {reload: true, inherit: false});*/
+                $rootScope.$on('event:get_currentuser_successed', function (e, rejection) {
+                    if ($rootScope.user.email_verified) {
+                        $location.path('/dashboard');
+                    } else {
+                        $location.path('/needVerify');
+                    }
+                });
 
+                $rootScope.$on('event:auth-loginRequired', function (e, rejection) {
                     $location.path('/pages/signin');
                 });
 
@@ -74,8 +76,6 @@
                     } else {
                         $location.path('/needVerify');
                     }
-                    //AuthenticationService.redirectToAttemptedUrl();
-                    //$state.go('app.dashboard', {}, {reload: true, inherit: false});
                 });
 
                 $rootScope.$on('event:auth-logout-complete', function () {
