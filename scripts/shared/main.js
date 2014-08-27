@@ -11,7 +11,7 @@
                     if ($.trim(path)=='/'){
                         return true;
                     }else{
-                        return _.contains(['/404','/pages/500', '/pages/login', '/pages/signin', '/pages/signin1', '/pages/signin2', '/pages/signup', '/pages/signup1', '/pages/signup2', '/pages/forgot', '/pages/lock-screen','/landingPage'], path);
+                        return _.contains(['/404','/pages/notSensitization','/pages/500', '/pages/login', '/pages/signin', '/pages/signin1', '/pages/signin2', '/pages/signup', '/pages/signup1', '/pages/signup2', '/pages/forgot', '/pages/lock-screen','/landingPage'], path);
                     }
                 };
 
@@ -38,21 +38,9 @@
                     $scope.$emit('to-parent', 'parent');
                 }
             }])
-        .controller('AppDetailController',['$scope','$routeParams',
-            function ($scope,$routeParams){
-                $scope.appId = $routeParams.appId;
-                $scope.myInterval = 5000;
-                var slides = $scope.slides = [];
-                $scope.addSlide = function() {
-                    var newWidth = 700 + slides.length;
-                    slides.push({
-                        image: 'http://placekitten.com/' + newWidth + '/300',
-                    });
-                };
-                for (var i=0; i<4; i++) {
-                    $scope.addSlide();
-                }
-
+        .controller('AppDetailController',['appService','$scope','$routeParams',
+            function (appService,$scope,$routeParams){
+                appService.selectDetail($scope);
         }])
         .controller('landingPage',[
             function ($scope){

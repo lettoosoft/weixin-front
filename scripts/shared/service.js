@@ -206,14 +206,24 @@ angular.module('app.services', [])
         };
         return service;
     }])
-    .factory('appService', ['$http','$rootScope',function ($http,$rootScope) {
+    .factory('appService', ['$http','$rootScope','$routeParams',function ($http,$rootScope,$routeParams) {
         var service = {
             // 获取微信列表
             select:function(scope){
                 var url = $rootScope.apiHost +  '/api/v1/weixinapp/';
                 $http.get(url).success(function(data){
-                    scope.apps=data.objects;
+                    scope.apps=data.objects; 
                 });
+            },
+            selectDetail:function($scope){
+                var url = $rootScope.apiHost +  '/api/v1/weixinapp/';
+                $http.get(url).success(function(data){
+                    for (var i = 0; i < data.objects.length; i++) {
+                         if (data.objects[i].id == $routeParams.appId ) {
+                            $scope.app = data.objects[i];
+                         };
+                     }; 
+                });                
             },
             addApp:function(addedApp,app){                                
                 addedApp.push(app);
