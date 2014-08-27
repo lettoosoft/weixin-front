@@ -67,14 +67,11 @@
                     <li class="list-group-item">
                         <span class="badge badge-info">1</span>
                         <i class="fa fa-heart-o"></i>
-                        新任务
+                        应用推荐
                     </li>
 
                 </ul>
             </div>
-
-
-
           
         </div>
         <div class="col-md-6">
@@ -94,7 +91,6 @@
                                         <input type="text" ng-model="user.profile.address" class="form-control">                          
                                     </span>                                     
                                 </li>
-
                                 <li>
                                     <span class="icon glyphicon glyphicon-earphone"></span>
                                     <label>联系方式</label>
@@ -103,7 +99,6 @@
                                         <input type="text" ng-model="user.profile.tel" class="form-control">                        
                                     </span>                                     
                                 </li>
-
                                 <li>
                                     <span class="icon fa fa-qq"></span>
                                     <label>QQ</label>
@@ -170,24 +165,24 @@
                                         <input type="text" ng-model="w.title"  class="form-control" required>                        
                                     </span>                                                                                
                                 </li>
-                                <li style="height:48px;" ng-class="{'url-disable':!w.connect_status}" >                                    
-                                    <div class="col-md-9" >
+                                <li style="min-height:48px;" ng-class="{'url-disable':!w.connect_status}" >                                    
+                                    <div class="col-md-10" >
                                     <span class="icon glyphicon glyphicon-link"></span>
                                     <label>URL</label>
-                                    <span  ng-show="edit==0"  style=" vertical-align: center;"> {{w.callback_url}}
-
+                                    <span  ng-show="edit==0"  style=" vertical-align: center;"> 
+                                        {{w.callback_url}}
                                     </span>
                                     <span ng-show="edit==1" >
                                         <input type="email" ng-model="user.email" class="form-control" required>                        
                                    </span>                                     
                                     </div>
-                                    <div class="col-md-3" ng-show="edit==0">
+                                    <div class="col-md-2" ng-show="edit==0">
                                         <label class="switch switch-success"><input type="checkbox" disabled="true" ng-model="w.connect_status"  checked><i></i>
                                     </div>
                                     </span>
                                 </li>
                                 <li style="height:48px;">                                    
-                                    <div class="col-md-9">
+                                    <div class="col-md-10">
                                     <span class="icon glyphicon glyphicon-pushpin"></span>
                                     <label>TOKEN</label>
                                     <span  ng-show="edit==0"  style=" vertical-align: center;">{{w.token}} 
@@ -196,7 +191,7 @@
                                         <input type="email" ng-model="user.email" class="form-control" required>                        
                                    </span>                                     
                                     </div>
-                                    <div class="col-md-3" ng-show="edit==0">
+                                    <div class="col-md-2" ng-show="edit==0">
                                        <span class="icon glyphicon glyphicon-question-sign"></span><a href="#nogo">什么是Token?</a>
                                     </div>
                                     </span>
@@ -248,7 +243,7 @@
     
         <form name="signUp_form" class="form-horizontal form-inline" role="form"  ng-submit="signUp_form.$valid && Update(user.profile)" novalidate>
             <div class="panel panel-default">
-                <div class="panel-heading"><strong><span class="glyphicon glyphicon-th"></span> 添加微信{{way}}</strong></div>
+                <div class="panel-heading"><strong><span class="glyphicon glyphicon-th"></span> 添加微信</strong></div>
                 <div class="panel-body " >
                     <ol class="breadcrumb-alt">
                         <li ><a href="javascript:;" ng-click="way=1" ng-class="{active:way==1}" style="font-size:16px;">
@@ -268,8 +263,8 @@
                                     <div class="container">
                                         <div class="col-md-4" >
                                             <span class="icon glyphicon glyphicon-user"></span>
-                                            <label>登录邮箱</label>
-                                            <input type="text"  class="form-control" ng-model="newUser.username" required>                    
+                                            <label>账号</label>
+                                            <input type="text"  class="form-control" placeholder="邮箱/微信号/QQ号" ng-model="newUser.username" required>                    
                                         </div>
                                         <div class="col-md-4" style="top:5px;" ng-show="edit==0">
                                             <span class="icon glyphicon glyphicon-info-sign"></span>请输入登录微信公众平台的邮箱和密码
@@ -279,8 +274,8 @@
                                 <li style="height:55px;" ng-class="{'url-disable':url%2==1}" >                                    
                                     <div class="col-md-8" >
                                     <span class="icon glyphicon glyphicon-lock"></span>
-                                    <label>登录密码</label>
-                                        <input type="password" ng-model="newUser.password" class="form-control" required>                                        
+                                    <label>密码</label>
+                                        <input type="password" placeholder="登录密码" ng-model="newUser.password" class="form-control" required>                                        
                                     </div>
 
                                     </span>
@@ -312,20 +307,24 @@
                                         </div>
                                     </div>
                                 </li> 
-                                <li style="height:55px;" ng-class="{'url-disable':url%2==1}" >                                    
-                                    <div class="col-md-8" >
-                                    <span class="icon glyphicon glyphicon-lock"></span>
-                                    <label>微信名称</label>
-                                        <input type="text" ng-model="addItem.title"  class="form-control" required>                                                      
+                                <li style="height:55px;" ng-class="{'url-disable':url%2==1}" >  
+                                    <div class="container">                                  
+                                        <div class="col-md-4" >
+                                        <span class="icon glyphicon glyphicon-lock"></span>
+                                        <label>微信名称</label>
+                                            <input type="text" ng-model="addItem.title"  class="form-control" required>                                                      
+                                        </div>
+                                        <div class="col-md-4" style="top:5px;" ng-show="edit==0">
+                                            <span class="icon glyphicon glyphicon-question-sign"></span>
+                                            <a href="http://mp.weixin.qq.com/wiki/index.php?title=%E6%8E%A5%E5%85%A5%E6%8C%87%E5%8D%97" target="_blank">
+                                                如何绑定?
+                                            </a>
+                                        </div>
+                                        </span>
                                     </div>
-
-                                    </span>
-                                </li>                                  
-                                                             
-
+                                </li>                                                                                             
                                 <li class="text-right">
                                     <button type="button" class="btn btn-primary"  ng-click="add(addItem)">添加</button>
-
                                 </li>
                             </ul>                            
                         </div>
@@ -342,7 +341,7 @@
         </div>        
     </div>
     </div>
-    <div class="panel panel-default">
+    <div class="panel panel-default" style="display:none">
         <div class="panel-heading">
             <h3 class="panel-title">用户分析</h3>
         </div>
