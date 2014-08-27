@@ -99,6 +99,7 @@ angular.module('app.services', [])
                 $http.post(url)
                     .success(function (data, status, headers, config) {
                         $rootScope.user = data;
+                        $rootScope.$broadcast('event:get_currentuser_successed');
                     })
                     .error(function (data, status, headers, config) {
                         console.log("Error occurred.  Status:" + status);
@@ -116,20 +117,6 @@ angular.module('app.services', [])
                     .success(function (data, status, headers, config) {
                         //调用controller里面的方法
                         $scope.signUpSuccess();
-
-                        $rootScope.user = data;
-                        var auth = 'ApiKey ' + data.username + ':' + data.apikey;
-                        $http.defaults.headers.common.Authorization = auth;  // Step 1
-
-                        // Save auth apikey in cookie
-                        $cookies.is_login = true;
-                        $cookies.authorization = auth;
-
-                        // Need to inform the http-auth-interceptor that
-                        // the user has logged in successfully.  To do this, we pass in a function that
-                        // will configure the request headers with the authorization token so
-                        // previously failed requests(aka with status == 401) will be resent with the
-                        // authorization token placed in the header
                     })
                     .error(function (data) {
                         $scope.disabled = false;
