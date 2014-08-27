@@ -6,8 +6,10 @@
                 templateUrl: 'landingPage.html'
             }).when('/dashboard', {
                 templateUrl: 'views/dashboard.html'
+            }).when('/welcome', {
+                templateUrl: 'views/welcome.html'
             }).when('/needVerify', {
-                templateUrl: 'views/dashboard.html'
+                templateUrl: 'views/needVerify.html'
             }).when('/landingPage', {
                 templateUrl: 'landingPage.html'
             }).when('/pages/signin', {
