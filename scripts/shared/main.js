@@ -101,6 +101,9 @@
                     $scope.disabled = true;
                     signUpService.signUp(signup,$scope);
                 };
+                $scope.reSendEmai = function () {
+                    signUpService.reSendEmail();
+                }
                 $scope.signUpSuccess = function (){
                     $scope.success = true;
                 }

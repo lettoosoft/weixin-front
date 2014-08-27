@@ -37,6 +37,14 @@ angular.module('app.services', [])
                 var url = $rootScope.apiHost + '/api/v1/user/login/';
                 $http.post(url, signin, { ignoreAuthModule: true })
                     .success(function (data, status, headers, config) {
+                        //添加判断，注册用户是否激活
+
+
+
+
+
+
+                        //
                         $rootScope.user = data;
                         var auth = 'ApiKey ' + data.username + ':' + data.apikey;
                         $http.defaults.headers.common.Authorization = auth;  // Step 1
@@ -126,6 +134,17 @@ angular.module('app.services', [])
                     .error(function (data) {
                         $scope.disabled = false;
                     });
+            },
+            reSendEmail:function () {
+                console.log(12312123);
+                var url = $rootScope.apiHost + '/api/v1/createuser/';
+                return $http.post(url)
+                    .success(function (){
+
+                    })
+                    .error(function (data){
+
+                    })
             }
         };
         return service;

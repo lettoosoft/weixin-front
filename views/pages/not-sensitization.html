@@ -1,4 +1,4 @@
-<div class="page-signup" >
+<div class="page-signup" ng-controller="singUpctrl">
     <div class="signin-header">
         <div class="container text-center">
             <section class="logo">
@@ -9,16 +9,22 @@
     <div class="main-body">
         <div class="container">
             <div class="form-container">
-			 	<div class="alert alert-warning alert-dismissible" role="alert" >
-                    <strong><span class="glyphicon glyphicon-warning-sign">&nbsp;</span></strong>您的账号还没有激活，请检查您的邮箱中是否有来自<b>Lettoo</b>的激活邮件!
-                    <div class="form-group"  ng-hide="success">
-                        <button 
-                        	type="submit" 
-                        	data-ng-disabled="disabled || passwordvalid(check) || signup_form.$invalid" 
-                        	class="btn btn-primary btn-block btn-lg">重新发送激活邮件
-                        </button>
-                    </div>
-                </div>
+            	<form ng-submit="reSendEmai()">
+				 	<div class="alert alert-warning alert-dismissible" role="alert" >
+	                    <strong>
+	                    	<span class="glyphicon glyphicon-warning-sign" style="line-height:25px;text-align:center">&nbsp;您的账号还没有激活，请检查您的邮箱中是否有来自<b>Lettoo</b>的激活邮件!
+	                    	</span>
+	                    </strong>
+	                    <hr/>
+	                    <div class="form-group"  ng-hide="success">
+	                        <button 
+	                        	type="submit"
+	                        	data-ng-disabled="disabled" 
+	                        	class="btn btn-primary btn-block btn-lg">重新发送激活邮件
+	                        </button>
+	                    </div>
+	                </div>
+	            </form>
             </div>
         </div>            
     </div>
