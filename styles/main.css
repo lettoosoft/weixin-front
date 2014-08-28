@@ -14570,3 +14570,17 @@ button.toast-close-button {
 .alert_text_style{
   text-align: center;
 }
+#privacy-content{
+  border: 3px solid;
+  border-radius: 10px;
+
+}
+#bottom-line{
+  border-bottom: 3px solid ;
+    text-align:center;
+}
+.text-style{
+  list-style-type:none;
+  line-height: 25px; 
+  margin-left: -40px;
+}

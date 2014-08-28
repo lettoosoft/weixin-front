@@ -5,6 +5,8 @@
             return $routeProvider
               .when('/', {
                 templateUrl: 'landingPage.html'
+            }).when('/pages/UserAgreement',{
+                templateUrl:'views/pages/User-agreement.html'
             }).when('/dashboard', {
                 templateUrl: 'views/dashboard.html'
             }).when('/welcome', {
@@ -49,7 +51,7 @@
                 $rootScope.user = null;
 
                 var url = $.trim($location.path());
-                if (url != '' && url != 'landingPage' && url != '/' && url != '/welcome' && url != '/needVerify') {
+                if (url != '/pages/UserAgreement'  && url != '/pages/forgot' && url != '/pages/signup' && url != '' && url != 'landingPage' && url != '/' && url != '/welcome' && url != '/needVerify') {
                     // LoginService.isLoggedIn() 应该先执行，以便从cookie里取回auth_key放到http header里
                     // 然后再执行LoginService.get_currentuser()去判断是否登录。
                     if (!LoginService.isLoggedIn()) {
