@@ -14567,3 +14567,6 @@ button.toast-close-button {
   padding: 10px;
   border-bottom: 3px solid #E6E6FA;
 }
+.alert_text_style{
+  text-align: center;
+}

@@ -122,15 +122,15 @@ angular.module('app.services', [])
                         $scope.disabled = false;
                     });
             },
-            reSendEmail:function () {
+            reSendEmail:function ($scope) {
                 var url = $rootScope.apiHost + '/api/v1/user/resend/';
                   return $http.post(url,{email:$rootScope.user.email})
                     .success(function (data){
-                        console.log(data);
+                        $scope.success = true;
                     })
                     .error(function (data){
-                        console.log(data);
-
+                        $scope.error = true;
+                        $scope.disable = false;
                     })
             }
         };

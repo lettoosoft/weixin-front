@@ -97,7 +97,8 @@
             }])
         .controller('ReSendEmail',['signUpService','$scope',function (signUpService,$scope){
             $scope.reSendEmai = function (){
-                signUpService.reSendEmail();
+                $scope.disable = true;
+                signUpService.reSendEmail($scope);
             };
         }])
         .controller('singUpctrl', [
