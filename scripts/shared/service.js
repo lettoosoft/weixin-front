@@ -116,20 +116,20 @@ angular.module('app.services', [])
                 return $http.post(url, signup)
                     .success(function (data, status, headers, config) {
                         //调用controller里面的方法
-                        $scope.signUpSuccess();
+                        $rootScope.$broadcast('event:sign_up_success');
                     })
                     .error(function (data) {
                         $scope.disabled = false;
                     });
             },
             reSendEmail:function () {
-                console.log(12312123);
-                var url = $rootScope.apiHost + '/api/v1/createuser/';
-                return $http.post(url)
-                    .success(function (){
-
+                var url = $rootScope.apiHost + '/api/v1/user/resend/';
+                  return $http.post(url,{email:$rootScope.user.email})
+                    .success(function (data){
+                        console.log(data);
                     })
                     .error(function (data){
+                        console.log(data);
 
                     })
             }

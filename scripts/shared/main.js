@@ -11,7 +11,7 @@
                     if ($.trim(path)=='/'){
                         return true;
                     }else{
-                        return _.contains(['/404','/pages/notSensitization','/pages/500', '/pages/login', '/pages/signin', '/pages/signin1', '/pages/signin2', '/pages/signup', '/pages/signup1', '/pages/signup2', '/pages/forgot', '/pages/lock-screen','/landingPage', '/welcome'], path);
+                        return _.contains(['/404','/needVerify','/pages/notSensitization','/pages/500', '/pages/login', '/pages/signin', '/pages/signin1', '/pages/signin2', '/pages/signup', '/pages/signup1', '/pages/signup2', '/pages/forgot', '/pages/lock-screen','/landingPage', '/welcome'], path);
                     }
                 };
 
@@ -95,18 +95,24 @@
                     }
                 }
             }])
+        .controller('ReSendEmail',['signUpService','$scope',function (signUpService,$scope){
+            $scope.reSendEmai = function (){
+                signUpService.reSendEmail();
+            };
+        }])
         .controller('singUpctrl', [
-            '$scope', 'signUpService', 'RegEpxService', function ( $scope, signUpService, RegEpxService) {
+            '$rootScope','$scope', 'signUpService', 'RegEpxService', function ( $rootScope, $scope, signUpService, RegEpxService) {
                 $scope.signup = function (signup) {
                     $scope.disabled = true;
                     signUpService.signUp(signup,$scope);
                 };
-                $scope.reSendEmai = function () {
-                    signUpService.reSendEmail();
-                }
-                $scope.signUpSuccess = function (){
-                    $scope.success = true;
-                };
+                $rootScope.$on('event:sign_up_success', 
+                    function () {
+                        //广播事件时将rootScope注入到了sign_up_success中。
+                        //如果在function（$scope）中添加$scope变量，则实际上是$scope = $rootScope。
+                        $scope.success = true;
+                    }
+                );
                 $scope.explain = function () {
                     RegEpxService.explain($scope);
                 };
@@ -130,7 +136,7 @@
                     } else {
                         $scope.danger2 = false;
                     }
-                }
+                };
             }])
         .controller('resetCtrl', [
             '$scope', 'resetService', function ($scope, resetService) {

@@ -1,1 +1,32 @@
-你的帐号尚未激活，请查看邮件点击激活按钮
+	<div class="page-signup" ng-controller="ReSendEmail">
+	    <div class="signin-header">
+	        <div class="container text-center">
+	            <section class="logo">
+	            {{main.brand}}
+	            </section>
+	        </div>
+	    </div>
+		<div class="row" style="margin-top:30px;">
+			<div class="col-md-6 col-md-offset-3">
+				<div class="jumbotron" style="background-color:#d9edf6;text-align:center;">
+			  		<h2>您还没有激活您的账号！</h2>
+			  		<h2>请通过邮件链接激活您的账号!</h2>
+			  		<div class="col-md-offset-2 col-md-8">
+						<div class="alert alert-success alert-dismissible" role="alert" >
+					    <strong><span class="glyphicon glyphicon-warning-sign">&nbsp;激活邮件已经重新发送，请检查您注册时使用的邮箱！</span></strong></div>
+					<hr/>
+				</div>
+				  	<div class="row" style="margin-top:30px;">
+					  	<div class="col-md-4 col-md-offset-4">
+					  		<p>
+					  			<button class="btn btn-primary btn-lg" type="submit" ng-click="reSendEmai()">
+					  				重新发送邮件
+					  			</button>
+					  		</p>
+					  	</div>
+				  	</div>
+				</div>
+			</div>
+		</div>
+	</div>
+<!-- api/v1/user/resend -->
