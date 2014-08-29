@@ -119,11 +119,15 @@
                     data.scope.$apply();
                 },
                 done: function (e, data) {
+                    
                     if (e.isDefaultPrevented()) {
                         return false;
                     }
-                    var that = this;
+                    var that = this;            
+                    data.scope.updateUser(data.result.url);
                     data.scope.$apply(function () {
+                        alert("上传成功！");
+                        window.location.href="#/pages/profile";
                         data.handleResponse.call(that, e, data);
                     });
                 },
