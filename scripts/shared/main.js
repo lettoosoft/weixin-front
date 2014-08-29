@@ -32,6 +32,11 @@
         }])
         .controller('appsList',['$scope','appService',function ($scope,appService){
 
+                $(".jsstar >li").hover(
+                    function(){$(this).css({"background-position":"left bottom"}).prev().trigger("mouseover")},
+                    function(){$(this).css({"background-position":"left top"}).prev().trigger("mouseout")})
+                .click(function(){alert($(this).attr("title"))});     
+            
                 appService.select($scope);
                 $scope.addApp=function(item){
                     appService.addApp($scope.addedApp,item);
