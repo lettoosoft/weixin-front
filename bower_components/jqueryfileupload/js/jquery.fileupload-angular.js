@@ -126,6 +126,8 @@
                     var that = this;            
                     data.scope.updateUser(data.result.url);
                     data.scope.$apply(function () {
+                        alert("上传成功！");
+                        window.location.href="#/pages/profile";
                         data.handleResponse.call(that, e, data);
                     });
                 },
