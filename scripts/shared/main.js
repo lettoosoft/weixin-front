@@ -28,7 +28,7 @@
             }
         ])
 
-
+        
         .controller('AppCtrl', [
             '$scope', '$location', '$rootScope', 'LoginService', '$cookies', function ($scope, $location, $rootScope, LoginService, $cookies) {
 
@@ -188,13 +188,18 @@
                 });
             }
         ])
-        .controller('DemoFileUploadController', [
-            '$scope', '$http', '$filter', '$window',
-            function ($scope, $http) {
+        .controller('DemoFileUploadController', ['$rootScope',
+            '$scope', '$http','UpdateUser', '$filter', '$window',
+            function ($rootScope,$scope, $http ,UpdateUser,$filter,$window) {
                 $scope.options = {
                     url: url
                 };
-
+                console.log($rootScope.user);
+                $scope.updateUser=function(thumbUrl){
+                   var profile=$rootScope.user.profile;
+                   profile.thumbUrl='http://121.40.126.220'+thumbUrl;
+                   UpdateUser.Update(profile,$scope);
+                };
                 if (!isOnGitHub) {
                     $scope.loadingFiles = true;
                     $http.get(url)
@@ -210,7 +215,6 @@
                 }
             }
         ])
-
         .controller('FileDestroyController', [
             '$scope', '$http',
             function ($scope, $http) {
@@ -243,7 +247,7 @@
                     };
                 }
             }
-        ])        
+        ])              
 
         .controller('DashboardCtrl', ['$scope', '$rootScope', '$http', '$location', function ($scope, $rootScope, $http, $location) {
             var url = $rootScope.apiHost + '/api/v1/me/';

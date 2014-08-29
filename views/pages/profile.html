@@ -42,8 +42,8 @@
                 <div class="panel-heading bg-primary clearfix">
                     <div class="col-md-2" ng-mouseover="sel_img=1" ng-mouseout="sel_img=0">
                     <a href="" class="pull-left profile " style="">
-                        <img alt=""  src="images/no-img.jpg" class="img-circle img80_80"  >
-                        <div ng-show="sel_img" class="sel-img text-center"><div class="test">选择图片</div></div>
+                        <img alt=""  ng-src="{{user.profile.thumbUrl}}" class="img-circle img80_80"  >
+                        <div ng-show="sel_img" class="sel-img text-center" onclick="window.location.href='#/pages/avtar'"><div class="test">选择图片</div></div>
                     </a>
    
                     </div>

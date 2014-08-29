@@ -164,7 +164,6 @@ angular.module('app.services', [])
                 return $http.put(url,profile).success(function (data) {
             //IMPORTANT: You need to activate always_return_data in your ressource (see example)
                     $rootScope.user=data;
-
                     console.log("success");
                     console.log(data);
                 }).error(function (data) {

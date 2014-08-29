@@ -68,10 +68,10 @@
                     <div class="thumbnail" data-ng-switch-when="true">                       
                             <img width="300px"data-ng-src="{{file.thumbnailUrl}}" alt="">                                                                      
                     </div>
+                    {{message}}
                     <div class="preview" data-ng-switch-default data-file-upload-preview="file">
                         
                     </div>
-                    {{file.$response()}}
                 </td>
             </tr>
             <tr>
@@ -82,7 +82,7 @@
                     </button>
                     <button type="button" class="btn btn-warning cancel" data-ng-click="file.$cancel()" data-ng-hide="!file.$cancel">
                         <i class="glyphicon glyphicon-ban-circle"></i>
-                        <span>Cancel</span>
+                        <span>取消</span>
                     </button>
                     <button data-ng-controller="FileDestroyController" type="button" class="btn btn-danger destroy" data-ng-click="file.$destroy()" data-ng-hide="!file.$destroy">
                         <i class="glyphicon glyphicon-trash"></i>
@@ -97,7 +97,7 @@
                 <span class="btn btn-success fileinput-button" ng-class="{disabled: disabled}">
                     <i class="glyphicon glyphicon-plus"></i>
                     <span>选择图片</span>
-                    <input type="file" name="files[]" multiple ng-disabled="disabled">
+                    <input type="file" name="photo" multiple ng-disabled="disabled">
                 </span>
 <!--                 <button type="button" class="btn btn-primary start" data-ng-click="submit()">
                     <i class="glyphicon glyphicon-upload"></i>

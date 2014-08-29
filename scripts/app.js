@@ -27,8 +27,8 @@
                 templateUrl: 'views/pages/apps.html'
             }).when('/pages/profile', {
                 templateUrl: 'views/pages/profile.html'
-            }).when('/pages/avtor', {
-                templateUrl: 'views/pages/avtor.html'                
+            }).when('/pages/avtar', {
+                templateUrl: 'views/pages/avtar.html'                
             }).when('/pages/paid', {
                 templateUrl: 'views/pages/paid.html'
             }).when('/pages/reset', {

@@ -119,10 +119,12 @@
                     data.scope.$apply();
                 },
                 done: function (e, data) {
+                    
                     if (e.isDefaultPrevented()) {
                         return false;
                     }
-                    var that = this;
+                    var that = this;            
+                    data.scope.updateUser(data.result.url);
                     data.scope.$apply(function () {
                         data.handleResponse.call(that, e, data);
                     });
