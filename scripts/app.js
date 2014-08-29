@@ -2,12 +2,17 @@
     'use strict';  
     angular.module('app', ['ngRoute','ngAnimate', 'http-auth-interceptor', 'ngCookies', 'ui.bootstrap', 'easypiechart', 'mgo-angular-wizard', 'textAngular', 'ui.tree', 'ngMap', 'ngTagsInput', 'app.ui.ctrls', 'app.ui.directives', 'app.ui.services', 'app.controllers', 'app.services', 'app.directives', 'app.form.validation', 'app.ui.form.ctrls', 'app.ui.form.directives', 'app.tables', 'app.map', 'app.task', 'app.localization', 'app.chart.ctrls', 'app.chart.directives', 'app.page.ctrls']).config([
         '$routeProvider', function ($routeProvider) {
-            return $routeProvider.when('/', {
+            return $routeProvider
+              .when('/', {
                 templateUrl: 'landingPage.html'
+            }).when('/pages/UserAgreement',{
+                templateUrl:'views/pages/User-agreement.html'
             }).when('/dashboard', {
                 templateUrl: 'views/dashboard.html'
+            }).when('/welcome', {
+                templateUrl: 'views/welcome.html'
             }).when('/needVerify', {
-                templateUrl: 'views/dashboard.html'
+                templateUrl: 'views/needVerify.html'
             }).when('/landingPage', {
                 templateUrl: 'landingPage.html'
             }).when('/pages/signin', {
@@ -32,6 +37,8 @@
                 templateUrl: 'views/pages/detail.html'
             }).when('/pages/payMent', {
                 templateUrl: 'views/pages/payMent.html'
+            }).when('/pages/notSensitization',{
+                templateUrl:'views/pages/not-sensitization.html'
             }).otherwise({
                 redirectTo: '/404'
             });
@@ -46,7 +53,7 @@
                 $rootScope.user = null;
 
                 var url = $.trim($location.path());
-                if ($location.path() != '' && $location.path != 'landingPage' && url != '/') {
+                if (url != '/pages/UserAgreement'  && url != '/pages/forgot' && url != '/pages/signup' && url != '' && url != 'landingPage' && url != '/' && url != '/welcome' && url != '/needVerify') {
                     // LoginService.isLoggedIn() 应该先执行，以便从cookie里取回auth_key放到http header里
                     // 然后再执行LoginService.get_currentuser()去判断是否登录。
                     if (!LoginService.isLoggedIn()) {
@@ -56,13 +63,15 @@
                     LoginService.get_currentuser();
                 }
 
-                $rootScope.$on('event:auth-loginRequired', function (e, rejection) {
-                    /*delete $cookies.is_login;
-                     delete $cookies.authorization;
-                     AuthenticationService.saveAttemptUrl();
-                     $location.path('/access/signin');
-                     //$state.go('access.signin', {}, {reload: true, inherit: false});*/
+                $rootScope.$on('event:get_currentuser_successed', function (e, rejection) {
+                    if ($rootScope.user.email_verified) {
+                        $location.path('/dashboard');
+                    } else {
+                        $location.path('/needVerify');
+                    }
+                });
 
+                $rootScope.$on('event:auth-loginRequired', function (e, rejection) {
                     $location.path('/pages/signin');
                 });
 
@@ -72,8 +81,6 @@
                     } else {
                         $location.path('/needVerify');
                     }
-                    //AuthenticationService.redirectToAttemptedUrl();
-                    //$state.go('app.dashboard', {}, {reload: true, inherit: false});
                 });
 
                 $rootScope.$on('event:auth-logout-complete', function () {

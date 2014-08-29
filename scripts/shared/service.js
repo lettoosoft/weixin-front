@@ -37,6 +37,14 @@ angular.module('app.services', [])
                 var url = $rootScope.apiHost + '/api/v1/user/login/';
                 $http.post(url, signin, { ignoreAuthModule: true })
                     .success(function (data, status, headers, config) {
+                        //添加判断，注册用户是否激活
+
+
+
+
+
+
+                        //
                         $rootScope.user = data;
                         var auth = 'ApiKey ' + data.username + ':' + data.apikey;
                         $http.defaults.headers.common.Authorization = auth;  // Step 1
@@ -91,6 +99,7 @@ angular.module('app.services', [])
                 $http.post(url)
                     .success(function (data, status, headers, config) {
                         $rootScope.user = data;
+                        $rootScope.$broadcast('event:get_currentuser_successed');
                     })
                     .error(function (data, status, headers, config) {
                         console.log("Error occurred.  Status:" + status);
@@ -107,25 +116,22 @@ angular.module('app.services', [])
                 return $http.post(url, signup)
                     .success(function (data, status, headers, config) {
                         //调用controller里面的方法
-                        $scope.signUpSuccess();
-
-                        $rootScope.user = data;
-                        var auth = 'ApiKey ' + data.username + ':' + data.apikey;
-                        $http.defaults.headers.common.Authorization = auth;  // Step 1
-
-                        // Save auth apikey in cookie
-                        $cookies.is_login = true;
-                        $cookies.authorization = auth;
-
-                        // Need to inform the http-auth-interceptor that
-                        // the user has logged in successfully.  To do this, we pass in a function that
-                        // will configure the request headers with the authorization token so
-                        // previously failed requests(aka with status == 401) will be resent with the
-                        // authorization token placed in the header
+                        $rootScope.$broadcast('event:sign_up_success');
                     })
                     .error(function (data) {
                         $scope.disabled = false;
                     });
+            },
+            reSendEmail:function ($scope) {
+                var url = $rootScope.apiHost + '/api/v1/user/resend/';
+                  return $http.post(url,{email:$rootScope.user.email})
+                    .success(function (data){
+                        $scope.success = true;
+                    })
+                    .error(function (data){
+                        $scope.error = true;
+                        $scope.disable = false;
+                    })
             }
         };
         return service;
@@ -206,14 +212,24 @@ angular.module('app.services', [])
         };
         return service;
     }])
-    .factory('appService', ['$http','$rootScope',function ($http,$rootScope) {
+    .factory('appService', ['$http','$rootScope','$routeParams',function ($http,$rootScope,$routeParams) {
         var service = {
             // 获取微信列表
             select:function(scope){
                 var url = $rootScope.apiHost +  '/api/v1/weixinapp/';
                 $http.get(url).success(function(data){
-                    scope.apps=data.objects;
+                    scope.apps=data.objects; 
                 });
+            },
+            selectDetail:function($scope){
+                var url = $rootScope.apiHost +  '/api/v1/weixinapp/';
+                $http.get(url).success(function(data){
+                    for (var i = 0; i < data.objects.length; i++) {
+                         if (data.objects[i].id == $routeParams.appId ) {
+                            $scope.app = data.objects[i];
+                         };
+                     }; 
+                });                
             },
             addApp:function(addedApp,app){                                
                 addedApp.push(app);

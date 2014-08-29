@@ -39,7 +39,7 @@
                     if ($.trim(path)=='/'){
                         return true;
                     }else{
-                        return _.contains(['/404','/pages/500', '/pages/login', '/pages/signin', '/pages/signin1', '/pages/signin2', '/pages/signup', '/pages/signup1', '/pages/signup2', '/pages/forgot', '/pages/lock-screen','/landingPage'], path);
+                        return _.contains(['/pages/UserAgreement','/404','/needVerify','/pages/notSensitization','/pages/500', '/pages/login', '/pages/signin', '/pages/signin1', '/pages/signin2', '/pages/signup', '/pages/signup1', '/pages/signup2', '/pages/forgot', '/pages/lock-screen','/landingPage', '/welcome'], path);
                     }
                 };
 
@@ -66,21 +66,9 @@
                     $scope.$emit('to-parent', 'parent');
                 }
             }])
-        .controller('AppDetailController',['$scope','$routeParams',
-            function ($scope,$routeParams){
-                $scope.appId = $routeParams.appId;
-                $scope.myInterval = 5000;
-                var slides = $scope.slides = [];
-                $scope.addSlide = function() {
-                    var newWidth = 700 + slides.length;
-                    slides.push({
-                        image: 'http://placekitten.com/' + newWidth + '/300',
-                    });
-                };
-                for (var i=0; i<4; i++) {
-                    $scope.addSlide();
-                }
-
+        .controller('AppDetailController',['appService','$scope','$routeParams',
+            function (appService,$scope,$routeParams){
+                appService.selectDetail($scope);
         }])
         .controller('landingPage',[
             function ($scope){
@@ -135,15 +123,25 @@
                     }
                 }
             }])
+        .controller('ReSendEmail',['signUpService','$scope',function (signUpService,$scope){
+            $scope.reSendEmai = function (){
+                $scope.disable = true;
+                signUpService.reSendEmail($scope);
+            };
+        }])
         .controller('singUpctrl', [
-            '$scope', 'signUpService', 'RegEpxService', function ( $scope, signUpService, RegEpxService) {
+            '$rootScope','$scope', 'signUpService', 'RegEpxService', function ( $rootScope, $scope, signUpService, RegEpxService) {
                 $scope.signup = function (signup) {
                     $scope.disabled = true;
                     signUpService.signUp(signup,$scope);
                 };
-                $scope.signUpSuccess = function (){
-                    $scope.success = true;
-                }
+                $rootScope.$on('event:sign_up_success', 
+                    function () {
+                        //广播事件时将rootScope注入到了sign_up_success中。
+                        //如果在function（$scope）中添加$scope变量，则实际上是$scope = $rootScope。
+                        $scope.success = true;
+                    }
+                );
                 $scope.explain = function () {
                     RegEpxService.explain($scope);
                 };
@@ -167,7 +165,7 @@
                     } else {
                         $scope.danger2 = false;
                     }
-                }
+                };
             }])
         .controller('resetCtrl', [
             '$scope', 'resetService', function ($scope, resetService) {
