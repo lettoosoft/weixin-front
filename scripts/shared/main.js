@@ -71,12 +71,11 @@
         .controller('RateStartController',function(){
             $(".jsstar >li").hover(
                 function(){
-                    $(this).css({"background-position":"left bottom"}).prev().trigger("mouseover")
+                    $(this).css({"background-position":"left bottom"}).prevAll().css({"background-position":"left bottom"})
                 },
                 function(){
-                    $(this).css({"background-position":"left top"}).prev().trigger("mouseout")
-                }).click(function(){alert($(this).attr("title"))
-            });
+                    $(this).css({"background-position":"left top"}).prevAll().css({"background-position":"left top"})
+                })
         })
         .controller('AppDetailController',['appService','$scope','$routeParams',
             function (appService,$scope,$routeParams){
