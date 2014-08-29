@@ -29,5 +29,3 @@
   ]);
 
 }).call(this);
-
-//# sourceMappingURL=UIService.js.map

@@ -93,5 +93,3 @@
         ])
         .value('redirectToUrlAfterLogin', { url: '/' });
 }).call(this);
-
-//# sourceMappingURL=app.js.map
