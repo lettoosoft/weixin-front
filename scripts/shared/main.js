@@ -58,14 +58,26 @@
                 $(".modal-backdrop").hide();
             }
         }])
-        .controller('appsList',['$scope','appService',function ($scope,appService){
+        .controller('appsList',['$scope','appService',function ($scope,appService){   
 
+      
+        
                 appService.select($scope);
                 $scope.addApp=function(item){
                     appService.addApp($scope.addedApp,item);
                     $scope.$emit('to-parent', 'parent');
                 }
             }])
+        .controller('RateStartController',function(){
+            $(".jsstar >li").hover(
+                function(){
+                    $(this).css({"background-position":"left bottom"}).prev().trigger("mouseover")
+                },
+                function(){
+                    $(this).css({"background-position":"left top"}).prev().trigger("mouseout")
+                }).click(function(){alert($(this).attr("title"))
+            });
+        })
         .controller('AppDetailController',['appService','$scope','$routeParams',
             function (appService,$scope,$routeParams){
                 appService.selectDetail($scope);

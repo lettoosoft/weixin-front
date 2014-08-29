@@ -44,5 +44,3 @@
   }]);
 }).call(this);
 
-//# sourceMappingURL=PageCtrl.js.map
-

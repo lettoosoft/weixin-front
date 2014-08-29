@@ -3,7 +3,7 @@
 		<div class=" col-md-7">
 			<div style="float:left">
 				<div class="detail_img">
-					<img src="images/weixinshangcheng2.png">
+					<img src="images/weixinshangcheng2.png" ng-src="{{app.thumbnail_url}}" > 
 				</div>
 			</div>
 			<div class="detail_name">
@@ -20,14 +20,14 @@
 			<div class="detail_line"></div>
 		</div>
 		<div class=" col-md-5">
-			<div class="detail_rate">
-                <ul class='star-rating'>
-                    <li><a href='#' title='一星' class='one-star'>1</a></li>
-                    <li><a href='#' title='二星' class='two-stars'>2</a></li>
-                    <li><a href='#' title='三星' class='three-stars'>3</a></li>
-                    <li><a href='#' title='四星' class='four-stars'>4</a></li>
-                    <li><a href='#' title='五星' class='five-stars'>5</a></li>
-                </ul>
+			<div class="detail_rate" ng-controller="RateStartController">
+				<ul class="jsstar">
+                    <li title="一星"></li>
+                    <li title="二星"></li>
+                    <li title="三星"></li>
+                    <li title="四星"></li>
+                    <li title="五星"></li>
+                </ul>	
 			</div>
 
             <div>

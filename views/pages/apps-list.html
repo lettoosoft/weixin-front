@@ -1,9 +1,9 @@
-
 <div class="container" ng-controller="appsList" >
+
     <div class="row" ng-repeat="app in apps" style="border-bottom:1px solid #C0C0C0;margin-top:10px;padding-bottom:10px;" >
         <div class="col-md-6 ">
             <div class="app_img">
-                <a href="#/pages/detail/{{app.id}}"><img ng-src="{{app.thumbnail_url}}" title="点击查看详细应用介绍"></a>
+                <a href="#/pages/detail/{{app.id}}"><img src="images/weixinshangcheng.png" ng-src="{{app.thumbnail_url}}" title="点击查看详细应用介绍"></a>
             </div>  
             <div class="app_name">
                 <span><h4><b>{{app.title}}</b></h4></span>
@@ -12,13 +12,13 @@
         </div>
         <div class="col-md-6">
             <div style="float:left;margin-top:10px;">
-                <div class="block app_rateStar">
-                    <ul class='star-rating'>
-                        <li><a href='#' title='一星' class='one-star'>1</a></li>
-                        <li><a href='#' title='二星' class='two-stars'>2</a></li>
-                        <li><a href='#' title='三星' class='three-stars'>3</a></li>
-                        <li><a href='#' title='四星' class='four-stars'>4</a></li>
-                        <li><a href='#' title='五星' class='five-stars'>5</a></li>
+                <div class="block app_rateStar" ng-controller="RateStartController">
+                    <ul class="jsstar">
+                        <li title="一星"></li>
+                        <li title="二星"></li>
+                        <li title="三星"></li>
+                        <li title="四星"></li>
+                        <li title="五星"></li>
                     </ul>
                 </div>
                 <div class="app_grade">

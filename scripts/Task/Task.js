@@ -129,5 +129,3 @@
   ]);
 
 }).call(this);
-
-//# sourceMappingURL=Task.js.map
