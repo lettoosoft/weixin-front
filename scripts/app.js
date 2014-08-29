@@ -51,6 +51,7 @@
                 $rootScope.apiHost = 'http://121.40.126.220';
                 //$rootScope.apiHost = 'http://localhost:8000';
                 $rootScope.user = null;
+                LoginService.saveAttemptUrl();
 
                 var url = $.trim($location.path());
                 if (url != '/pages/UserAgreement'  && url != '/pages/forgot' && url != '/pages/signup' && url != '' && url != 'landingPage' && url != '/' && url != '/welcome' && url != '/needVerify') {
@@ -65,7 +66,7 @@
 
                 $rootScope.$on('event:get_currentuser_successed', function (e, rejection) {
                     if ($rootScope.user.email_verified) {
-                        $location.path('/dashboard');
+                        LoginService.redirectToAttemptedUrl();
                     } else {
                         $location.path('/needVerify');
                     }
@@ -93,5 +94,3 @@
         ])
         .value('redirectToUrlAfterLogin', { url: '/' });
 }).call(this);
-
-//# sourceMappingURL=app.js.map
