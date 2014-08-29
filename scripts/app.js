@@ -1,6 +1,6 @@
 (function () {
-    'use strict';
-    angular.module('app', ['ngRoute', 'ngAnimate', 'http-auth-interceptor', 'ngCookies', 'ui.bootstrap', 'easypiechart', 'mgo-angular-wizard', 'textAngular', 'ui.tree', 'ngMap', 'ngTagsInput', 'app.ui.ctrls', 'app.ui.directives', 'app.ui.services', 'app.controllers', 'app.services', 'app.directives', 'app.form.validation', 'app.ui.form.ctrls', 'app.ui.form.directives', 'app.tables', 'app.map', 'app.task', 'app.localization', 'app.chart.ctrls', 'app.chart.directives', 'app.page.ctrls']).config([
+    'use strict';  
+    angular.module('app', ['ngRoute','ngAnimate', 'http-auth-interceptor', 'ngCookies', 'ui.bootstrap', 'easypiechart', 'mgo-angular-wizard', 'textAngular', 'ui.tree', 'ngMap', 'ngTagsInput', 'app.ui.ctrls', 'app.ui.directives', 'app.ui.services', 'app.controllers', 'app.services', 'app.directives', 'app.form.validation', 'app.ui.form.ctrls', 'app.ui.form.directives', 'app.tables', 'app.map', 'app.task', 'app.localization', 'app.chart.ctrls', 'app.chart.directives', 'app.page.ctrls']).config([
         '$routeProvider', function ($routeProvider) {
             return $routeProvider
               .when('/', {
@@ -27,6 +27,8 @@
                 templateUrl: 'views/pages/apps.html'
             }).when('/pages/profile', {
                 templateUrl: 'views/pages/profile.html'
+            }).when('/pages/avtor', {
+                templateUrl: 'views/pages/avtor.html'                
             }).when('/pages/paid', {
                 templateUrl: 'views/pages/paid.html'
             }).when('/pages/reset', {

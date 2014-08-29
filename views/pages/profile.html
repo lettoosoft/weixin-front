@@ -42,7 +42,7 @@
                 <div class="panel-heading bg-primary clearfix">
                     <div class="col-md-2" ng-mouseover="sel_img=1" ng-mouseout="sel_img=0">
                     <a href="" class="pull-left profile " style="">
-                        <img alt=""  src="images/g1.jpg" class="img-circle img80_80"  >
+                        <img alt=""  src="images/no-img.jpg" class="img-circle img80_80"  >
                         <div ng-show="sel_img" class="sel-img text-center"><div class="test">选择图片</div></div>
                     </a>
    
@@ -169,12 +169,10 @@
                                     <div class="col-md-10" >
                                     <span class="icon glyphicon glyphicon-link"></span>
                                     <label>URL</label>
-                                    <span  ng-show="edit==0"  style=" vertical-align: center;"> 
+                                    <span   style=" vertical-align: center; word-wrap:break-word;"> 
                                         {{w.callback_url}}
                                     </span>
-                                    <span ng-show="edit==1" >
-                                        <input type="email" ng-model="user.email" class="form-control" required>                        
-                                   </span>                                     
+                                    
                                     </div>
                                     <div class="col-md-2" ng-show="edit==0">
                                         <label class="switch switch-success"><input type="checkbox" disabled="true" ng-model="w.connect_status"  checked><i></i>
@@ -185,11 +183,9 @@
                                     <div class="col-md-10">
                                     <span class="icon glyphicon glyphicon-pushpin"></span>
                                     <label>TOKEN</label>
-                                    <span  ng-show="edit==0"  style=" vertical-align: center;">{{w.token}} 
+                                    <span   style=" vertical-align: center;">{{w.token}} 
                                     </span>
-                                    <span ng-show="edit==1" >
-                                        <input type="email" ng-model="user.email" class="form-control" required>                        
-                                   </span>                                     
+                                    
                                     </div>
                                     <div class="col-md-2" ng-show="edit==0">
                                        <span class="icon glyphicon glyphicon-question-sign"></span><a href="#nogo">什么是Token?</a>
