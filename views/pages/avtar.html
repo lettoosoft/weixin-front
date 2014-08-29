@@ -34,8 +34,7 @@
     width:300px;
 }
 .main{
-    padding:100px ;
-    border:1px solid #e5e5e5;
+    padding:0px 90px;
     margin-top: 100px;
 }
 .avtar{
@@ -49,7 +48,8 @@
 >
 <div class="col-md-4"></div>
 <div class="col-md-4 main">
-
+<div class="panel panel-default">
+    <div class="panel-heading"><strong><span class="glyphicon glyphicon-th"></span> 个人信息</strong></div>
     <!-- The file upload form used as target for the file upload widget -->
     <form id="fileupload" action="//jquery-file-upload.appspot.com/" method="POST" enctype="multipart/form-data"  data-ng-controller="DemoFileUploadController" data-file-upload="options" data-ng-class="{'fileupload-processing': processing() || loadingFiles}">
         <!-- Redirect browsers with JavaScript disabled to the origin page -->
@@ -66,12 +66,11 @@
             <tr >
                 <td data-ng-switch data-on="!!file.thumbnailUrl">
                     <div class="thumbnail" data-ng-switch-when="true">                       
-                            <img width="300px"data-ng-src="{{file.thumbnailUrl}}" alt="">                                                                      
+                            <img width="300px"data-ng-src="{{file.thumbnailUrl}}" alt="">                                                                     
                     </div>
-                    <div class="preview" data-ng-switch-default data-file-upload-preview="file">
-                        
+                    {{message}}
+                    <div class="preview" data-ng-switch-default data-file-upload-preview="file">                    
                     </div>
-                    {{file.$response()}}
                 </td>
             </tr>
             <tr>
@@ -82,7 +81,7 @@
                     </button>
                     <button type="button" class="btn btn-warning cancel" data-ng-click="file.$cancel()" data-ng-hide="!file.$cancel">
                         <i class="glyphicon glyphicon-ban-circle"></i>
-                        <span>Cancel</span>
+                        <span>取消</span>
                     </button>
                     <button data-ng-controller="FileDestroyController" type="button" class="btn btn-danger destroy" data-ng-click="file.$destroy()" data-ng-hide="!file.$destroy">
                         <i class="glyphicon glyphicon-trash"></i>
@@ -92,12 +91,12 @@
             </tr>
         </table>
         <div class="row fileupload-buttonbar">
-            <div class="col-lg-7">
+            <div class="col-lg-12 text-center">
                 <!-- The fileinput-button span is used to style the file input field as button -->
                 <span class="btn btn-success fileinput-button" ng-class="{disabled: disabled}">
                     <i class="glyphicon glyphicon-plus"></i>
                     <span>选择图片</span>
-                    <input type="file" name="files[]" multiple ng-disabled="disabled">
+                    <input type="file" name="photo" multiple ng-disabled="disabled">
                 </span>
 <!--                 <button type="button" class="btn btn-primary start" data-ng-click="submit()">
                     <i class="glyphicon glyphicon-upload"></i>
@@ -120,7 +119,7 @@
         </div>        
     </form>
     <br>
-
+</div>
 </div>
 <!-- The blueimp Gallery widget -->
 <div id="blueimp-gallery" class="blueimp-gallery blueimp-gallery-controls" data-filter=":even">
