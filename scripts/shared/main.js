@@ -58,16 +58,29 @@
                 $(".modal-backdrop").hide();
             }
         }])
-        .controller('appsList',['$scope','appService',function ($scope,appService){   
-
-      
-        
-                appService.select($scope);
-                $scope.addApp=function(item){
-                    appService.addApp($scope.addedApp,item);
-                    $scope.$emit('to-parent', 'parent');
-                }
-            }])
+        .controller('appspaging',['$scope','appService',function ($scope,appService){   
+                for (var i = 0; i < $(".paging").length; i++) {
+                    $(".paging")[i].onclick = (function(i){
+                        return function(){
+                            appService.paging($scope,i);
+                        }
+                })(i);
+            };
+        }])
+        .controller('Search',['searchService','$scope','appService',function (searchService,$scope,appService){
+            appService.select($scope);
+            searchService.searched($scope);
+            $scope.addApp=function(item){
+                appService.addApp($scope.addedApp,item);
+                $scope.$emit('to-parent', 'parent');
+            };
+            $scope.findApp = function (name){
+                searchService.findApp($scope,name);
+            };
+            $scope.search =function (name){
+                searchService.search($scope,name);
+            }
+        }])
         .controller('RateStartController',function(){
             $(".jsstar >li").hover(
                 function(){
@@ -85,10 +98,10 @@
             function ($scope){
                 $scope.isSleected = function (){
 
-                }
+                };
                 $scope.setClass = function (){
                     console.log(123);
-                }
+                };
         }])
         .controller('LoginCtrl', [
             '$scope', 'LoginService', function ($scope, LoginService) {

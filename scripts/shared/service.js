@@ -11,7 +11,6 @@ angular.module('app.services', [])
                         }).error(function (data){
                             $scope.disabled = false;
                             $scope.sendError = true;
-                            console.log(data);
                         })
                     },
             change: function(check,$scope){
@@ -165,9 +164,7 @@ angular.module('app.services', [])
             //IMPORTANT: You need to activate always_return_data in your ressource (see example)
                     $rootScope.user=data;
                     console.log("success");
-                    console.log(data);
                 }).error(function (data) {
-                    console.log(data);
                     console.log("fail");
                 });
             }
@@ -211,13 +208,52 @@ angular.module('app.services', [])
         };
         return service;
     }])
+    .factory('searchService',['$rootScope','$http',function ($rootScope,$http){
+        var service = {
+            search:function (scope,name){
+                var url = $rootScope.apiHost +'/api/v1/weixinapp/?title__contains='+name;
+                $http.get(url).success(function(data){
+                    if (data.objects.length == 0) {
+                        scope.result = true;
+                        scope.apps=data.objects;
+
+                    }else{
+                        scope.apps=data.objects;
+                    }
+                })
+            },
+            searched:function (scope){
+                var url = $rootScope.apiHost +'/api/v1/keyword/';
+                $http.get(url).success(function(data){
+                    scope.keywords = data.objects;
+                })
+            },
+            findApp:function (scope,name){
+                var url = $rootScope.apiHost +'/api/v1/weixinapp/?keywords__name__contains='+name;
+                $http.get(url).success(function(data){
+                    scope.apps=data.objects;
+                    scope.result = false;
+                })
+            }
+        };
+        return service;
+    }])
     .factory('appService', ['$http','$rootScope','$routeParams',function ($http,$rootScope,$routeParams) {
         var service = {
             // 获取微信列表
             select:function(scope){
-                var url = $rootScope.apiHost +  '/api/v1/weixinapp/';
+                var url = $rootScope.apiHost +  '/api/v1/weixinapp/?limit=3';
                 $http.get(url).success(function(data){
-                    scope.apps=data.objects; 
+                    scope.apps = data.objects; 
+                });
+            },
+            paging:function(scope,pages){
+                var pagelimit = 3;
+                var pageoffset = pages * 3;
+                var url = $rootScope.apiHost +  '/api/v1/weixinapp/?limit='+pagelimit+'&offset='+pageoffset;
+                $http.get(url).success(function(data){
+                    scope.apps = data.objects; 
+                    scope.result = false;
                 });
             },
             selectDetail:function($scope){

@@ -1,5 +1,4 @@
-<div class="container" ng-controller="appsList" >
-
+<div class="container" ng-controller="appspaging">
     <div class="row" ng-repeat="app in apps" style="border-bottom:1px solid #C0C0C0;margin-top:10px;padding-bottom:10px;" >
         <div class="col-md-6 ">
             <div class="app_img">
@@ -35,6 +34,21 @@
             <div class="app_install_times"> 
                 <span>已安装:{{app.install_count}}次</span>
             </div>
+        </div>
+    </div>
+    <div class="row" ng-show="result">
+        <div class="col-md-6 col-md-offset-3" style="text-align: center">
+            <div class="alert alert-danger" role="alert">抱歉！您搜索的应用不存在</div>
+        </div>
+    </div>
+    <div class="row" ng-hide="result">
+        <div class="col-md-6 col-md-offset-3" style="text-align:center;">
+            <ul class="pagination">
+                <li><a class="paging" >1</a></li>
+                <li><a class="paging" >2</a></li>
+                <li><a class="paging" >3</a></li>
+                <li><a class="paging" >4</a></li>
+            </ul>
         </div>
     </div>
 </div>
