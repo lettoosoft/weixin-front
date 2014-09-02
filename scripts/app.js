@@ -39,6 +39,12 @@
                 templateUrl: 'views/pages/payMent.html'
             }).when('/pages/notSensitization',{
                 templateUrl:'views/pages/not-sensitization.html'
+            }).when('/Introduction',{
+                templateUrl:'Introduction.html'
+            }).when('/Display',{
+                templateUrl:'Display.html'
+            }).when('/Successful',{
+                templateUrl:'Successful.html'
             }).otherwise({
                 redirectTo: '/404'
             });

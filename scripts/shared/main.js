@@ -39,7 +39,7 @@
                     if ($.trim(path)=='/'){
                         return true;
                     }else{
-                        return _.contains(['/pages/UserAgreement','/404','/needVerify','/pages/notSensitization','/pages/500', '/pages/login', '/pages/signin', '/pages/signin1', '/pages/signin2', '/pages/signup', '/pages/signup1', '/pages/signup2', '/pages/forgot', '/pages/lock-screen','/landingPage', '/welcome'], path);
+                        return _.contains(['/pages/UserAgreement','/Introduction','/Display','/Successful','/404','/needVerify','/pages/notSensitization','/pages/500', '/pages/login', '/pages/signin', '/pages/signin1', '/pages/signin2', '/pages/signup', '/pages/signup1', '/pages/signup2', '/pages/forgot', '/pages/lock-screen','/landingPage', '/welcome'], path);
                     }
                 };
 
@@ -93,15 +93,6 @@
         .controller('AppDetailController',['appService','$scope','$routeParams',
             function (appService,$scope,$routeParams){
                 appService.selectDetail($scope);
-        }])
-        .controller('landingPage',[
-            function ($scope){
-                $scope.isSleected = function (){
-
-                };
-                $scope.setClass = function (){
-                    console.log(123);
-                };
         }])
         .controller('LoginCtrl', [
             '$scope', 'LoginService', function ($scope, LoginService) {
