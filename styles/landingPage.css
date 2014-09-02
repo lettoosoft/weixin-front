@@ -6,7 +6,7 @@ body{
 }
 .lettoologo{
 	float: left;
-	margin-left: 80px;
+	margin-left: 90px;
 	width: 200px;
 	height: 80px;
 	margin-top: 3px;
@@ -19,6 +19,7 @@ body{
 	float: right;
 	height: 80px;
 	width: 200px;
+	margin-right:70px;
 }
 .lettoospan span{
 	font-size: 10px;
@@ -36,7 +37,7 @@ body{
 .lettooMenu{
 	float: left;
 	padding-top: 25px;
-	padding-left:70px; 
+	padding-left:70px;
 }
 .btn-primary{
 	border-radius: 5px !important;
