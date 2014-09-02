@@ -54,7 +54,7 @@
                 LoginService.saveAttemptUrl();
 
                 var url = $.trim($location.path());
-                if (url != '/pages/UserAgreement'  && url != '/pages/forgot' && url != '/pages/signup' && url != '' && url != 'landingPage' && url != '/' && url != '/welcome' && url != '/needVerify') {
+                if (url != '/pages/UserAgreement' && url != '/pages/avtar'  && url != '/pages/forgot' && url != '/pages/signup' && url != '' && url != 'landingPage' && url != '/' && url != '/welcome' && url != '/needVerify') {
                     // LoginService.isLoggedIn() 应该先执行，以便从cookie里取回auth_key放到http header里
                     // 然后再执行LoginService.get_currentuser()去判断是否登录。
                     if (!LoginService.isLoggedIn()) {
