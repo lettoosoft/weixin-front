@@ -106,7 +106,6 @@ angular.module('app.services', [])
             }
         };
         return service;
-
     })
     .factory('signUpService', function ($http, $rootScope, $location, authService, $cookies, redirectToUrlAfterLogin) {
         var service = {
@@ -210,7 +209,66 @@ angular.module('app.services', [])
     }])
     .factory('searchService',['$rootScope','$http',function ($rootScope,$http){
         var service = {
-            search:function (scope,name){
+            //已经把查询的方法都放到了一个service里面了，我的想法是通过触发事件时传进来的参数来处理url
+
+            searchApps:function(scope,parameter,type){
+                var url = $rootScope.apiHost +  '/api/v1/weixinapp/';
+                var pagelimit = 10;
+                var pageoffset;
+                var appName;
+                if (type == 0) {
+                    url = url +'?limit='+pagelimit;
+                }else if(type == 1) {
+                    pageoffset = parameter * 10;
+                    url = url +'?limit=' + pagelimit + '&offset=' + pageoffset;
+                    console.log(appName);
+                }else if(type == 2) {
+                    appName = parameter;
+                    url = url +'?limit=' + pagelimit + '&keywords__name__contains='+appName;
+                    console.log(appName);
+                }else{
+                    appName = parameter;
+                    url = url +'?limit=' + pagelimit + '&title__contains='+appName;
+                };
+                $http.get(url).success(function(data){
+                    scope.apps = data.objects;
+                    var realPage = [];
+                    for (var i=0 ; i< Math.ceil(data.meta.total_count/data.meta.limit); i++) {
+                        var number = {};
+                        number.pagenumber = i;
+                        realPage.push(number);
+                    };
+                    scope.pages = realPage;
+                })
+
+            },
+            select:function(scope){
+                var url = $rootScope.apiHost +  '/api/v1/weixinapp/?limit=10';
+                $http.get(url).success(function(data){
+                    scope.apps = data.objects; 
+                    var realPage = [];
+                    //变量的作用域
+                    for (var i=0 ; i< Math.ceil(data.meta.total_count/data.meta.limit); i++) {
+                        var number = {};
+                        number.pagenumber = i;
+                        realPage.push(number);
+                    };
+                    scope.pages = realPage;
+                });
+            },
+/*            paging:function(scope,pages,type){
+                console.log(type);
+                var pagelimit = 10;
+                var pageoffset = pages * 10;
+                console.log(scope.appName);
+                var url = $rootScope.apiHost +  '/api/v1/weixinapp/?limit='+pagelimit+'&offset='+pageoffset;
+                $http.get(url).success(function(data){
+                    scope.apps = data.objects; 
+                    scope.result = false;
+                });
+            },*/
+/*            search:function (scope,name,type){
+                console.log(type);
                 var url = $rootScope.apiHost +'/api/v1/weixinapp/?title__contains='+name;
                 $http.get(url).success(function(data){
                     if (data.objects.length == 0) {
@@ -221,41 +279,45 @@ angular.module('app.services', [])
                         scope.apps=data.objects;
                     }
                 })
-            },
+            },*/
             searched:function (scope){
+
                 var url = $rootScope.apiHost +'/api/v1/keyword/';
                 $http.get(url).success(function(data){
                     scope.keywords = data.objects;
+                    var realPage = [];
+                    //变量的作用域
+                    for (var i=0 ; i< Math.ceil(data.meta.total_count/data.meta.limit); i++) {
+                        var number = {};
+                        number.pagenumber = i;
+                        realPage.push(number);
+                    };
+                    scope.pages = realPage;
                 })
             },
-            findApp:function (scope,name){
+/*            findApp:function (scope,name,type){
+                console.log(type);
+                scope.appName = name;
                 var url = $rootScope.apiHost +'/api/v1/weixinapp/?keywords__name__contains='+name;
                 $http.get(url).success(function(data){
                     scope.apps=data.objects;
                     scope.result = false;
+                    var realPage = [];
+                    //变量的作用域
+                    for (var i=0 ; i< Math.ceil(data.meta.total_count/data.meta.limit); i++) {
+                        var number = {};
+                        number.pagenumber = i;
+                        realPage.push(number);
+                    };
+                    scope.pages = realPage;
                 })
-            }
+            }*/
         };
         return service;
     }])
     .factory('appService', ['$http','$rootScope','$routeParams',function ($http,$rootScope,$routeParams) {
         var service = {
             // 获取微信列表
-            select:function(scope){
-                var url = $rootScope.apiHost +  '/api/v1/weixinapp/?limit=3';
-                $http.get(url).success(function(data){
-                    scope.apps = data.objects; 
-                });
-            },
-            paging:function(scope,pages){
-                var pagelimit = 3;
-                var pageoffset = pages * 3;
-                var url = $rootScope.apiHost +  '/api/v1/weixinapp/?limit='+pagelimit+'&offset='+pageoffset;
-                $http.get(url).success(function(data){
-                    scope.apps = data.objects; 
-                    scope.result = false;
-                });
-            },
             selectDetail:function($scope){
                 var url = $rootScope.apiHost +  '/api/v1/weixinapp/';
                 $http.get(url).success(function(data){
@@ -266,10 +328,6 @@ angular.module('app.services', [])
                      }; 
                 });                
             },
-            addApp:function(addedApp,app){                                
-                addedApp.push(app);
-                console.log(addedApp);
-            }
         };
         return service;
     }]);

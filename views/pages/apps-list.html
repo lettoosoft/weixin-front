@@ -1,5 +1,5 @@
-<div class="container" ng-controller="appspaging">
-    <div class="row" ng-repeat="app in apps" style="border-bottom:1px solid #C0C0C0;margin-top:10px;padding-bottom:10px;" >
+<div class="container">
+    <div class="row" style="border-bottom:1px solid #C0C0C0;margin-top:10px;padding-bottom:10px;" >
         <div class="col-md-6 ">
             <div class="app_img">
                 <a href="#/pages/detail/{{app.id}}"><img src="images/weixinshangcheng.png" ng-src="{{app.thumbnail_url}}" title="点击查看详细应用介绍"></a>
@@ -28,7 +28,7 @@
             </div>
             <div class="app_install">
                 <div class="app_in_install">
-                    <button type="button" ng-click="addApp(app)" id="loading-example-btn" style="width:100px;margin-top:5px;margin-left:30px" class="btn btn-primary"><b>安装</b></button>
+                    <button type="button" id="loading-example-btn" style="width:100px;margin-top:5px;margin-left:30px" class="btn btn-primary"><b>安装</b></button>
                 </div>
             </div>
             <div class="app_install_times"> 
@@ -41,14 +41,5 @@
             <div class="alert alert-danger" role="alert">抱歉！您搜索的应用不存在</div>
         </div>
     </div>
-    <div class="row" ng-hide="result">
-        <div class="col-md-6 col-md-offset-3" style="text-align:center;">
-            <ul class="pagination">
-                <li><a class="paging" >1</a></li>
-                <li><a class="paging" >2</a></li>
-                <li><a class="paging" >3</a></li>
-                <li><a class="paging" >4</a></li>
-            </ul>
-        </div>
-    </div>
+
 </div>

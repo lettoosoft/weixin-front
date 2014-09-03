@@ -16,7 +16,7 @@
                         <ul class="dropdown-menu" role="menu" >
                             <li ><a ng-click="">所有应用</a></li>
                             <li class="divider"></li>
-                            <li ng-repeat = "list in keywords"><a ng-click="findApp(list.name)">{{list.name}}</a></li>
+                            <li  ng-repeat = "list in keywords"><a ng-model="appName.keyword" ng-click="findApp(list.name)">{{list.name}}</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -36,8 +36,17 @@
             </div>
         </div>
     </nav>
-    <apps-list>
-    </apps-list>
+    <div ng-repeat="app in apps">
+        <apps-list>
+        </apps-list>
+    </div>    
+    <div class="row" ng-hide="result">
+        <div class="col-md-6 col-md-offset-3" style="text-align:center;">
+            <ul class="pagination">
+                <li ng-repeat='page in pages'><a class="paging" ng-click="paging(page.pagenumber)" >{{page.pagenumber+1}}</a></li>
+            </ul>
+        </div>
+    </div>
 </div>
 
 

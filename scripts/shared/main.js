@@ -27,8 +27,6 @@
                 }
             }
         ])
-
-
         .controller('AppCtrl', [
             '$scope', '$location', '$rootScope', 'LoginService', '$cookies', function ($scope, $location, $rootScope, LoginService, $cookies) {
 
@@ -58,28 +56,22 @@
                 $(".modal-backdrop").hide();
             }
         }])
-        .controller('appspaging',['$scope','appService',function ($scope,appService){   
-                for (var i = 0; i < $(".paging").length; i++) {
-                    $(".paging")[i].onclick = (function(i){
-                        return function(){
-                            appService.paging($scope,i);
-                        }
-                })(i);
-            };
-        }])
-        .controller('Search',['searchService','$scope','appService',function (searchService,$scope,appService){
-            appService.select($scope);
-            searchService.searched($scope);
-            $scope.addApp=function(item){
-                appService.addApp($scope.addedApp,item);
-                $scope.$emit('to-parent', 'parent');
-            };
-            $scope.findApp = function (name){
-                searchService.findApp($scope,name);
-            };
-            $scope.search =function (name){
-                searchService.search($scope,name);
-            }
+        .controller('Search',['searchService','$scope',function (searchService,$scope){
+                //开始页面显示的app
+                searchService.searchApps($scope,0,0);
+                //应用分类中查询并显示app的title
+                searchService.searched($scope);
+                $scope.paging=function(pages){
+                    searchService.searchApps($scope,pages,1);
+                };
+                //通过分类查询app
+                $scope.findApp = function (name){
+                    searchService.searchApps($scope,name,2);
+                };
+                //通过查询搜索app
+                $scope.search = function (name){
+                    searchService.searchApps($scope,name,3);
+                };
         }])
         .controller('RateStartController',function(){
             $(".jsstar >li").hover(
@@ -190,7 +182,6 @@
                     $scope.band = true;
                 }
             }])
-
         .controller('NavCtrl', [
             '$scope', 'taskStorage', 'filterFilter', function ($scope, taskStorage, filterFilter) {
                 var tasks;
@@ -225,7 +216,6 @@
                 }
             }
         ])
-
         .controller('FileDestroyController', [
             '$scope', '$http',
             function ($scope, $http) {
@@ -259,7 +249,6 @@
                 }
             }
         ])        
-
         .controller('DashboardCtrl', ['$scope', '$rootScope', '$http', '$location', function ($scope, $rootScope, $http, $location) {
             var url = $rootScope.apiHost + '/api/v1/me/';
             $http.post(url)
@@ -270,5 +259,4 @@
                     console.log("Error occurred.  Status:" + status);
                 });
         }]);
-
 }).call(this);
