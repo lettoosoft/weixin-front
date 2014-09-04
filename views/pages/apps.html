@@ -14,7 +14,7 @@
                             <span class="caret"></span>
                         </a>
                         <ul class="dropdown-menu" role="menu" >
-                            <li ><a ng-click="">所有应用</a></li>
+                            <li ><a ng-click="allApps()">所有应用</a></li>
                             <li class="divider"></li>
                             <li  ng-repeat = "list in keywords"><a ng-model="appName.keyword" ng-click="findApp(list.name)">{{list.name}}</a></li>
                         </ul>

@@ -209,27 +209,39 @@ angular.module('app.services', [])
     }])
     .factory('searchService',['$rootScope','$http',function ($rootScope,$http){
         var service = {
-            //已经把查询的方法都放到了一个service里面了，我的想法是通过触发事件时传进来的参数来处理url
-
-            searchApps:function(scope,parameter,type){
+            //逐条添加条件
+            searchApps:function(scope,query,type){
                 var url = $rootScope.apiHost +  '/api/v1/weixinapp/';
                 var pagelimit = 10;
                 var pageoffset;
-                var appName;
-                if (type == 0) {
-                    url = url +'?limit='+pagelimit;
-                }else if(type == 1) {
-                    pageoffset = parameter * 10;
-                    url = url +'?limit=' + pagelimit + '&offset=' + pageoffset;
-                    console.log(appName);
-                }else if(type == 2) {
-                    appName = parameter;
-                    url = url +'?limit=' + pagelimit + '&keywords__name__contains='+appName;
-                    console.log(appName);
+                if (type == 'page') {
+                    if (scope.queryTextOne) {
+                        if (scope.queryTextTwo) {
+                            pageoffset = query * pagelimit;
+                            url = url +'?limit=' + pagelimit + '&offset=' + pageoffset + '&title__contains=' + scope.queryTextTwo + '&keywords__name__contains='+scope.queryTextOne;
+                        }else{
+                            pageoffset = query * pagelimit;
+                            url = url +'?limit=' + pagelimit + '&offset=' + pageoffset + '&keywords__name__contains='+scope.queryTextOne;
+                        }
+                    }else if(scope.queryTextTwo){
+                        pageoffset = query * pagelimit;
+                        url = url +'?limit=' + pagelimit + '&offset=' + pageoffset + '&title__contains='+scope.queryTextTwo;
+                    }else{
+                        pageoffset = query * pagelimit;
+                        url = url +'?limit='+pagelimit + '&offset=' + pageoffset;
+                    }
+                       
                 }else{
-                    appName = parameter;
-                    url = url +'?limit=' + pagelimit + '&title__contains='+appName;
-                };
+                    if (scope.queryTextOne) {
+                        if (scope.queryTextTwo) {
+                            url = url +'?limit=' + pagelimit + '&title__contains=' + scope.queryTextTwo + '&keywords__name__contains='+scope.queryTextOne;
+                        }else{
+                            url = url +'?limit=' + pagelimit  + '&keywords__name__contains=' + scope.queryTextOne;
+                        }
+                    }else{
+                        url = url +'?limit=' + pagelimit  + '&title__contains=' + scope.queryTextTwo;
+                    }
+                }
                 $http.get(url).success(function(data){
                     scope.apps = data.objects;
                     var realPage = [];
@@ -242,46 +254,8 @@ angular.module('app.services', [])
                 })
 
             },
-            select:function(scope){
-                var url = $rootScope.apiHost +  '/api/v1/weixinapp/?limit=10';
-                $http.get(url).success(function(data){
-                    scope.apps = data.objects; 
-                    var realPage = [];
-                    //变量的作用域
-                    for (var i=0 ; i< Math.ceil(data.meta.total_count/data.meta.limit); i++) {
-                        var number = {};
-                        number.pagenumber = i;
-                        realPage.push(number);
-                    };
-                    scope.pages = realPage;
-                });
-            },
-/*            paging:function(scope,pages,type){
-                console.log(type);
-                var pagelimit = 10;
-                var pageoffset = pages * 10;
-                console.log(scope.appName);
-                var url = $rootScope.apiHost +  '/api/v1/weixinapp/?limit='+pagelimit+'&offset='+pageoffset;
-                $http.get(url).success(function(data){
-                    scope.apps = data.objects; 
-                    scope.result = false;
-                });
-            },*/
-/*            search:function (scope,name,type){
-                console.log(type);
-                var url = $rootScope.apiHost +'/api/v1/weixinapp/?title__contains='+name;
-                $http.get(url).success(function(data){
-                    if (data.objects.length == 0) {
-                        scope.result = true;
-                        scope.apps=data.objects;
-
-                    }else{
-                        scope.apps=data.objects;
-                    }
-                })
-            },*/
+            //获取分类列表的
             searched:function (scope){
-
                 var url = $rootScope.apiHost +'/api/v1/keyword/';
                 $http.get(url).success(function(data){
                     scope.keywords = data.objects;
@@ -295,23 +269,6 @@ angular.module('app.services', [])
                     scope.pages = realPage;
                 })
             },
-/*            findApp:function (scope,name,type){
-                console.log(type);
-                scope.appName = name;
-                var url = $rootScope.apiHost +'/api/v1/weixinapp/?keywords__name__contains='+name;
-                $http.get(url).success(function(data){
-                    scope.apps=data.objects;
-                    scope.result = false;
-                    var realPage = [];
-                    //变量的作用域
-                    for (var i=0 ; i< Math.ceil(data.meta.total_count/data.meta.limit); i++) {
-                        var number = {};
-                        number.pagenumber = i;
-                        realPage.push(number);
-                    };
-                    scope.pages = realPage;
-                })
-            }*/
         };
         return service;
     }])

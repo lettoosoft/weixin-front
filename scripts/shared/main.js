@@ -57,20 +57,29 @@
             }
         }])
         .controller('Search',['searchService','$scope',function (searchService,$scope){
+                $scope.queryTextOne;
+                $scope.queryTextTwo;
                 //开始页面显示的app
-                searchService.searchApps($scope,0,0);
+                searchService.searchApps($scope,0,'page');
                 //应用分类中查询并显示app的title
                 searchService.searched($scope);
+                $scope.allApps = function() {
+                    $scope.queryTextOne = false;
+                    $scope.queryTextTwo = false;
+                    searchService.searchApps($scope,0,'page');
+                };
                 $scope.paging=function(pages){
-                    searchService.searchApps($scope,pages,1);
+                    searchService.searchApps($scope,pages,'page');
                 };
                 //通过分类查询app
-                $scope.findApp = function (name){
-                    searchService.searchApps($scope,name,2);
+                $scope.findApp = function (queryText){
+                    $scope.queryTextOne = queryText;
+                    searchService.searchApps($scope,queryText,'type');
                 };
                 //通过查询搜索app
-                $scope.search = function (name){
-                    searchService.searchApps($scope,name,3);
+                $scope.search = function (queryText){
+                    $scope.queryTextTwo = queryText;
+                    searchService.searchApps($scope,queryText,'name');
                 };
         }])
         .controller('RateStartController',function(){
