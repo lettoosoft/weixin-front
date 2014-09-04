@@ -60,26 +60,26 @@
                 $scope.queryTextOne;
                 $scope.queryTextTwo;
                 //开始页面显示的app
-                searchService.searchApps($scope,0,'page');
+                searchService.searchApps($scope,0);
                 //应用分类中查询并显示app的title
                 searchService.searched($scope);
                 $scope.allApps = function() {
                     $scope.queryTextOne = false;
                     $scope.queryTextTwo = false;
-                    searchService.searchApps($scope,0,'page');
+                    searchService.searchApps($scope,0);
                 };
                 $scope.paging=function(pages){
-                    searchService.searchApps($scope,pages,'page');
+                    searchService.searchApps($scope,pages);
                 };
                 //通过分类查询app
                 $scope.findApp = function (queryText){
                     $scope.queryTextOne = queryText;
-                    searchService.searchApps($scope,queryText,'type');
+                    searchService.searchApps($scope,0);
                 };
                 //通过查询搜索app
                 $scope.search = function (queryText){
                     $scope.queryTextTwo = queryText;
-                    searchService.searchApps($scope,queryText,'name');
+                    searchService.searchApps($scope,0);
                 };
         }])
         .controller('RateStartController',function(){
