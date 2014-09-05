@@ -190,7 +190,9 @@
     function(){
       return{
           restrict:'E',
-          templateUrl:'views/pages/apps-list.html'
+          templateUrl:'views/pages/apps-list.html',
+          
+          scope:'false'
       };
     }
   )

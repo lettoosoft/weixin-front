@@ -1,9 +1,8 @@
-
-<div class="container" ng-controller="appsList" >
-    <div class="row" ng-repeat="app in apps" style="border-bottom:1px solid #C0C0C0;margin-top:10px;padding-bottom:10px;" >
+<div class="container">
+    <div class="row" style="border-bottom:1px solid #C0C0C0;margin-top:10px;padding-bottom:10px;" >
         <div class="col-md-6 ">
             <div class="app_img">
-                <a href="#/pages/detail/{{app.id}}"><img ng-src="{{app.thumbnail_url}}" title="点击查看详细应用介绍"></a>
+                <a href="#/pages/detail/{{app.id}}"><img src="images/weixinshangcheng.png" ng-src="{{app.thumbnail_url}}" title="点击查看详细应用介绍"></a>
             </div>  
             <div class="app_name">
                 <span><h4><b>{{app.title}}</b></h4></span>
@@ -12,7 +11,7 @@
         </div>
         <div class="col-md-6">
             <div style="float:left;margin-top:10px;">
-                <div class="block app_rateStar">
+                <div class="block app_rateStar" ng-controller="RateStartController">
                     <ul class="jsstar">
                         <li title="一星"></li>
                         <li title="二星"></li>
@@ -29,7 +28,7 @@
             </div>
             <div class="app_install">
                 <div class="app_in_install">
-                    <button type="button" ng-click="addApp(app)" id="loading-example-btn" style="width:100px;margin-top:5px;margin-left:30px" class="btn btn-primary"><b>安装</b></button>
+                    <button type="button" id="loading-example-btn" style="width:100px;margin-top:5px;margin-left:30px" class="btn btn-primary"><b>安装</b></button>
                 </div>
             </div>
             <div class="app_install_times"> 
@@ -37,11 +36,10 @@
             </div>
         </div>
     </div>
+    <div class="row" ng-show="result">
+        <div class="col-md-6 col-md-offset-3" style="text-align: center">
+            <div class="alert alert-danger" role="alert">抱歉！您搜索的应用不存在</div>
+        </div>
+    </div>
+
 </div>
-<ul class="jsstar">
-    <li title="一星"></li>
-    <li title="二星"></li>
-    <li title="三星"></li>
-    <li title="四星"></li>
-    <li title="五星"></li>
-</ul>

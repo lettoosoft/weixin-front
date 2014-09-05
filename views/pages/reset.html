@@ -2,7 +2,7 @@
     <div class="signin-header">
         <div class="container text-center">
             <section class="logo">
-                修改密码
+                Lettoo微信平台
             </section>
         </div>
     </div>
@@ -19,6 +19,7 @@
                                 </span>
                                 <input type="password"
                                        class="form-control"
+                                       placeholder="原密码"
                                        ng-model="check.oldpassword"
                                        required
                                        >
@@ -39,6 +40,7 @@
                                 <input  type="password"
                                         class="form-control"
                                         ng-model="check.password1"
+                                        placeholder="新密码"
                                         required
                                         ng-focus="explain()"
                                         ng-change="explainDisappear()"
@@ -70,6 +72,7 @@
                                         class="form-control"
                                         ng-model="check.password2"
                                         required
+                                        placeholder="确认密码"
                                         ng-minlength=6
                                         ng-maxlength=18
                                         ng-change="confirmPassword(check)"
