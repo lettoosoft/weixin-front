@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <meta name="keywords" content="remark,remarkjs,markdown,slideshow,presentation"/>
+    <meta name="description" content="A simple, in-browser, markdown-driven slideshow tool."/>
+    <title>朱俊的实习总结</title>
+    <style type="text/css">
+        body {font-family: '微软雅黑';}
+        h1, h2, h3 {font-weight: 400;margin-bottom: 0;}
+        .remark-slide-content h1 {font-size: 3em;}
+        .remark-slide-content h2 {font-size: 2em;}
+        .remark-slide-content h3 {font-size: 1.6em;}
+        li p {line-height: 1.25em;}
+        .red {color: #fa0000;}
+        .large {font-size: 2em;}
+        a, a > code {color: rgb(249, 38, 114);text-decoration: none;}
+        code {-moz-border-radius: 5px;-web-border-radius: 5px;background: #e7e8e2;border-radius: 5px;}
+        .remark-code-line-highlighted {background-color: #373832;}
+        .pull-left {float: left;width: 47%;}
+        .pull-right {float: right;width: 47%;}
+        .pull-right ~ p {clear: both;}
+        #slideshow .slide .content code {font-size: 0.8em;}
+        #slideshow .slide .content pre code {font-size: 0.9em;padding: 15px;}
+        .inverse {background: #272822;color: #777872;text-shadow: 0 0 20px #333;}
+        .inverse h1, .inverse h2 {color: #f3f3f3;line-height: 0.8em;}
+        #slide-inverse {bottom: 12px;left: 20px;}
+        #slide-how .slides {font-size: 0.9em;position: absolute;top: 151px;right: 140px;}
+        #slide-how .slides h3 {margin-top: 0.2em;}
+        #slide-how .slides .first, #slide-how .slides .second {padding: 1px 20px;height: 90px;width: 120px;-moz-box-shadow: 0 0 10px #777;-webkit-box-shadow: 0 0 10px #777;box-shadow: 0 0 10px #777;}
+        #slide-how .slides .first {background: #fff;position: absolute;top: 20%;left: 20%;z-index: 1;}
+        #slide-how .slides .second {position: relative;background: #fff;z-index: 0;}
+        .left-column {color: #777;width: 20%;height: 92%;float: left;}
+        .left-column h2:last-of-type, .left-column h3:last-child {color: #000;}
+        .right-column {width: 75%;float: right;padding-top: 1em;}
+    </style>
+</head>
+<body>
+<textarea id="source">
+    name: inverse
+    layout: true
+    class: center, middle, inverse
+
+    ---
+
+    #实习总结
+    [朱俊]
+
+    ---
+
+    layout: false
+    .left-column[
+    ## 学习
+    ]
+    .right-column[
+
+    - Bootstrap
+
+    - AngularJS
+
+    - 相关开发工具
+
+    ]
+
+    ---
+
+    layout: false
+    .left-column[
+    ## Bootstrap
+    ]
+    .right-column[
+
+    - 栅格系统 (col)
+
+    - 组件 (表格 表单 按钮 下拉菜单 巨幕 进度条 列表组 面板等)
+
+    - 插件 (模态框 下拉菜单 滚动监听 标签页 工具提示 Collapse等)
+
+    - 扩展 (Bootstrap ui)
+
+    ]
+
+    ---
+
+    layout: false
+    .left-column[
+    ## AngularJS
+    ]
+    .right-column[
+
+    - Controller</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    定义了一个操作的具体行为。Controller通过依赖注入的服务完成各种操作，然后通过$scope把view需要的数据传递过去。类似于JS的事件处理函数
+
+    - $Scope</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    用来给Controller和View之间做数据传递
+
+    - Routes</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    AngularJS的前端路由通过不同的URL，告诉(ng-app)加载哪个页面(HTML)，再渲染到(ng-app)视图(ng-view)中。
+
+    - Filters</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    提供了改变数据展现形式的方法或者过滤部分数据，简而言之就是对数据进行过滤筛选，非常适合做搜索
+
+    - ng-model</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    实现model和view的双向绑定，任何在view上的修改马上反应到Model，任何在Model数据上的修改马上反应到View的展示上
+
+    ]
+
+    ---
+
+    layout: false
+    .left-column[
+    ## AngularJS
+    ]
+    .right-column[
+
+    - Directive</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    大多数的网站都是使用非语义的 div 标签来搭建的，而Directive可以自定义语义化标签，很炫酷
+
+    - Modules</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    通过ng-app可以把一个应用拆分为一个个的小模块，模块之间可以相互依赖
+
+    - 零件视图(artial Views)</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    除了通过ng-app可以把一个应用拆成小模块，在模块中，还可以通过ngView定义的页面模板，然后和Route配合显示对应的View，这个特性非常适合单页应用(TPO等后台管理)
+
+    - 依赖注入(Dependency Injection)</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    简单点理解就是说我的东西我自己并不想来拿着，我想要我依赖的那个人来帮我拿着，而当我需要的时候，他给我就行了(使用的时候直接调用)
+
+    - 看法</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    AngularJS自己定义一整套完整的逻辑，内置的各种Directive会极大的减少开发人员的代码量，提高开发效率
+
+    ]
+
+    ---
+
+    layout: false
+    .left-column[
+    ## 工具
+    ]
+    .right-column[
+
+    - Git (SourceTree WebStorm自带)
+
+    - WebStorm (神器，前端神器)
+
+    - Chrome插件 (JSONView AngularJS)
+
+    - Trello (项目合作)
+
+    - Github
+
+    - Bitbucket
+
+    ]
+
+    ---
+
+    layout: false
+    .left-column[
+    ## 工作
+    ]
+    .right-column[
+
+    - Yesyous网站功能测试</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    测试功能，阿紫给我Gmail发了好多邮件
+
+    - @功能</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    这个不是很难，就是很麻烦，考虑的情况比较多，通过这个熟悉了许多了JS处理字符串的方法
+
+    - TPO后台管理</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    这个，用AngularJS实践，通过这个学习了AngularJS，算入门。其中写过一个时间转换函数(虽然被弃用)，因此熟悉了许多出多时间对象的方法
+
+    ]
+
+    ---
+
+    layout: false
+    .left-column[
+    ## 想法
+    ]
+    .right-column[
+
+    - Bootstrap是个好东西
+
+    - AngularJS是个好东西
+
+    - WebStorm是个好东西
+
+    - Git是个好东西
+
+    - 实习收获颇多，学习环境很好，学到了比较前沿的东西
+
+    - 希望以后有机会还能合作 (这句话不是以 '东西' 结尾了)
+
+    ]
+
+    ---
+
+    name: last-page
+    template: inverse
+
+    ## That's all!
+
+    ## Thanks!
+
+    姓名：朱俊
+
+    QQ：2425350546
+
+    邮箱：zhujun87654321@gmail.com
+
+    github帐号：zhujun87654321@gmail.com
+
+    bitbucket帐号：zhujun87654321@gmail.com
+
+    trello帐号：zhujun87654321@gmail.com
+</textarea>
+<script src="http://gnab.github.com/remark/downloads/remark-0.6.5.min.js"></script>
+<script type="text/javascript">
+    var hljs = remark.highlighter.engine;
+</script>
+<script type="text/javascript">
+    var slideshow = remark.create({
+        highlightStyle: 'monokai',
+        highlightLanguage: 'remark'
+    });
+</script>
+</body>
+</html>
